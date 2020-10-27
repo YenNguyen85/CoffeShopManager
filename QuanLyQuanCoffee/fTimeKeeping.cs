@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QuanLyQuanCoffee
 {
-    public partial class fAdmin : Form
+    public partial class fTimeKeeping : Form
     {
-        public fAdmin()
+        public fTimeKeeping()
         {
             InitializeComponent();
+        }
+
+        private void fTimeKeeping_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

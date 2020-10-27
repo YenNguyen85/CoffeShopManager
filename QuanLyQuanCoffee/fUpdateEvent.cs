@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyQuanCoffee
 {
-    public partial class fAdmin : Form
+    public partial class fUpdateEvent : Form
     {
-        public fAdmin()
+        public fUpdateEvent()
         {
             InitializeComponent();
         }

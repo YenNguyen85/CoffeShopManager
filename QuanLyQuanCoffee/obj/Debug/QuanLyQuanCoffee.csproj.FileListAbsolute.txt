@@ -11,3 +11,17 @@ D:\Works\QuanLyQuanCoffee\QuanLyQuanCoffee\bin\Debug\QuanLyQuanCoffee.exe
 D:\Works\QuanLyQuanCoffee\QuanLyQuanCoffee\bin\Debug\QuanLyQuanCoffee.pdb
 D:\Works\QuanLyQuanCoffee\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.exe
 D:\Works\QuanLyQuanCoffee\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.pdb
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\bin\Debug\QuanLyQuanCoffee.exe.config
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\bin\Debug\QuanLyQuanCoffee.exe
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\bin\Debug\QuanLyQuanCoffee.pdb
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.csprojAssemblyReference.cache
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fAccountProfile.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fAdmin.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fLogin.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fManager.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fUpdateEvent.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.Properties.Resources.resources
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.csproj.GenerateResource.cache
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.csproj.CoreCompileInputs.cache
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.exe
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.pdb

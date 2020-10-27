@@ -70,6 +70,18 @@
     <Compile Include="fManager.Designer.cs">
       <DependentUpon>fManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="fTimeKeeping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTimeKeeping.Designer.cs">
+      <DependentUpon>fTimeKeeping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fUpdateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fUpdateEvent.Designer.cs">
+      <DependentUpon>fUpdateEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fAccountProfile.resx">
@@ -83,6 +95,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fManager.resx">
       <DependentUpon>fManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTimeKeeping.resx">
+      <DependentUpon>fTimeKeeping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fUpdateEvent.resx">
+      <DependentUpon>fUpdateEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
