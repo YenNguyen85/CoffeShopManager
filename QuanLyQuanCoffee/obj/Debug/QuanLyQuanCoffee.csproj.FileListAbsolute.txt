@@ -25,3 +25,4 @@ E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.csproj.GenerateReso
 E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.csproj.CoreCompileInputs.cache
 E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.exe
 E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.pdb
+E:\de-tai-ltcsdl\QuanLyQuanCoffee\obj\Debug\QuanLyQuanCoffee.fTimeKeeping.resources
