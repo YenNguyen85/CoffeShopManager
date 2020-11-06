@@ -68,7 +68,7 @@
             // flpTable
             // 
             this.flpTable.AutoScroll = true;
-            this.flpTable.Location = new System.Drawing.Point(12, 34);
+            this.flpTable.Location = new System.Drawing.Point(12, 49);
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(497, 406);
             this.flpTable.TabIndex = 7;
@@ -82,7 +82,7 @@
             0,
             -2147483648});
             this.numFoodCount.Name = "numFoodCount";
-            this.numFoodCount.Size = new System.Drawing.Size(48, 19);
+            this.numFoodCount.Size = new System.Drawing.Size(48, 22);
             this.numFoodCount.TabIndex = 1;
             this.numFoodCount.Value = new decimal(new int[] {
             1,
@@ -104,7 +104,7 @@
             this.cbFood.FormattingEnabled = true;
             this.cbFood.Location = new System.Drawing.Point(3, 30);
             this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(214, 21);
+            this.cbFood.Size = new System.Drawing.Size(214, 24);
             this.cbFood.TabIndex = 1;
             // 
             // panel4
@@ -115,7 +115,7 @@
             this.panel4.Controls.Add(this.btAddFood);
             this.panel4.Controls.Add(this.cbFood);
             this.panel4.Controls.Add(this.cbCategory);
-            this.panel4.Location = new System.Drawing.Point(518, 33);
+            this.panel4.Location = new System.Drawing.Point(518, 48);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(541, 57);
             this.panel4.TabIndex = 5;
@@ -129,7 +129,7 @@
             0,
             -2147483648});
             this.numDeleteFood.Name = "numDeleteFood";
-            this.numDeleteFood.Size = new System.Drawing.Size(48, 19);
+            this.numDeleteFood.Size = new System.Drawing.Size(48, 22);
             this.numDeleteFood.TabIndex = 9;
             this.numDeleteFood.Value = new decimal(new int[] {
             1,
@@ -151,7 +151,7 @@
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(3, 0);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(214, 21);
+            this.cbCategory.Size = new System.Drawing.Size(214, 24);
             this.cbCategory.TabIndex = 0;
             // 
             // tbTotalPrice
@@ -161,7 +161,7 @@
             this.tbTotalPrice.Location = new System.Drawing.Point(395, 27);
             this.tbTotalPrice.Name = "tbTotalPrice";
             this.tbTotalPrice.ReadOnly = true;
-            this.tbTotalPrice.Size = new System.Drawing.Size(141, 23);
+            this.tbTotalPrice.Size = new System.Drawing.Size(141, 27);
             this.tbTotalPrice.TabIndex = 2;
             this.tbTotalPrice.Text = "0";
             this.tbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -171,7 +171,7 @@
             this.cbChangeTable.FormattingEnabled = true;
             this.cbChangeTable.Location = new System.Drawing.Point(3, 31);
             this.cbChangeTable.Name = "cbChangeTable";
-            this.cbChangeTable.Size = new System.Drawing.Size(118, 21);
+            this.cbChangeTable.Size = new System.Drawing.Size(118, 24);
             this.cbChangeTable.TabIndex = 6;
             // 
             // btChangeTable
@@ -187,7 +187,7 @@
             // 
             this.numDiscount.Location = new System.Drawing.Point(260, 30);
             this.numDiscount.Name = "numDiscount";
-            this.numDiscount.Size = new System.Drawing.Size(112, 19);
+            this.numDiscount.Size = new System.Drawing.Size(112, 22);
             this.numDiscount.TabIndex = 4;
             this.numDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -219,7 +219,7 @@
             this.panel3.Controls.Add(this.btCheckOut);
             this.panel3.Controls.Add(this.btChangeTable);
             this.panel3.Controls.Add(this.numDiscount);
-            this.panel3.Location = new System.Drawing.Point(515, 391);
+            this.panel3.Location = new System.Drawing.Point(515, 397);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(544, 58);
             this.panel3.TabIndex = 3;
@@ -229,7 +229,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(261, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 8;
             this.label1.Text = "Giảm giá (%)";
             // 
@@ -238,7 +238,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(127, 31);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(118, 21);
+            this.comboBox1.Size = new System.Drawing.Size(118, 24);
             this.comboBox1.TabIndex = 7;
             // 
             // columnHeader4
@@ -281,7 +281,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.lvBill);
-            this.panel2.Location = new System.Drawing.Point(515, 96);
+            this.panel2.Location = new System.Drawing.Point(515, 111);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(544, 280);
             this.panel2.TabIndex = 4;
@@ -290,7 +290,7 @@
             // 
             this.thongTinTaiKhoanToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thongTinTaiKhoanToolStripMenuItem.Name = "thongTinTaiKhoanToolStripMenuItem";
-            this.thongTinTaiKhoanToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+            this.thongTinTaiKhoanToolStripMenuItem.Size = new System.Drawing.Size(118, 29);
             this.thongTinTaiKhoanToolStripMenuItem.Text = "Đăng Xuất";
             // 
             // adminToolStripMenuItem
@@ -298,7 +298,7 @@
             this.adminToolStripMenuItem.Enabled = false;
             this.adminToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(92, 29);
             this.adminToolStripMenuItem.Text = "Quản lý";
             // 
             // menuStrip1
@@ -310,7 +310,7 @@
             this.chấmCôngToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1080, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1080, 33);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -318,24 +318,24 @@
             // 
             this.chấmCôngToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chấmCôngToolStripMenuItem.Name = "chấmCôngToolStripMenuItem";
-            this.chấmCôngToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.chấmCôngToolStripMenuItem.Size = new System.Drawing.Size(124, 29);
             this.chấmCôngToolStripMenuItem.Text = "Chấm công";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(976, 465);
+            this.label2.Location = new System.Drawing.Point(963, 479);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 17);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Tên hiển thị";
             // 
             // fManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 496);
+            this.ClientSize = new System.Drawing.Size(1080, 524);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel4);
