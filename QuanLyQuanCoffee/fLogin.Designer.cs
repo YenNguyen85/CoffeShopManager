@@ -73,6 +73,7 @@
             this.btLogin.TabIndex = 3;
             this.btLogin.Text = "Đăng nhập";
             this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // panel3
             // 
