@@ -63,6 +63,7 @@
             this.btExit.TabIndex = 4;
             this.btExit.Text = "Thoát";
             this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // btLogin
             // 
@@ -136,6 +137,7 @@
             this.Controls.Add(this.bb);
             this.Name = "fLogin";
             this.Text = "ĐĂNG NHẬP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fLogin_FormClosing_1);
             this.bb.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

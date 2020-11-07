@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,10 @@ namespace QuanLyQuanCoffee.DAO
 {
     class AccountDAO
     {
-        private static AccountDAO instance;
-        public static AccountDAO Instance
+        public static bool Login(string username, string password) // chức năng đăng nhập
         {
-            get { if (instance == null) instance = new AccountDAO(); return AccountDAO.instance; }
-            private set { instance = value; }
-        }
-
-        private AccountDAO() { }
-
-        public bool Login(string userName, string passWord) // chức năng đăng nhập
-        {
-            string query = "USP_Login @userName , @passWord "; // nhớ dấu cách
-
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord });
-
-            return result.Rows.Count > 0;
+            string sql = "Select * from TAIKHOAN where TenNguoiDung= '"+username+"' and MatKhau = '"+password+"'";
+            return KetNoiCSDL.Query(sql).Rows.Count == 1? true : false ;
         }
     }
 }

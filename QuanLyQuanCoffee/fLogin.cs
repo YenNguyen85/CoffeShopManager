@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanCoffee.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,39 +23,29 @@ namespace QuanLyQuanCoffee
             string userName = tbUserName.Text;
             string passWord = tbPassWord.Text;
 
-            if (Login(userName, passWord))
+            if (AccountDAO.Login(userName, passWord))
             {
                 fManager f = new fManager();
+                f.Show();
                 this.Hide();
-                f.ShowDialog();
-                this.Show();
             }
             else
             {
                 MessageBox.Show("Nhập sai tên tài khoản hoặc mật khẩu");
             }
         }
-        //private void btLogin_Click(object sender, EventArgs e)
-        //{
-        //    
-        //}
-
-        bool Login(string userName, string passWord)
+      
+        //Tắt bằng dấu x
+        private void fLogin_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            return DAO.AccountDAO.Instance.Login(userName, passWord);
+            if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
         }
-
-        //private void btExit_Click(object sender, EventArgs e)
-        //{
-        //    Application.Exit();
-        //}
-
-        //private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
-        //    {
-        //        e.Cancel = true;
-        //    }
-        //}
+        private void btExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); //Xài luôn messagebox của formClosing
+        }
     }
 }
