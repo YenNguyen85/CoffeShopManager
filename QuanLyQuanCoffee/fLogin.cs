@@ -18,12 +18,12 @@ namespace QuanLyQuanCoffee
             InitializeComponent();
         }
 
+        public static string TenNguoiDung = ""; // biến lưu lại tên người dùng đăng nhập
+
         private void btLogin_Click(object sender, EventArgs e)
         {
-            string userName = tbUserName.Text;
-            string passWord = tbPassWord.Text;
-
-            if (AccountDAO.Login(userName, passWord))
+            TenNguoiDung = AccountDAO.GetTenNguoiDung(tbUserName.Text, tbPassWord.Text);
+            if (TenNguoiDung != null)
             {
                 fManager f = new fManager();
                 f.Show();
@@ -31,10 +31,10 @@ namespace QuanLyQuanCoffee
             }
             else
             {
-                MessageBox.Show("Nhập sai tên tài khoản hoặc mật khẩu");
+                MessageBox.Show("Nhập sai tên đăng nhập hoặc mật khẩu");
             }
         }
-      
+
         //Tắt bằng dấu x
         private void fLogin_FormClosing_1(object sender, FormClosingEventArgs e)
         {
@@ -46,6 +46,11 @@ namespace QuanLyQuanCoffee
         private void btExit_Click(object sender, EventArgs e)
         {
             Application.Exit(); //Xài luôn messagebox của formClosing
+        }
+
+        private void fLogin_Load(object sender, EventArgs e)
+        {
+            TenNguoiDung = "";
         }
     }
 }
