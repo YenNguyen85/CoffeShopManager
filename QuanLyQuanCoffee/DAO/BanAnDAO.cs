@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanCoffee.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanCoffee.DAO
 {
-    class SanPhamDAO
+    class BanAnDAO
     {
-
-        public static DataTable GetSanPham(string idLoai)
+        public static DataTable GetBanAnList()
         {
-            string sql = "select * from MONAN sp where sp.idLoaiMon = "+idLoai+"";
+            string sql = "select * from BANAN";
             return KetNoiCSDL.Query(sql);
         }
     }
 }
+

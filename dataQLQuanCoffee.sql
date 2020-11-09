@@ -7,7 +7,7 @@ CREATE TABLE BANAN
 (
 	id INT IDENTITY PRIMARY KEY,
 	TenBan NVARCHAR(100) NOT NULL,
-	TrangThaiBan NVARCHAR(100) NOT NULL DEFAULT N'Trống'	--Trống || Có người	
+	TrangThaiBan bit NOT NULL DEFAULT 0 	--0: Trống || 1: Có người	
 )
 Go
 
@@ -16,7 +16,7 @@ Go
 	TenNguoiDung NVARCHAR(100) PRIMARY KEY,
 	TenHienThi NVARCHAR(100) NOT NULL,
 	MatKhau NVARCHAR(1000) NOT NULL DEFAULT 0,
-	LoaiTK INT NOT NULL DEFAULT 0	--1: adim && 0: staff	
+	LoaiTK INT NOT NULL DEFAULT 0	--1: adim && 0: staff
 )
 GO
 
@@ -162,6 +162,8 @@ Insert into MONAN(TenMon, idLoaiMon, GiaTien) Values (N'Chocolate Tiramisu', 5, 
 
 Insert into CHUCVU(TenChucVu, Luong) Values (N'Phục vụ', 15000)
 Insert into CHUCVU(TenChucVu, Luong) Values (N'Pha chế', 20000)
+
+insert into BANAN(TenBan, TrangThaiBan) Values ('1', 0)
 
 
 Select TenNguoiDung from TAIKHOAN where TenNguoiDung= 'Admin' and MatKhau = '1'

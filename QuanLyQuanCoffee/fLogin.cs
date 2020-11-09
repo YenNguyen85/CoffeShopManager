@@ -35,22 +35,22 @@ namespace QuanLyQuanCoffee
             }
         }
 
-        //Tắt bằng dấu x
-        private void fLogin_FormClosing_1(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
-            {
-                e.Cancel = true;
-            }
-        }
         private void btExit_Click(object sender, EventArgs e)
         {
-            Application.Exit(); //Xài luôn messagebox của formClosing
+            this.Close(); //Xài luôn messagebox của formClosing
         }
 
         private void fLogin_Load(object sender, EventArgs e)
         {
             TenNguoiDung = "";
+        }
+
+        private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

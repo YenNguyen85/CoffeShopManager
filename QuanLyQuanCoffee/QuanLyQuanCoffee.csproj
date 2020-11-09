@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\BanAnDAO.cs" />
     <Compile Include="DAO\KetNoiCSDL.cs" />
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DTO\AccountDTO.cs" />
+    <Compile Include="DTO\BanAnDTO.cs" />
     <Compile Include="fAccountProfile.cs">
       <SubType>Form</SubType>
     </Compile>

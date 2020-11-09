@@ -20,7 +20,7 @@ namespace QuanLyQuanCoffee
 
         private void fAdmin_Load(object sender, EventArgs e)
         {
-            ShowProductTreeView();
+            DisplayProductTreeView();
         }
 
         // Gọi hàm khi thay đổi selected tab
@@ -29,7 +29,7 @@ namespace QuanLyQuanCoffee
             switch (tabAdmin.SelectedTab.Name)
             {
                 case "tabProduct":
-                    ShowProductTreeView();
+                    DisplayProductTreeView();
                     break;
 
             }
@@ -37,7 +37,7 @@ namespace QuanLyQuanCoffee
 
                                 // Các hàm xử lý tab sản phẩm
         // Hiển thị tree view loại sản phẩm
-        private void ShowProductTreeView()
+        private void DisplayProductTreeView()
         {
             treeView.Nodes.Clear();
             DataTable data = LoaiSanPhamDAO.GetLoaiSP();
