@@ -151,7 +151,7 @@
             this.tabProduct.Controls.Add(this.label9);
             this.tabProduct.Location = new System.Drawing.Point(4, 25);
             this.tabProduct.Name = "tabProduct";
-            this.tabProduct.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabProduct.Padding = new System.Windows.Forms.Padding(3);
             this.tabProduct.Size = new System.Drawing.Size(835, 465);
             this.tabProduct.TabIndex = 8;
             this.tabProduct.Text = "Sản phẩm";
@@ -341,7 +341,7 @@
             this.tabSalary.Controls.Add(this.panel1);
             this.tabSalary.Location = new System.Drawing.Point(4, 25);
             this.tabSalary.Name = "tabSalary";
-            this.tabSalary.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabSalary.Padding = new System.Windows.Forms.Padding(3);
             this.tabSalary.Size = new System.Drawing.Size(835, 465);
             this.tabSalary.TabIndex = 7;
             this.tabSalary.Text = "Tính lương nhân viên";
@@ -363,7 +363,7 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Location = new System.Drawing.Point(5, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(827, 41);
             this.panel1.TabIndex = 5;
@@ -391,7 +391,7 @@
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(347, 5);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(101, 28);
             this.button9.TabIndex = 1;
@@ -401,7 +401,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(577, 9);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(188, 22);
             this.dateTimePicker1.TabIndex = 2;
@@ -409,7 +409,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(109, 9);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(188, 22);
             this.dateTimePicker2.TabIndex = 1;
@@ -424,7 +424,7 @@
             this.tabEvents.Controls.Add(this.listEvents);
             this.tabEvents.Location = new System.Drawing.Point(4, 25);
             this.tabEvents.Name = "tabEvents";
-            this.tabEvents.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabEvents.Padding = new System.Windows.Forms.Padding(3);
             this.tabEvents.Size = new System.Drawing.Size(835, 465);
             this.tabEvents.TabIndex = 6;
             this.tabEvents.Text = "Sự kiện & khuyến mãi";
@@ -433,7 +433,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(108, 399);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(137, 37);
             this.button7.TabIndex = 27;
@@ -443,7 +443,7 @@
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(602, 399);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(137, 37);
             this.button8.TabIndex = 26;
@@ -453,7 +453,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(275, 399);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(137, 37);
             this.button5.TabIndex = 25;
@@ -463,7 +463,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(439, 399);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(137, 37);
             this.button3.TabIndex = 24;
@@ -517,9 +517,9 @@
             this.tabEmployee.Controls.Add(this.dataGridView2);
             this.tabEmployee.Controls.Add(this.panel28);
             this.tabEmployee.Location = new System.Drawing.Point(4, 25);
-            this.tabEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.tabEmployee.Name = "tabEmployee";
-            this.tabEmployee.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabEmployee.Padding = new System.Windows.Forms.Padding(2);
             this.tabEmployee.Size = new System.Drawing.Size(835, 465);
             this.tabEmployee.TabIndex = 5;
             this.tabEmployee.Text = "Nhân viên";
@@ -530,7 +530,7 @@
             this.panel35.Controls.Add(this.textBox1);
             this.panel35.Controls.Add(this.button1);
             this.panel35.Location = new System.Drawing.Point(417, 4);
-            this.panel35.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel35.Margin = new System.Windows.Forms.Padding(2);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(414, 51);
             this.panel35.TabIndex = 20;
@@ -538,7 +538,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(11, 12);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 22);
             this.textBox1.TabIndex = 3;
@@ -546,7 +546,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(254, 12);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 22);
             this.button1.TabIndex = 2;
@@ -557,7 +557,7 @@
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(2, 3);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(411, 459);
@@ -580,7 +580,7 @@
             this.panel28.Controls.Add(this.textBox6);
             this.panel28.Controls.Add(this.label18);
             this.panel28.Location = new System.Drawing.Point(417, 58);
-            this.panel28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel28.Margin = new System.Windows.Forms.Padding(2);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(414, 403);
             this.panel28.TabIndex = 16;
@@ -625,7 +625,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(164, 59);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(206, 22);
@@ -645,7 +645,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(164, 106);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(206, 22);
@@ -666,7 +666,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(164, 158);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(206, 24);
             this.comboBox2.TabIndex = 12;
@@ -685,7 +685,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(164, 210);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(206, 22);
@@ -705,7 +705,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(164, 266);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(206, 22);
@@ -727,9 +727,9 @@
             this.tabAccount.Controls.Add(this.groupBox4);
             this.tabAccount.Controls.Add(this.listAccounts);
             this.tabAccount.Location = new System.Drawing.Point(4, 25);
-            this.tabAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabAccount.Margin = new System.Windows.Forms.Padding(2);
             this.tabAccount.Name = "tabAccount";
-            this.tabAccount.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabAccount.Padding = new System.Windows.Forms.Padding(2);
             this.tabAccount.Size = new System.Drawing.Size(835, 465);
             this.tabAccount.TabIndex = 4;
             this.tabAccount.Text = "Tài khoản";
@@ -747,9 +747,9 @@
             this.groupBox4.Controls.Add(this.tbUserName);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Location = new System.Drawing.Point(149, 13);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(484, 220);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
@@ -804,7 +804,7 @@
             // tbDisplayName
             // 
             this.tbDisplayName.Location = new System.Drawing.Point(158, 80);
-            this.tbDisplayName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDisplayName.Margin = new System.Windows.Forms.Padding(2);
             this.tbDisplayName.Name = "tbDisplayName";
             this.tbDisplayName.ReadOnly = true;
             this.tbDisplayName.Size = new System.Drawing.Size(275, 22);
@@ -824,7 +824,7 @@
             // tbUserName
             // 
             this.tbUserName.Location = new System.Drawing.Point(158, 31);
-            this.tbUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.ReadOnly = true;
             this.tbUserName.Size = new System.Drawing.Size(275, 22);
@@ -876,9 +876,9 @@
             this.tabBill.Controls.Add(this.dataGridView1);
             this.tabBill.Controls.Add(this.panel2);
             this.tabBill.Location = new System.Drawing.Point(4, 25);
-            this.tabBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBill.Margin = new System.Windows.Forms.Padding(2);
             this.tabBill.Name = "tabBill";
-            this.tabBill.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBill.Padding = new System.Windows.Forms.Padding(2);
             this.tabBill.Size = new System.Drawing.Size(835, 465);
             this.tabBill.TabIndex = 0;
             this.tabBill.Text = "Doanh thu";
@@ -900,7 +900,7 @@
             this.panel2.Controls.Add(this.dtpkToDate);
             this.panel2.Controls.Add(this.dtpkFormDate);
             this.panel2.Location = new System.Drawing.Point(4, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(827, 41);
             this.panel2.TabIndex = 3;
@@ -928,7 +928,7 @@
             // btViewBill
             // 
             this.btViewBill.Location = new System.Drawing.Point(347, 5);
-            this.btViewBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btViewBill.Margin = new System.Windows.Forms.Padding(2);
             this.btViewBill.Name = "btViewBill";
             this.btViewBill.Size = new System.Drawing.Size(101, 28);
             this.btViewBill.TabIndex = 1;
@@ -939,7 +939,7 @@
             // 
             this.dtpkToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpkToDate.Location = new System.Drawing.Point(577, 9);
-            this.dtpkToDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpkToDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpkToDate.Name = "dtpkToDate";
             this.dtpkToDate.Size = new System.Drawing.Size(188, 22);
             this.dtpkToDate.TabIndex = 2;
@@ -948,7 +948,7 @@
             // 
             this.dtpkFormDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpkFormDate.Location = new System.Drawing.Point(109, 9);
-            this.dtpkFormDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpkFormDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpkFormDate.Name = "dtpkFormDate";
             this.dtpkFormDate.Size = new System.Drawing.Size(188, 22);
             this.dtpkFormDate.TabIndex = 1;
@@ -964,11 +964,12 @@
             this.tabAdmin.Controls.Add(this.tabSalary);
             this.tabAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabAdmin.Location = new System.Drawing.Point(11, 11);
-            this.tabAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.SelectedIndex = 0;
             this.tabAdmin.Size = new System.Drawing.Size(843, 494);
             this.tabAdmin.TabIndex = 1;
+            this.tabAdmin.SelectedIndexChanged += new System.EventHandler(this.tabAdmin_SelectedIndexChanged);
             // 
             // tabTable
             // 
@@ -976,9 +977,9 @@
             this.tabTable.Controls.Add(this.label1);
             this.tabTable.Controls.Add(this.dtgvTable);
             this.tabTable.Location = new System.Drawing.Point(4, 25);
-            this.tabTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabTable.Margin = new System.Windows.Forms.Padding(2);
             this.tabTable.Name = "tabTable";
-            this.tabTable.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabTable.Padding = new System.Windows.Forms.Padding(2);
             this.tabTable.Size = new System.Drawing.Size(835, 465);
             this.tabTable.TabIndex = 3;
             this.tabTable.Text = "Bàn ăn";
@@ -993,7 +994,7 @@
             this.panel13.Controls.Add(this.button19);
             this.panel13.Controls.Add(this.tbTableName);
             this.panel13.Location = new System.Drawing.Point(419, 54);
-            this.panel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel13.Margin = new System.Windows.Forms.Padding(2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(369, 212);
             this.panel13.TabIndex = 14;
@@ -1047,7 +1048,7 @@
             // tbTableName
             // 
             this.tbTableName.Location = new System.Drawing.Point(110, 89);
-            this.tbTableName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTableName.Margin = new System.Windows.Forms.Padding(2);
             this.tbTableName.Name = "tbTableName";
             this.tbTableName.ReadOnly = true;
             this.tbTableName.Size = new System.Drawing.Size(236, 22);
@@ -1066,7 +1067,7 @@
             // 
             this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvTable.Location = new System.Drawing.Point(38, 54);
-            this.dtgvTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvTable.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvTable.Name = "dtgvTable";
             this.dtgvTable.RowTemplate.Height = 24;
             this.dtgvTable.Size = new System.Drawing.Size(353, 393);
@@ -1078,9 +1079,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 516);
             this.Controls.Add(this.tabAdmin);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fAdmin";
             this.Text = "QUẢN LÝ";
+            this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tabProduct.ResumeLayout(false);
             this.tabProduct.PerformLayout();
             this.groupBox3.ResumeLayout(false);

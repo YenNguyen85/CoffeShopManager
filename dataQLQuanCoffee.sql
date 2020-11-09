@@ -165,3 +165,5 @@ Insert into CHUCVU(TenChucVu, Luong) Values (N'Pha chế', 20000)
 
 
 Select TenNguoiDung from TAIKHOAN where TenNguoiDung= 'Admin' and MatKhau = '1'
+
+Select tk.LoaiTK from TAIKHOAN tk where TenNguoiDung = 'Admin'

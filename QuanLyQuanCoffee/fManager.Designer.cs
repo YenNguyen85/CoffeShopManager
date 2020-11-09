@@ -307,7 +307,6 @@
             // 
             // adminToolStripMenuItem
             // 
-            this.adminToolStripMenuItem.Enabled = false;
             this.adminToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(74, 24);

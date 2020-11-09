@@ -23,7 +23,7 @@ namespace QuanLyQuanCoffee
         private void btLogin_Click(object sender, EventArgs e)
         {
             TenNguoiDung = AccountDAO.GetTenNguoiDung(tbUserName.Text, tbPassWord.Text);
-            if (TenNguoiDung != null)
+            if (TenNguoiDung != "") //không dùng null vì database luôn trả về giá trị
             {
                 fManager f = new fManager();
                 f.Show();
