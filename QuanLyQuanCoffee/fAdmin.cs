@@ -21,6 +21,9 @@ namespace QuanLyQuanCoffee
         private void fAdmin_Load(object sender, EventArgs e)
         {
             DisplayProductTreeView();
+            DisplayListViewAccount();
+            DisplayLoaiTK();
+
         }
 
         // Gọi hàm khi thay đổi selected tab
@@ -35,16 +38,16 @@ namespace QuanLyQuanCoffee
             }
         }
 
-                                // Các hàm xử lý tab sản phẩm
+                // --------------------Các hàm xử lý tab sản phẩm----------------------
         // Hiển thị tree view loại sản phẩm
         private void DisplayProductTreeView()
         {
-            treeView.Nodes.Clear();
+            tvProduct.Nodes.Clear();
             DataTable data = LoaiSanPhamDAO.GetLoaiSP();
             TreeNode parentNode = new TreeNode();
             foreach(DataRow row in data.Rows)
             {
-                parentNode = treeView.Nodes.Add(row["TenLoai"].ToString());
+                parentNode = tvProduct.Nodes.Add(row["TenLoai"].ToString());
                 PopulateTreeView(row["id"].ToString(), parentNode);
             }
         }
@@ -58,7 +61,7 @@ namespace QuanLyQuanCoffee
             {
                 if (parentNode == null)
                 {
-                    childNode = treeView.Nodes.Add(row["TenMon"].ToString() + "_" + row["GiaTien"].ToString());
+                    childNode = tvProduct.Nodes.Add(row["TenMon"].ToString() + "_" + row["GiaTien"].ToString());
                 }
                 else
                 {
@@ -69,6 +72,45 @@ namespace QuanLyQuanCoffee
             
         }
 
+        //--------------TAB TAI KHOAN--------------
+        void DisplayListViewAccount()
+        {
+            listAccounts.Items.Clear();
+            DataTable dt = AccountDAO.GetTTAccount();
+            int sl = dt.Rows.Count;
+            //string loaiTK;            
+            for (int i = 0; i < sl; i++)
+            {
+                //if (dt.Rows[i]["LoaiTK"].ToString() == "1")
+                //    loaiTK = "Admin";
+                //else loaiTK = "Staff";
+                listAccounts.Items.Add(dt.Rows[i]["TenNguoiDung"].ToString());
+                listAccounts.Items[i].SubItems.Add(dt.Rows[i]["TenHienThi"].ToString());
+                listAccounts.Items[i].SubItems.Add(KTLoaiTK(dt.Rows[i]["LoaiTK"].ToString()));
+            }
+        }
+        string KTLoaiTK(string loaitk)
+        {
+            string loai = "";
+            if (loaitk == "1")
+                loai = "Admin";
+            if (loaitk == "0")
+                loai = "Staff";
+            return loai;
+        }
+        void DisplayLoaiTK()
+        {
+            cbLoaiTK.DataSource = AccountDAO.GetTTAccount();
+            cbLoaiTK.DisplayMember = "LoaiTK";
+            cbLoaiTK.ValueMember = "LoaiTK";
 
+        }
+
+        private void listAccounts_Click(object sender, EventArgs e)
+        {
+            tbUserName.Text = listAccounts.SelectedItems[0].SubItems[0].Text;
+            tbDisplayName.Text = listAccounts.SelectedItems[0].SubItems[1].Text;
+            cbLoaiTK.Text =listAccounts.SelectedItems[0].SubItems[2].Text;
+        }
     }
 }

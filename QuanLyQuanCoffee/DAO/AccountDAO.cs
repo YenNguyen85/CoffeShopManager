@@ -12,6 +12,13 @@ namespace QuanLyQuanCoffee.DAO
 {
     class AccountDAO
     {
+
+        public static DataTable GetTTAccount()
+        {
+            string sql = "Select * from TAIKHOAN ";
+            return KetNoiCSDL.Query(sql);
+        }
+        
         public static bool Login(string username, string password) // chức năng đăng nhập
         {
             string sql = "Select * from TAIKHOAN where TenNguoiDung= '"+username+"' and MatKhau = '"+password+"'";

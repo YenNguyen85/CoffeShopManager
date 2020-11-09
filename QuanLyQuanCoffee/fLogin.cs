@@ -37,7 +37,7 @@ namespace QuanLyQuanCoffee
 
         private void btExit_Click(object sender, EventArgs e)
         {
-            this.Close(); //Xài luôn messagebox của formClosing
+            this.Close(); 
         }
 
         private void fLogin_Load(object sender, EventArgs e)

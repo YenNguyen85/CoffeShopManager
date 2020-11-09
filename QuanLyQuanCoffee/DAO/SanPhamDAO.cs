@@ -9,7 +9,6 @@ namespace QuanLyQuanCoffee.DAO
 {
     class SanPhamDAO
     {
-
         public static DataTable GetSanPham(string idLoai)
         {
             string sql = "select * from MONAN sp where sp.idLoaiMon = "+idLoai+"";
