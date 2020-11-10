@@ -15,15 +15,15 @@ namespace QuanLyQuanCoffee.DAO
 
         public static DataTable GetTTAccount()
         {
-            string sql = "Select * from TAIKHOAN ";
+            string sql = "select tk.TenNguoiDung, tk.TenHienThi, loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK";
             return KetNoiCSDL.Query(sql);
         }
         
-        public static bool Login(string username, string password) // chức năng đăng nhập
-        {
-            string sql = "Select * from TAIKHOAN where TenNguoiDung= '"+username+"' and MatKhau = '"+password+"'";
-            return KetNoiCSDL.Query(sql).Rows.Count == 1? true : false ;
-        }
+        //public static bool Login(string username, string password) // chức năng đăng nhập
+        //{
+        //    string sql = "Select * from TAIKHOAN where TenNguoiDung= '"+username+"' and MatKhau = '"+password+"'";
+        //    return KetNoiCSDL.Query(sql).Rows.Count == 1? true : false ;
+        //}
 
         public static string GetTenNguoiDung(string username, string password)
         {
@@ -51,13 +51,13 @@ namespace QuanLyQuanCoffee.DAO
         public static bool GetAuthority(string username)
         {
             bool result = false;
-            string sql = "Select tk.LoaiTK from TAIKHOAN tk where TenNguoiDung = '"+username+"'";
+            string sql = "Select loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK and TenNguoiDung = '"+username+"'";
             try
             {
                 DataTable data = KetNoiCSDL.Query(sql);
                 foreach (DataRow row in data.Rows)
                 {
-                    if ("1" == row["LoaiTK"].ToString())
+                    if ("Admin" == row["TenLoaiTK"].ToString())
                         result = true;
                 }
             }

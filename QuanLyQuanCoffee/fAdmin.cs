@@ -77,32 +77,20 @@ namespace QuanLyQuanCoffee
         {
             listAccounts.Items.Clear();
             DataTable dt = AccountDAO.GetTTAccount();
-            int sl = dt.Rows.Count;
-            //string loaiTK;            
+            int sl = dt.Rows.Count;        
             for (int i = 0; i < sl; i++)
             {
-                //if (dt.Rows[i]["LoaiTK"].ToString() == "1")
-                //    loaiTK = "Admin";
-                //else loaiTK = "Staff";
                 listAccounts.Items.Add(dt.Rows[i]["TenNguoiDung"].ToString());
                 listAccounts.Items[i].SubItems.Add(dt.Rows[i]["TenHienThi"].ToString());
-                listAccounts.Items[i].SubItems.Add(KTLoaiTK(dt.Rows[i]["LoaiTK"].ToString()));
+                listAccounts.Items[i].SubItems.Add(dt.Rows[i]["TenLoaiTK"].ToString());
             }
         }
-        string KTLoaiTK(string loaitk)
-        {
-            string loai = "";
-            if (loaitk == "1")
-                loai = "Admin";
-            if (loaitk == "0")
-                loai = "Staff";
-            return loai;
-        }
+
         void DisplayLoaiTK()
         {
-            cbLoaiTK.DataSource = AccountDAO.GetTTAccount();
-            cbLoaiTK.DisplayMember = "LoaiTK";
-            cbLoaiTK.ValueMember = "LoaiTK";
+            cbLoaiTK.DataSource = LoaiTKDAO.GetData();
+            cbLoaiTK.DisplayMember = "TenLoaiTK";
+            cbLoaiTK.ValueMember = "idLoaiTK";
 
         }
 

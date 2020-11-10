@@ -85,7 +85,7 @@ namespace QuanLyQuanCoffee
             foreach(DataRow row in data.Rows)
             {
                 Button bt = new Button() { Width = 100, Height = 60 };
-                bt.Text = "Bàn " + row["TenBan"].ToString() + "\n" + (row["TrangThaiBan"].ToString() == "true" ? "Có người" : "Trống");
+                bt.Text = "Bàn " + row["id"].ToString() + "\n" + (row["TrangThaiBan"].ToString() == "true" ? "Có người" : "Trống");
                 bt.Tag = row["id"].ToString();
                 bt.Click += btBanAn_Click;
                 flpTable.Controls.Add(bt);
@@ -95,7 +95,8 @@ namespace QuanLyQuanCoffee
         void btBanAn_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32((sender as Button).Tag.ToString());
-            MessageBox.Show(id.ToString());
+            lvBill.Tag = (sender as Button).Tag;
+            MessageBox.Show(lvBill.Tag.ToString());
         }
 
         private void btAddFood_Click(object sender, EventArgs e)
@@ -103,12 +104,9 @@ namespace QuanLyQuanCoffee
 
         }
 
-        private void fManager_FormClosing(object sender, FormClosingEventArgs e)
+        private void ShowBill(int id)
         {
-            if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
-            {
-                e.Cancel = true;
-            }
+
         }
     }
 }

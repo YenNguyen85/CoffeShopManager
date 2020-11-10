@@ -17,7 +17,7 @@ namespace QuanLyQuanCoffee.DAO
 
         private static void MoKetNoi()
         {
-            string sqlcon = @"Data Source=YEN_PC;Initial Catalog=QLCoffee;Integrated Security=True";
+            string sqlcon = @"Data Source=WITCHER-GEAR\SQLEXPRESS;Initial Catalog=QLCoffee;Integrated Security=True";
             cn.ConnectionString = sqlcon;
             if (cn.State == System.Data.ConnectionState.Closed)
                 cn.Open();
