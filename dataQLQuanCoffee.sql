@@ -11,12 +11,22 @@ CREATE TABLE BANAN
 )
 Go
 
- CREATE TABLE TAIKHOAN
+
+
+CREATE TABLE LOAITK (
+	idLoaiTK INT IDENTITY PRIMARY KEY, -- 1:admin, 2:user
+	TenLoaiTK varchar(10),
+)
+GO
+
+CREATE TABLE TAIKHOAN
 (
 	TenNguoiDung NVARCHAR(100) PRIMARY KEY,
 	TenHienThi NVARCHAR(100) NOT NULL,
 	MatKhau NVARCHAR(1000) NOT NULL DEFAULT 0,
-	LoaiTK INT NOT NULL DEFAULT 0	--1: adim && 0: staff
+	LoaiTK INT NOT NULL DEFAULT 0	--1: adim && 2: staff
+
+	foreign key (LoaiTK) References LOAITK(idLoaiTK)
 )
 GO
 
@@ -76,7 +86,7 @@ CREATE TABLE HOADON
 	idTable INT NOT NULL,
 	idKhuyenMai INT NOT NULL,
 	idNhanVien INT NOT NULL,
-	TrangThaiHoaDon INT NOT NULL DEFAULT 0 --1: đã thanh toán && 0: chưa thanh toán
+	TrangThaiHoaDon bit NOT NULL DEFAULT 0 --1: đã thanh toán && 0: chưa thanh toán
 
 	FOREIGN KEY(idTable) REFERENCES BANAN(id),
 	FOREIGN KEY(idKhuyenMai) REFERENCES KHUYENMAI(id),
@@ -133,8 +143,13 @@ CREATE TABLE MONKHUYENMAI
 )
 GO
 
+
+
+INSERT INTO LOAITK(TenLoaiTK) VALUES ('Admin')
+INSERT INTO LOAITK(TenLoaiTK) VALUES ('User')
+
 INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Admin', N'Quản lý', N'1', 1 )
-INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Staff', N'Nhân viên', N'0', 0 )
+INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Staff', N'Nhân viên', N'0', 2 )
 
 Insert into LOAIMON(TenLoai) Values (N'Coffee')
 Insert into LOAIMON(TenLoai) Values (N'Macchiato')
