@@ -69,11 +69,17 @@ CREATE TABLE NHANVIEN
 	TenNhanVien NVARCHAR(100),
 	NgaySinh DATE NOT NULL,
 	DiaChi NVARCHAR(100) NOT NULL,
-	Sdt NVARCHAR(1000) NOT NULL,
+	Sdt VARCHAR(10) NOT NULL,
+	TenTaiKhoan NVARCHAR(100),
 	idChucVu INT NOT NULL
 
-	FOREIGN KEY(idChucVu) REFERENCES CHUCVU(id)	
+	FOREIGN KEY(idChucVu) REFERENCES CHUCVU(id),
+	FOREIGN KEY(TenTaiKhoan) REFERENCES TAIKHOAN(TenNguoiDung)
 )
+
+
+
+
 GO
 
 
@@ -199,3 +205,11 @@ insert into HOADON
 select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
 
 select tk.TenNguoiDung, tk.TenHienThi, loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK
+
+use QLCoffee
+select * from HOADON where idTable=1 and TrangThaiHoaDon=0;
+
+Insert into CHUCVU(TenChucVu, Luong)values(N'Quản lý', 20000)
+Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)values (N'Tao là Admin', '2/2/2020', N'Trên mặt đất dưới mặt trời', '0333333333', 'Admin', 1)  
+
+select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenNguoiDung and cv.id = nv.idChucVu and tk.TenNguoiDung='Admin'
