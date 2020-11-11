@@ -67,5 +67,13 @@ namespace QuanLyQuanCoffee.DAO
             }
             return result;
         }
+
+        //Lấy thông tin nhân viên
+        public static int GetIdNhanVien(string username)
+        {
+            string sql = "select id from NHANVIEN nv, TAIKHOAN tk where nv.TenTaiKhoan = tk.TenNguoiDung and tk.TenNguoiDung = '"+username+"'";
+            DataTable data = KetNoiCSDL.Query(sql);
+            return (int)data.Rows[0]["id"];
+        }
     }
 }
