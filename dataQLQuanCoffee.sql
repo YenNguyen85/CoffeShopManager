@@ -89,7 +89,7 @@ CREATE TABLE HOADON
 	ThoiGianVao DATE NOT NULL,
 	ThoiGianRa DATE NOT NULL,
 	idTable INT NOT NULL,
-	idKhuyenMai INT NOT NULL,
+	idKhuyenMai INT NULL,
 	idNhanVien INT NOT NULL,
 	TrangThaiHoaDon bit NOT NULL DEFAULT 0 --1: đã thanh toán && 0: chưa thanh toán
 
