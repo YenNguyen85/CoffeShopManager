@@ -1,5 +1,4 @@
-﻿using QuanLyQuanCoffee.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,10 +9,19 @@ namespace QuanLyQuanCoffee.DAO
 {
     class BanAnDAO
     {
-        public static DataTable GetBanAnList()
+        public static List<DTO.Table> GetBanAnList()
         {
+            List<DTO.Table> tableList = new List<DTO.Table>();
             string sql = "select * from BANAN";
-            return KetNoiCSDL.Query(sql);
+
+            DataTable data = KetNoiCSDL.Query(sql);
+            
+            foreach(DataRow row in data.Rows)
+            {
+                DTO.Table table = new DTO.Table(row);
+                tableList.Add(table);
+            }
+            return tableList;
         }
     }
 }

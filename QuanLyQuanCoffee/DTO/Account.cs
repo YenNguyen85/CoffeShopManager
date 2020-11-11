@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanCoffee.DTO
 {
-    class AccountDTO
+    class Account
     {       
         private string tenNguoiDung;
         private string tenHienThi;

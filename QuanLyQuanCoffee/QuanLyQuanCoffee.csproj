@@ -51,9 +51,11 @@
     <Compile Include="DAO\KetNoiCSDL.cs" />
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
     <Compile Include="DAO\LoaiTKDAO.cs" />
+    <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
-    <Compile Include="DTO\AccountDTO.cs" />
-    <Compile Include="DTO\BanAnDTO.cs" />
+    <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\Table.cs" />
+    <Compile Include="DTO\Menu.cs" />
     <Compile Include="fAccountProfile.cs">
       <SubType>Form</SubType>
     </Compile>

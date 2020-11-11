@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,27 +77,34 @@ namespace QuanLyQuanCoffee
             }
         }
 
+        // Hiện thị thông tin các bàn ăn hiện tại
         void DisplayTable()
         {
             flpTable.Controls.Clear();
 
-            DataTable data = BanAnDAO.GetBanAnList();
+            List<Table> tableList = BanAnDAO.GetBanAnList();
 
-            foreach(DataRow row in data.Rows)
+            foreach(Table table in tableList)
             {
-                Button bt = new Button() { Width = 100, Height = 60 };
-                bt.Text = "Bàn " + row["id"].ToString() + "\n" + (row["TrangThaiBan"].ToString() == "true" ? "Có người" : "Trống");
-                bt.Tag = row["id"].ToString();
-                bt.Click += btBanAn_Click;
-                flpTable.Controls.Add(bt);
+                Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
+
+                bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "true" ? "Có người" : "Trống");
+
+                bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
+
+                bt.Click += btBanAn_Click; // Thêm xử lý khi click vào nút 
+                
+                flpTable.Controls.Add(bt); // thêm cái button tượng trưng cho bàn ăn vào flow layout panel
             }
+
         }
 
         void btBanAn_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32((sender as Button).Tag.ToString());
+            int idBanAn = Convert.ToInt32((sender as Button).Tag.ToString());
             lvBill.Tag = (sender as Button).Tag;
-            MessageBox.Show(lvBill.Tag.ToString());
+            
+            ShowBill(idBanAn);
         }
 
         private void btAddFood_Click(object sender, EventArgs e)
@@ -104,9 +112,27 @@ namespace QuanLyQuanCoffee
 
         }
 
+        // Hiển thị bill hiện tại của bàn khi nhấp vào bàn đó
         private void ShowBill(int id)
         {
+            MessageBox.Show(lvBill.Tag.ToString());
+            lvBill.Items.Clear();
+            List<DTO.Menu> menus = MenuDAO.GetMenuListByTable(id);
 
+            // Dùng hiển thị tổng tiền cả bill
+            float totalPrice = 0;
+
+            foreach (DTO.Menu item in menus) {
+                ListViewItem viewItem = new ListViewItem(item.FoodName.ToString());
+                viewItem.SubItems.Add(item.Count.ToString());
+                viewItem.SubItems.Add(item.Price.ToString());
+                viewItem.SubItems.Add(item.TotalPrice.ToString());
+                totalPrice += item.TotalPrice; // Cộng tổng tiền mỗi hàng vào tổng tiền cả bill
+                lvBill.Items.Add(viewItem);
+            }
+
+            //Format tiền thành VND
+            tbTotalPrice.Text = totalPrice.ToString("c", new CultureInfo("vi-VN"));
         }
     }
 }

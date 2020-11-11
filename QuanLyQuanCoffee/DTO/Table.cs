@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace QuanLyQuanCoffee.DTO
 {
-    class BanAnDTO
+    class Table
     {
         private int id;
-        private string tenban;
         private string trangthaiban;
 
+        public Table(DataRow row)
+        {
+            this.id = (int)row["id"];
+            this.trangthaiban = row["TrangThaiBan"].ToString();
+        }
+
         public int Id { get => id; set => id = value; }
-        public string Tenban { get => tenban; set => tenban = value; }
         public string Trangthaiban { get => trangthaiban; set => trangthaiban = value; }
     }
 }
