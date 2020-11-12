@@ -13,8 +13,6 @@ namespace QuanLyQuanCoffee.DAO
     {
         private static SqlConnection cn = new SqlConnection();
 
-        public static object Instance { get; internal set; }
-
         private static void MoKetNoi()
         {
             string sqlcon = @"Data Source=YEN_PC;Initial Catalog=QLCoffee;Integrated Security=True";

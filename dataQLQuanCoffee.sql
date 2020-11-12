@@ -50,8 +50,21 @@ GO
 CREATE TABLE KHUYENMAI
 (
 	id INT IDENTITY PRIMARY KEY,
+	TenKhuyenMai nvarchar(255) NOT NULL DEFAULT N'Chưa đặt tên',
 	NgayBatDau DATE NOT NULL,
 	NgayKetThuc DATE NOT NULL	
+)
+GO
+
+CREATE TABLE MONKHUYENMAI
+(
+	id INT IDENTITY PRIMARY KEY,
+	idMonAn INT NOT NULL,
+	idKhuyenMai INT NOT NULL,
+	HeSo INT NOT NULL DEFAULT 0
+
+	FOREIGN KEY(idMonAn) REFERENCES MONAN(id),
+	FOREIGN KEY(idKhuyenMai) REFERENCES KHUYENMAI(id)		
 )
 GO
 
@@ -76,10 +89,6 @@ CREATE TABLE NHANVIEN
 	FOREIGN KEY(idChucVu) REFERENCES CHUCVU(id),
 	FOREIGN KEY(TenTaiKhoan) REFERENCES TAIKHOAN(TenNguoiDung)
 )
-
-
-
-
 GO
 
 
@@ -136,17 +145,7 @@ CREATE TABLE CHITIETHOADON
 )
 GO
 
-CREATE TABLE MONKHUYENMAI
-(
-	id INT IDENTITY PRIMARY KEY,
-	idMonAn INT NOT NULL,
-	idKhuyenMai INT NOT NULL,
-	HeSo INT NOT NULL DEFAULT 0
 
-	FOREIGN KEY(idMonAn) REFERENCES MONAN(id),
-	FOREIGN KEY(idKhuyenMai) REFERENCES KHUYENMAI(id)		
-)
-GO
 
 
 
@@ -216,4 +215,9 @@ select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenN
 
 select top 1 id from BANAN order by id desc
 
+<<<<<<< HEAD
 select * from TAIKHOAN where TenNguoiDung = 'Y'
+=======
+use QLCoffee
+select * from HOADON
+>>>>>>> 56a44f26a75d4ec068e4d0c5026909eb9b8ffc47

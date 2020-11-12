@@ -79,7 +79,6 @@ namespace QuanLyQuanCoffee.DAO
             return result;
         }
 
-
         //Thêm-xóa-sửa
         public static void ThemTK(Account acc)
         {
@@ -92,11 +91,13 @@ namespace QuanLyQuanCoffee.DAO
             string sql = "Update TAIKHOAN set TenHienThi=N'" + acc.TenHienThi + "', LoaiTK= N'" + acc.LoaiTK + "' where TenNguoiDung='" + acc.TenNguoiDung + "' ";
             KetNoiCSDL.NonQuery(sql);
         }
+
         public static void XoaTK(Account acc)
         {
             string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
             KetNoiCSDL.NonQuery(sql);
         }
+
         //Lấy thông tin nhân viên
         public static int GetIdNhanVien(string username)
         {
