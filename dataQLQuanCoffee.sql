@@ -50,8 +50,21 @@ GO
 CREATE TABLE KHUYENMAI
 (
 	id INT IDENTITY PRIMARY KEY,
+	TenKhuyenMai nvarchar(255) NOT NULL DEFAULT N'Chưa đặt tên',
 	NgayBatDau DATE NOT NULL,
 	NgayKetThuc DATE NOT NULL	
+)
+GO
+
+CREATE TABLE MONKHUYENMAI
+(
+	id INT IDENTITY PRIMARY KEY,
+	idMonAn INT NOT NULL,
+	idKhuyenMai INT NOT NULL,
+	HeSo INT NOT NULL DEFAULT 0
+
+	FOREIGN KEY(idMonAn) REFERENCES MONAN(id),
+	FOREIGN KEY(idKhuyenMai) REFERENCES KHUYENMAI(id)		
 )
 GO
 
@@ -76,10 +89,6 @@ CREATE TABLE NHANVIEN
 	FOREIGN KEY(idChucVu) REFERENCES CHUCVU(id),
 	FOREIGN KEY(TenTaiKhoan) REFERENCES TAIKHOAN(TenNguoiDung)
 )
-
-
-
-
 GO
 
 
@@ -89,7 +98,7 @@ CREATE TABLE HOADON
 	ThoiGianVao DATE NOT NULL,
 	ThoiGianRa DATE NOT NULL,
 	idTable INT NOT NULL,
-	idKhuyenMai INT NOT NULL default 0, -- 0: là không có khuyến mãi
+	idKhuyenMai INT NULL,
 	idNhanVien INT NOT NULL,
 	TrangThaiHoaDon bit NOT NULL DEFAULT 0 --1: đã thanh toán && 0: chưa thanh toán
 
@@ -136,17 +145,7 @@ CREATE TABLE CHITIETHOADON
 )
 GO
 
-CREATE TABLE MONKHUYENMAI
-(
-	id INT IDENTITY PRIMARY KEY,
-	idMonAn INT NOT NULL,
-	idKhuyenMai INT NOT NULL,
-	HeSo INT NOT NULL DEFAULT 0
 
-	FOREIGN KEY(idMonAn) REFERENCES MONAN(id),
-	FOREIGN KEY(idKhuyenMai) REFERENCES KHUYENMAI(id)		
-)
-GO
 
 
 
@@ -217,4 +216,5 @@ select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenN
 insert into KHUYENMAI(id, NgayBatDau, NgayKetThuc)values(0, '', '')
 insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '', 10, 1, 0)
 
+use QLCoffee
 select * from HOADON

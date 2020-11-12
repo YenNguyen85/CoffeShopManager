@@ -20,11 +20,11 @@ namespace QuanLyQuanCoffee.DTO
 
         public Bill(DataRow row)
         {
-            this.Id = (int)row["id"];
+            this.Id = Convert.ToInt32(row["id"].ToString());
             this.ThoiGianVao = (DateTime?)row["ThoiGianVao"];
             this.ThoiGianRa = (DateTime?)row["ThoiGianRa"];
             this.IdTable = (int)row["idTable"];
-            this.IdKhuyenMai = (int)row["idKhuyenMai"]; // coi chừng lỗi
+            this.IdKhuyenMai = row["idKhuyenMai"].ToString() == ""? 0 : Convert.ToInt32(row["idKhuyenMai"].ToString()); // coi chừng lỗi
             this.IdNhanVien = (int)row["idNhanVien"];
             this.TrangThaiHoaDon = row["TrangThaiHoaDon"].ToString();
         }
