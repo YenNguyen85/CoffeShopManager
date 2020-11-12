@@ -14,5 +14,7 @@ namespace QuanLyQuanCoffee.DAO
             string sql = "select * from LOAIMON";
             return KetNoiCSDL.Query(sql);
         }
+
+       
     }
 }

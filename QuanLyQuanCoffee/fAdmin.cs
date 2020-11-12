@@ -1,4 +1,6 @@
-﻿using QuanLyQuanCoffee.DAO;
+﻿using QuanLyQuanCoffee.BUS;
+using QuanLyQuanCoffee.DAO;
+using QuanLyQuanCoffee.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,8 +23,10 @@ namespace QuanLyQuanCoffee
         private void fAdmin_Load(object sender, EventArgs e)
         {
             DisplayProductTreeView();
+            DisplayTable();
             DisplayListViewAccount();
             DisplayLoaiTK();
+            
 
         }
 
@@ -69,8 +73,53 @@ namespace QuanLyQuanCoffee
                     //gọi lại hàm này nếu có thêm node con
                 }
             }
+
             
         }
+
+        //--------------TAB BÀN ĂN--------------
+
+        void DisplayTable()
+        {
+            flpTable.Controls.Clear();
+
+            List<Table> tableList = BanAnDAO.GetBanAnList();
+
+            foreach (Table table in tableList)
+            {
+                Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
+
+                bt.Text = "Bàn " + table.Id;
+
+                bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
+
+                bt.Click += btBanAn_Click; // Thêm xử lý khi click vào nút 
+
+                flpTable.Controls.Add(bt); // thêm cái button tượng trưng cho bàn ăn vào flow layout panel
+            }
+
+        }
+        void btBanAn_Click(object sender, EventArgs e)
+        {
+            int idBanAn = Convert.ToInt32((sender as Button).Tag.ToString());
+            tbTableName.Text = idBanAn.ToString();
+        }
+
+        private void btThemBan_Click(object sender, EventArgs e)
+        {
+            tbTableName.Text = TableBUS.GetNextIdTable().ToString();
+        }
+
+        private void btLuuBan_Click(object sender, EventArgs e)
+        {
+            BanAnDAO.LuuBanAN();
+            DisplayTable();
+            tbTableName.Text = "";
+        }
+
+
+
+
 
         //--------------TAB TAI KHOAN--------------
         void DisplayListViewAccount()
@@ -100,5 +149,48 @@ namespace QuanLyQuanCoffee
             tbDisplayName.Text = listAccounts.SelectedItems[0].SubItems[1].Text;
             cbLoaiTK.Text =listAccounts.SelectedItems[0].SubItems[2].Text;
         }
+
+        private void btLuuTK_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account();
+            acc.TenNguoiDung = tbUserName.Text;
+            acc.TenHienThi = tbDisplayName.Text;
+            acc.LoaiTK = (int)cbLoaiTK.SelectedValue;
+
+            // Kiểm tra tên đăng nhập có tồn tại chưa
+            if (AccountDAO.CheckExistsTenNguoiDung(acc.TenNguoiDung))
+            {
+                MessageBox.Show("Tên người dùng đã tồn tại");
+            }
+            else
+            {
+                AccountBUS.ThemTK(acc);
+                listAccounts.Items.Clear();
+                DisplayListViewAccount();
+                MessageBox.Show("Lưu tài khoản thành công!");
+            }
+        }
+
+        private void btCapnhatTK_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account();
+            acc.TenNguoiDung = tbUserName.Text;
+            acc.TenHienThi = tbDisplayName.Text;
+            acc.LoaiTK = (int)cbLoaiTK.SelectedValue;
+            AccountBUS.SuaTK(acc);
+            listAccounts.Items.Clear();
+            DisplayListViewAccount();
+        }
+
+        private void btXoaTK_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account();
+            acc.TenNguoiDung = tbUserName.Text;
+            AccountBUS.XoaTK(acc);
+            listAccounts.Items.Clear();
+            DisplayListViewAccount();
+        }
+
+      
     }
 }
