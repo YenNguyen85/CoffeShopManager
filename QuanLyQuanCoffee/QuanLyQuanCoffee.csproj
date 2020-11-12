@@ -50,12 +50,15 @@
     <Compile Include="BUS\TableBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanAnDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KetNoiCSDL.cs" />
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
     <Compile Include="DAO\LoaiTKDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\Bill.cs" />
+    <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Table.cs" />
     <Compile Include="DTO\Menu.cs" />
     <Compile Include="fAccountProfile.cs">

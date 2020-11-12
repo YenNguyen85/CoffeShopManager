@@ -109,13 +109,29 @@ namespace QuanLyQuanCoffee
 
         private void btAddFood_Click(object sender, EventArgs e)
         {
+            int idTable = Convert.ToInt32(lvBill.Tag.ToString()); // 
+            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
+            int idBill = 0;
+            int idFood = 0;
+
+                idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idTable); // Lấy id bill của bàn ăn hiện tại, nếu bàn đang trống có thì trả về -1
+                idFood = (int)cbFood.SelectedValue;//(cbFood.SelectedItem as Food).Id;
+            
+            
+           
+            int count = (int)numFoodCount.Value;
+
+
+            if(idBill == -1)
+            {
+                HoaDonDAO.InsertBill(idTable, idNhanVien);
+            }
 
         }
 
         // Hiển thị bill hiện tại của bàn khi nhấp vào bàn đó
         private void ShowBill(int id)
         {
-            MessageBox.Show(lvBill.Tag.ToString());
             lvBill.Items.Clear();
             List<DTO.Menu> menus = MenuDAO.GetMenuListByTable(id);
 
@@ -123,11 +139,11 @@ namespace QuanLyQuanCoffee
             float totalPrice = 0;
 
             foreach (DTO.Menu item in menus) {
-                ListViewItem viewItem = new ListViewItem(item.FoodName.ToString());
-                viewItem.SubItems.Add(item.Count.ToString());
-                viewItem.SubItems.Add(item.Price.ToString());
-                viewItem.SubItems.Add(item.TotalPrice.ToString());
-                totalPrice += item.TotalPrice; // Cộng tổng tiền mỗi hàng vào tổng tiền cả bill
+                ListViewItem viewItem = new ListViewItem(item.TenMon.ToString());
+                viewItem.SubItems.Add(item.SoLuong.ToString());
+                viewItem.SubItems.Add(item.GiaTien.ToString());
+                viewItem.SubItems.Add(item.TongTien.ToString());
+                totalPrice += item.TongTien; // Cộng tổng tiền mỗi hàng vào tổng tiền cả bill
                 lvBill.Items.Add(viewItem);
             }
 

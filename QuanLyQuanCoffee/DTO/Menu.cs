@@ -9,30 +9,30 @@ namespace QuanLyQuanCoffee.DTO
 {
     class Menu
     {
-        private string foodName;
-        private int count;
-        private float price;
-        private float totalPrice;
+        private string tenMon;
+        private int soLuong;
+        private float giaTien;
+        private float tongTien;
 
         public Menu(string foodName, int count, float price, float totalPrice)
         {
-            this.foodName = foodName;
-            this.count = count;
-            this.price = price;
-            this.totalPrice = totalPrice;
+            this.TenMon = foodName;
+            this.SoLuong = count;
+            this.GiaTien = price;
+            this.TongTien = totalPrice;
         }
 
         public Menu(DataRow row)
         {
-            this.foodName = row["TenMon"].ToString();
-            this.count = (int)row["SoLuong"];
-            this.price = (float)row["GiaTien"];
-            this.totalPrice = (float)row["TongTien"];
+            this.TenMon = row["TenMon"].ToString();
+            this.SoLuong = (int)row["SoLuong"];
+            this.GiaTien = (float)row["GiaTien"];
+            this.TongTien = (float)row["TongTien"];
         }
 
-        public string FoodName { get => foodName; set => foodName = value; }
-        public int Count { get => count; set => count = value; }
-        public float Price { get => price; set => price = value; }
-        public float TotalPrice { get => totalPrice; set => totalPrice = value; }
+        public string TenMon { get => tenMon; set => tenMon = value; }
+        public int SoLuong { get => soLuong; set => soLuong = value; }
+        public float GiaTien { get => giaTien; set => giaTien = value; }
+        public float TongTien { get => tongTien; set => tongTien = value; }
     }
 }
