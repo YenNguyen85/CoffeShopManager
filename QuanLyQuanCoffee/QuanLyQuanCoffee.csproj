@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\AccountBUS.cs" />
+    <Compile Include="BUS\TableBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanAnDAO.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />

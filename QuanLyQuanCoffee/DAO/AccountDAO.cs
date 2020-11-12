@@ -25,6 +25,17 @@ namespace QuanLyQuanCoffee.DAO
         //    return KetNoiCSDL.Query(sql).Rows.Count == 1? true : false ;
         //}
 
+        public static bool CheckExistsTenNguoiDung(string username)
+        {
+            string sql = "select * from TAIKHOAN where TenNguoiDung = '" + username + "'";
+            DataTable data = KetNoiCSDL.Query(sql);
+            if (data.Rows.Count < 1)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static string GetTenNguoiDung(string username, string password)
         {
             string id = "";
@@ -68,12 +79,32 @@ namespace QuanLyQuanCoffee.DAO
             return result;
         }
 
+<<<<<<< HEAD
+
+        //Thêm-xóa-sửa
+        public static void ThemTK(Account acc)
+        {
+            string sql = "INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, LoaiTK) VALUES ('"+acc.TenNguoiDung+"', N'"+acc.TenHienThi+"', N'"+acc.LoaiTK+"' ) ";
+            KetNoiCSDL.NonQuery(sql);
+        }
+
+        public static void SuaTK(Account acc)
+        {
+            string sql = "Update TAIKHOAN set TenHienThi=N'" + acc.TenHienThi + "', LoaiTK= N'" + acc.LoaiTK + "' where TenNguoiDung='" + acc.TenNguoiDung + "' ";
+            KetNoiCSDL.NonQuery(sql);
+        }
+        public static void XoaTK(Account acc)
+        {
+            string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
+            KetNoiCSDL.NonQuery(sql);
+=======
         //Lấy thông tin nhân viên
         public static int GetIdNhanVien(string username)
         {
             string sql = "select id from NHANVIEN nv, TAIKHOAN tk where nv.TenTaiKhoan = tk.TenNguoiDung and tk.TenNguoiDung = '"+username+"'";
             DataTable data = KetNoiCSDL.Query(sql);
             return (int)data.Rows[0]["id"];
+>>>>>>> 085512e14039344d3372971e697cb05c765dbfe4
         }
     }
 }

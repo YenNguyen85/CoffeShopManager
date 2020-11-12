@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanCoffee.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,6 +24,27 @@ namespace QuanLyQuanCoffee.DAO
             }
             return tableList;
         }
+
+
+        //Thêm-Luu-Xoa
+
+        public static DataTable GetMaxIDTable()
+        {
+            string sql = "select top 1 id from BANAN order by id desc";
+            return KetNoiCSDL.Query(sql);
+        }
+
+        public static void LuuBanAN()
+        {
+            string sql = "insert into BANAN(TrangThaiBan) Values (0)";
+            KetNoiCSDL.NonQuery(sql);
+        }
+        //public static void XoaBanAn(Table tb)
+        //{
+        //    string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
+        //    KetNoiCSDL.NonQuery(sql);
+        //}
+
     }
 }
 

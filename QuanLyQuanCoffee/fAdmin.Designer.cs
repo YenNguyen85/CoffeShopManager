@@ -88,14 +88,14 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.tbDisplayName = new System.Windows.Forms.TextBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
+            this.btXoaTK = new System.Windows.Forms.Button();
+            this.btCapnhatTK = new System.Windows.Forms.Button();
+            this.btLuuTK = new System.Windows.Forms.Button();
             this.cbLoaiTK = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.tbDisplayName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tbUserName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.listAccounts = new System.Windows.Forms.ListView();
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -111,15 +111,15 @@
             this.dtpkFormDate = new System.Windows.Forms.DateTimePicker();
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tabTable = new System.Windows.Forms.TabPage();
+            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.tbTableName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.tbTableName = new System.Windows.Forms.TextBox();
+            this.btXoaBan = new System.Windows.Forms.Button();
+            this.btThemBan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtgvTable = new System.Windows.Forms.DataGridView();
+            this.btLuuBan = new System.Windows.Forms.Button();
             this.tabProduct.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -140,7 +140,6 @@
             this.tabAdmin.SuspendLayout();
             this.tabTable.SuspendLayout();
             this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).BeginInit();
             this.SuspendLayout();
             // 
             // tabProduct
@@ -760,14 +759,14 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button20);
-            this.groupBox4.Controls.Add(this.button21);
-            this.groupBox4.Controls.Add(this.button22);
+            this.groupBox4.Controls.Add(this.tbDisplayName);
+            this.groupBox4.Controls.Add(this.tbUserName);
+            this.groupBox4.Controls.Add(this.btXoaTK);
+            this.groupBox4.Controls.Add(this.btCapnhatTK);
+            this.groupBox4.Controls.Add(this.btLuuTK);
             this.groupBox4.Controls.Add(this.cbLoaiTK);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.tbDisplayName);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.tbUserName);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Location = new System.Drawing.Point(199, 16);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -778,35 +777,52 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "THÔNG TIN TÀI KHOẢN";
             // 
-            // button20
+            // tbDisplayName
             // 
-            this.button20.Location = new System.Drawing.Point(445, 223);
-            this.button20.Margin = new System.Windows.Forms.Padding(4);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(131, 28);
-            this.button20.TabIndex = 48;
-            this.button20.Text = "Xóa";
-            this.button20.UseVisualStyleBackColor = true;
+            this.tbDisplayName.Location = new System.Drawing.Point(211, 102);
+            this.tbDisplayName.Name = "tbDisplayName";
+            this.tbDisplayName.Size = new System.Drawing.Size(365, 26);
+            this.tbDisplayName.TabIndex = 50;
             // 
-            // button21
+            // tbUserName
             // 
-            this.button21.Location = new System.Drawing.Point(277, 223);
-            this.button21.Margin = new System.Windows.Forms.Padding(4);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(131, 28);
-            this.button21.TabIndex = 47;
-            this.button21.Text = "Cập nhật";
-            this.button21.UseVisualStyleBackColor = true;
+            this.tbUserName.Location = new System.Drawing.Point(211, 38);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(365, 26);
+            this.tbUserName.TabIndex = 49;
             // 
-            // button22
+            // btXoaTK
             // 
-            this.button22.Location = new System.Drawing.Point(119, 223);
-            this.button22.Margin = new System.Windows.Forms.Padding(4);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(131, 28);
-            this.button22.TabIndex = 46;
-            this.button22.Text = "Lưu";
-            this.button22.UseVisualStyleBackColor = true;
+            this.btXoaTK.Location = new System.Drawing.Point(445, 223);
+            this.btXoaTK.Margin = new System.Windows.Forms.Padding(4);
+            this.btXoaTK.Name = "btXoaTK";
+            this.btXoaTK.Size = new System.Drawing.Size(131, 28);
+            this.btXoaTK.TabIndex = 48;
+            this.btXoaTK.Text = "Xóa";
+            this.btXoaTK.UseVisualStyleBackColor = true;
+            this.btXoaTK.Click += new System.EventHandler(this.btXoaTK_Click);
+            // 
+            // btCapnhatTK
+            // 
+            this.btCapnhatTK.Location = new System.Drawing.Point(277, 223);
+            this.btCapnhatTK.Margin = new System.Windows.Forms.Padding(4);
+            this.btCapnhatTK.Name = "btCapnhatTK";
+            this.btCapnhatTK.Size = new System.Drawing.Size(131, 28);
+            this.btCapnhatTK.TabIndex = 47;
+            this.btCapnhatTK.Text = "Cập nhật";
+            this.btCapnhatTK.UseVisualStyleBackColor = true;
+            this.btCapnhatTK.Click += new System.EventHandler(this.btCapnhatTK_Click);
+            // 
+            // btLuuTK
+            // 
+            this.btLuuTK.Location = new System.Drawing.Point(119, 223);
+            this.btLuuTK.Margin = new System.Windows.Forms.Padding(4);
+            this.btLuuTK.Name = "btLuuTK";
+            this.btLuuTK.Size = new System.Drawing.Size(131, 28);
+            this.btLuuTK.TabIndex = 46;
+            this.btLuuTK.Text = "Lưu";
+            this.btLuuTK.UseVisualStyleBackColor = true;
+            this.btLuuTK.Click += new System.EventHandler(this.btLuuTK_Click);
             // 
             // cbLoaiTK
             // 
@@ -827,15 +843,6 @@
             this.label5.TabIndex = 44;
             this.label5.Text = "Loại tài khoản:";
             // 
-            // tbDisplayName
-            // 
-            this.tbDisplayName.Location = new System.Drawing.Point(211, 98);
-            this.tbDisplayName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbDisplayName.Name = "tbDisplayName";
-            this.tbDisplayName.ReadOnly = true;
-            this.tbDisplayName.Size = new System.Drawing.Size(365, 26);
-            this.tbDisplayName.TabIndex = 43;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -845,15 +852,6 @@
             this.label11.Size = new System.Drawing.Size(107, 19);
             this.label11.TabIndex = 42;
             this.label11.Text = "Tên hiển thị:";
-            // 
-            // tbUserName
-            // 
-            this.tbUserName.Location = new System.Drawing.Point(211, 38);
-            this.tbUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.ReadOnly = true;
-            this.tbUserName.Size = new System.Drawing.Size(365, 26);
-            this.tbUserName.TabIndex = 41;
             // 
             // label12
             // 
@@ -999,9 +997,9 @@
             // 
             // tabTable
             // 
+            this.tabTable.Controls.Add(this.flpTable);
             this.tabTable.Controls.Add(this.panel13);
             this.tabTable.Controls.Add(this.label1);
-            this.tabTable.Controls.Add(this.dtgvTable);
             this.tabTable.Location = new System.Drawing.Point(4, 29);
             this.tabTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabTable.Name = "tabTable";
@@ -1011,19 +1009,34 @@
             this.tabTable.Text = "Bàn ăn";
             this.tabTable.UseVisualStyleBackColor = true;
             // 
+            // flpTable
+            // 
+            this.flpTable.Location = new System.Drawing.Point(52, 50);
+            this.flpTable.Name = "flpTable";
+            this.flpTable.Size = new System.Drawing.Size(475, 470);
+            this.flpTable.TabIndex = 15;
+            // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.tbTableName);
             this.panel13.Controls.Add(this.label4);
             this.panel13.Controls.Add(this.label3);
-            this.panel13.Controls.Add(this.button17);
-            this.panel13.Controls.Add(this.button18);
-            this.panel13.Controls.Add(this.button19);
-            this.panel13.Controls.Add(this.tbTableName);
-            this.panel13.Location = new System.Drawing.Point(559, 66);
+            this.panel13.Controls.Add(this.btXoaBan);
+            this.panel13.Controls.Add(this.btLuuBan);
+            this.panel13.Controls.Add(this.btThemBan);
+            this.panel13.Location = new System.Drawing.Point(558, 50);
             this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(492, 261);
             this.panel13.TabIndex = 14;
+            // 
+            // tbTableName
+            // 
+            this.tbTableName.Enabled = false;
+            this.tbTableName.Location = new System.Drawing.Point(133, 104);
+            this.tbTableName.Name = "tbTableName";
+            this.tbTableName.Size = new System.Drawing.Size(329, 26);
+            this.tbTableName.TabIndex = 37;
             // 
             // label4
             // 
@@ -1046,44 +1059,26 @@
             this.label3.TabIndex = 35;
             this.label3.Text = "Tên bàn:";
             // 
-            // button17
+            // btXoaBan
             // 
-            this.button17.Location = new System.Drawing.Point(331, 190);
-            this.button17.Margin = new System.Windows.Forms.Padding(4);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(131, 28);
-            this.button17.TabIndex = 34;
-            this.button17.Text = "Xóa";
-            this.button17.UseVisualStyleBackColor = true;
+            this.btXoaBan.Location = new System.Drawing.Point(331, 190);
+            this.btXoaBan.Margin = new System.Windows.Forms.Padding(4);
+            this.btXoaBan.Name = "btXoaBan";
+            this.btXoaBan.Size = new System.Drawing.Size(131, 28);
+            this.btXoaBan.TabIndex = 34;
+            this.btXoaBan.Text = "Xóa";
+            this.btXoaBan.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // btThemBan
             // 
-            this.button18.Location = new System.Drawing.Point(184, 190);
-            this.button18.Margin = new System.Windows.Forms.Padding(4);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(131, 28);
-            this.button18.TabIndex = 33;
-            this.button18.Text = "Lưu";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(32, 190);
-            this.button19.Margin = new System.Windows.Forms.Padding(4);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(131, 28);
-            this.button19.TabIndex = 32;
-            this.button19.Text = "Thêm";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // tbTableName
-            // 
-            this.tbTableName.Location = new System.Drawing.Point(147, 110);
-            this.tbTableName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbTableName.Name = "tbTableName";
-            this.tbTableName.ReadOnly = true;
-            this.tbTableName.Size = new System.Drawing.Size(313, 26);
-            this.tbTableName.TabIndex = 1;
+            this.btThemBan.Location = new System.Drawing.Point(32, 190);
+            this.btThemBan.Margin = new System.Windows.Forms.Padding(4);
+            this.btThemBan.Name = "btThemBan";
+            this.btThemBan.Size = new System.Drawing.Size(131, 28);
+            this.btThemBan.TabIndex = 32;
+            this.btThemBan.Text = "Thêm";
+            this.btThemBan.UseVisualStyleBackColor = true;
+            this.btThemBan.Click += new System.EventHandler(this.btThemBan_Click);
             // 
             // label1
             // 
@@ -1095,15 +1090,16 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Số lượng bàn ăn:";
             // 
-            // dtgvTable
+            // btLuuBan
             // 
-            this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvTable.Location = new System.Drawing.Point(51, 66);
-            this.dtgvTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtgvTable.Name = "dtgvTable";
-            this.dtgvTable.RowTemplate.Height = 24;
-            this.dtgvTable.Size = new System.Drawing.Size(471, 484);
-            this.dtgvTable.TabIndex = 1;
+            this.btLuuBan.Location = new System.Drawing.Point(184, 190);
+            this.btLuuBan.Margin = new System.Windows.Forms.Padding(4);
+            this.btLuuBan.Name = "btLuuBan";
+            this.btLuuBan.Size = new System.Drawing.Size(131, 28);
+            this.btLuuBan.TabIndex = 33;
+            this.btLuuBan.Text = "Lưu";
+            this.btLuuBan.UseVisualStyleBackColor = true;
+            this.btLuuBan.Click += new System.EventHandler(this.btLuuBan_Click);
             // 
             // fAdmin
             // 
@@ -1146,7 +1142,6 @@
             this.tabTable.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1181,7 +1176,6 @@
         private System.Windows.Forms.TabControl tabAdmin;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TabPage tabTable;
-        private System.Windows.Forms.DataGridView dtgvTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button15;
@@ -1201,10 +1195,8 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.TextBox tbTableName;
+        private System.Windows.Forms.Button btXoaBan;
+        private System.Windows.Forms.Button btThemBan;
         private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
@@ -1236,14 +1228,17 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button btXoaTK;
+        private System.Windows.Forms.Button btCapnhatTK;
+        private System.Windows.Forms.Button btLuuTK;
         private System.Windows.Forms.ComboBox cbLoaiTK;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbDisplayName;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbDisplayName;
+        private System.Windows.Forms.TextBox tbUserName;
+        private System.Windows.Forms.FlowLayoutPanel flpTable;
+        private System.Windows.Forms.TextBox tbTableName;
+        private System.Windows.Forms.Button btLuuBan;
     }
 }

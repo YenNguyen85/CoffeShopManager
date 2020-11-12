@@ -14,5 +14,6 @@ namespace QuanLyQuanCoffee.DAO
             string sql = "select * from MONAN sp where sp.idLoaiMon = "+idLoai+"";
             return KetNoiCSDL.Query(sql);
         }
+
     }
 }
