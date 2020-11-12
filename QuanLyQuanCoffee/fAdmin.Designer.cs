@@ -117,9 +117,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btXoaBan = new System.Windows.Forms.Button();
+            this.btLuuBan = new System.Windows.Forms.Button();
             this.btThemBan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btLuuBan = new System.Windows.Forms.Button();
             this.tabProduct.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1068,6 +1068,18 @@
             this.btXoaBan.TabIndex = 34;
             this.btXoaBan.Text = "Xóa";
             this.btXoaBan.UseVisualStyleBackColor = true;
+            this.btXoaBan.Click += new System.EventHandler(this.btXoaBan_Click);
+            // 
+            // btLuuBan
+            // 
+            this.btLuuBan.Location = new System.Drawing.Point(184, 190);
+            this.btLuuBan.Margin = new System.Windows.Forms.Padding(4);
+            this.btLuuBan.Name = "btLuuBan";
+            this.btLuuBan.Size = new System.Drawing.Size(131, 28);
+            this.btLuuBan.TabIndex = 33;
+            this.btLuuBan.Text = "Lưu";
+            this.btLuuBan.UseVisualStyleBackColor = true;
+            this.btLuuBan.Click += new System.EventHandler(this.btLuuBan_Click);
             // 
             // btThemBan
             // 
@@ -1089,17 +1101,6 @@
             this.label1.Size = new System.Drawing.Size(150, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Số lượng bàn ăn:";
-            // 
-            // btLuuBan
-            // 
-            this.btLuuBan.Location = new System.Drawing.Point(184, 190);
-            this.btLuuBan.Margin = new System.Windows.Forms.Padding(4);
-            this.btLuuBan.Name = "btLuuBan";
-            this.btLuuBan.Size = new System.Drawing.Size(131, 28);
-            this.btLuuBan.TabIndex = 33;
-            this.btLuuBan.Text = "Lưu";
-            this.btLuuBan.UseVisualStyleBackColor = true;
-            this.btLuuBan.Click += new System.EventHandler(this.btLuuBan_Click);
             // 
             // fAdmin
             // 

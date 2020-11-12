@@ -39,11 +39,11 @@ namespace QuanLyQuanCoffee.DAO
             string sql = "insert into BANAN(TrangThaiBan) Values (0)";
             KetNoiCSDL.NonQuery(sql);
         }
-        //public static void XoaBanAn(Table tb)
-        //{
-        //    string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
-        //    KetNoiCSDL.NonQuery(sql);
-        //}
+        public static void XoaBanAn(Table tb)
+        {
+            string sql = "Delete from BANAN where id='"+tb.Id+ "' ";
+            KetNoiCSDL.NonQuery(sql);
+        }
 
     }
 }

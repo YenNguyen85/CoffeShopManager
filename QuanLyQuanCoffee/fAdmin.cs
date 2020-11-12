@@ -15,6 +15,8 @@ namespace QuanLyQuanCoffee
 {
     public partial class fAdmin : Form
     {
+        public object BanAnBUS { get; private set; }
+
         public fAdmin()
         {
             InitializeComponent();
@@ -89,7 +91,9 @@ namespace QuanLyQuanCoffee
             {
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
 
-                bt.Text = "Bàn " + table.Id;
+                bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "true" ? "Có người" : "Trống");
+
+
 
                 bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
 
@@ -115,6 +119,10 @@ namespace QuanLyQuanCoffee
             BanAnDAO.LuuBanAN();
             DisplayTable();
             tbTableName.Text = "";
+        }
+        private void btXoaBan_Click(object sender, EventArgs e)
+        {
+            //TableBUS.XoaBanAn();
         }
 
 
@@ -191,6 +199,6 @@ namespace QuanLyQuanCoffee
             DisplayListViewAccount();
         }
 
-      
+        
     }
 }

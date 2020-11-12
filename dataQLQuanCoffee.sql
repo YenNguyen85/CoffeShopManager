@@ -89,7 +89,7 @@ CREATE TABLE HOADON
 	ThoiGianVao DATE NOT NULL,
 	ThoiGianRa DATE NOT NULL,
 	idTable INT NOT NULL,
-	idKhuyenMai INT NOT NULL default 0, -- 0: là không có khuyến mãi
+	idKhuyenMai INT NULL,
 	idNhanVien INT NOT NULL,
 	TrangThaiHoaDon bit NOT NULL DEFAULT 0 --1: đã thanh toán && 0: chưa thanh toán
 
@@ -200,13 +200,13 @@ Select TenNguoiDung from TAIKHOAN where TenNguoiDung= 'Admin' and MatKhau = '1'
 
 Select loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK and TenNguoiDung = 'Admin'
 
+insert into HOADON
 
 select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
 
 select tk.TenNguoiDung, tk.TenHienThi, loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK
 
 use QLCoffee
-select id from NHANVIEN nv, TAIKHOAN tk where nv.TenTaiKhoan = tk.TenNguoiDung and tk.TenNguoiDung = 'Admin'
 select * from HOADON where idTable=1 and TrangThaiHoaDon=0;
 
 Insert into CHUCVU(TenChucVu, Luong)values(N'Quản lý', 20000)
@@ -214,7 +214,6 @@ Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)va
 
 select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenNguoiDung and cv.id = nv.idChucVu and tk.TenNguoiDung='Admin'
 
-insert into KHUYENMAI(id, NgayBatDau, NgayKetThuc)values(0, '', '')
-insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '', 10, 1, 0)
+select top 1 id from BANAN order by id desc
 
-select * from HOADON
+select * from TAIKHOAN where TenNguoiDung = 'Y'
