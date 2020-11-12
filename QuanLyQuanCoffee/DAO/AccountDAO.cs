@@ -96,7 +96,9 @@ namespace QuanLyQuanCoffee.DAO
         {
             string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
             KetNoiCSDL.NonQuery(sql);
+
         }
+
         //Lấy thông tin nhân viên
         public static int GetIdNhanVien(string username)
         {
