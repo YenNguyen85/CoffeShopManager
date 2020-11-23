@@ -28,8 +28,9 @@ namespace QuanLyQuanCoffee
             DisplayTable();
             DisplayListViewAccount();
             DisplayLoaiTK();
-            
 
+            DisplayTTNhanVien();
+            DisplayCBChucVu();         
         }
 
         // Gọi hàm khi thay đổi selected tab
@@ -44,14 +45,14 @@ namespace QuanLyQuanCoffee
             }
         }
 
-                // --------------------Các hàm xử lý tab sản phẩm----------------------
+        // --------------------Các hàm xử lý tab sản phẩm----------------------
         // Hiển thị tree view loại sản phẩm
         private void DisplayProductTreeView()
         {
             tvProduct.Nodes.Clear();
             DataTable data = LoaiSanPhamDAO.GetLoaiSP();
             TreeNode parentNode = new TreeNode();
-            foreach(DataRow row in data.Rows)
+            foreach (DataRow row in data.Rows)
             {
                 parentNode = tvProduct.Nodes.Add(row["TenLoai"].ToString());
                 PopulateTreeView(row["id"].ToString(), parentNode);
@@ -63,7 +64,7 @@ namespace QuanLyQuanCoffee
         {
             DataTable data = SanPhamDAO.GetSanPham(idLoaiSP);
             TreeNode childNode;
-            foreach(DataRow row in data.Rows)
+            foreach (DataRow row in data.Rows)
             {
                 if (parentNode == null)
                 {
@@ -75,7 +76,9 @@ namespace QuanLyQuanCoffee
                     //gọi lại hàm này nếu có thêm node con
                 }
             }
-
+        }
+        private void tvProduct_AfterSelect(object sender, TreeViewEventArgs e)
+        {
             
         }
 
@@ -92,8 +95,6 @@ namespace QuanLyQuanCoffee
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
 
                 bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "true" ? "Có người" : "Trống");
-
-
 
                 bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
 
@@ -134,7 +135,7 @@ namespace QuanLyQuanCoffee
         {
             listAccounts.Items.Clear();
             DataTable dt = AccountDAO.GetTTAccount();
-            int sl = dt.Rows.Count;        
+            int sl = dt.Rows.Count;
             for (int i = 0; i < sl; i++)
             {
                 listAccounts.Items.Add(dt.Rows[i]["TenNguoiDung"].ToString());
@@ -148,14 +149,13 @@ namespace QuanLyQuanCoffee
             cbLoaiTK.DataSource = LoaiTKDAO.GetData();
             cbLoaiTK.DisplayMember = "TenLoaiTK";
             cbLoaiTK.ValueMember = "idLoaiTK";
-
         }
 
         private void listAccounts_Click(object sender, EventArgs e)
         {
             tbUserName.Text = listAccounts.SelectedItems[0].SubItems[0].Text;
             tbDisplayName.Text = listAccounts.SelectedItems[0].SubItems[1].Text;
-            cbLoaiTK.Text =listAccounts.SelectedItems[0].SubItems[2].Text;
+            cbLoaiTK.Text = listAccounts.SelectedItems[0].SubItems[2].Text;
         }
 
         private void btLuuTK_Click(object sender, EventArgs e)
@@ -188,6 +188,7 @@ namespace QuanLyQuanCoffee
             AccountBUS.SuaTK(acc);
             listAccounts.Items.Clear();
             DisplayListViewAccount();
+            MessageBox.Show("Cập nhật tài khoản thành công!");
         }
 
         private void btXoaTK_Click(object sender, EventArgs e)
@@ -197,8 +198,55 @@ namespace QuanLyQuanCoffee
             AccountBUS.XoaTK(acc);
             listAccounts.Items.Clear();
             DisplayListViewAccount();
+            MessageBox.Show("Xóa tài khoản thành công!");
         }
 
+        //--------------TAB NHÂN VIEN--------------
+        void DisplayTTNhanVien()
+        {
+            dtgvNhanVien.DataSource = EmployeeDAO.GetEmployeeList(); 
+        }
+
+        void DisplayCBChucVu()
+        {
+            cbChucVu.DataSource = EmployeeDAO.GetChucVU();
+            cbChucVu.DisplayMember = "TenChucVu";
+            cbChucVu.ValueMember = "TenChucVu";
+        }
+       
         
+        private void dtgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            Employee selectedEmployee = EmployeeDAO.GetEmployee(dtgvNhanVien.Rows[dtgvNhanVien.CurrentRow.Index].Cells[0].Value.ToString());
+
+            tbTenNV.Text = selectedEmployee.TenNhanVien;
+            dtNgaySinh.Value = selectedEmployee.NgaySinh;
+            tbDiachi.Text = selectedEmployee.DiaChi;
+            tbSDT.Text = selectedEmployee.Sdt;
+
+           
+        }
+
+        private void btLuuNV_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btCapNhatNV_Click(object sender, EventArgs e)
+        {
+            Employee emp = new Employee();
+            emp.TenNhanVien = tbTenNV.Text;
+            emp.NgaySinh = dtNgaySinh.Value;
+            emp.DiaChi = tbDiachi.Text;
+            emp.Sdt = tbSDT.Text;
+            emp.IdChucVu = (int)cbChucVu.SelectedValue;
+
+            EmployeeBUS.SuaNhanVien(emp);
+            dtgvNhanVien.ClearSelection();
+           
+        }
+
+       
     }
 }

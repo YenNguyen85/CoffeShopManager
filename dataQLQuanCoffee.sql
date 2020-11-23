@@ -209,15 +209,12 @@ use QLCoffee
 select * from HOADON where idTable=1 and TrangThaiHoaDon=0;
 
 Insert into CHUCVU(TenChucVu, Luong)values(N'Quản lý', 20000)
-Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)values (N'Tao là Admin', '2/2/2020', N'Trên mặt đất dưới mặt trời', '0333333333', 'Admin', 1)  
+Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)values (N'Tao là Admin', '02/02/1956', N'Trên mặt đất dưới mặt trời', '0333333333', 'Admin', 1) 
+Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)values (N'NV1', '5/27/1990', N'Trên mặt đất', '0333333333', 'Admin', 2)
+Go
 
 select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenNguoiDung and cv.id = nv.idChucVu and tk.TenNguoiDung='Admin'
 
 select top 1 id from BANAN order by id desc
 
-<<<<<<< HEAD
-select * from TAIKHOAN where TenNguoiDung = 'Y'
-=======
-use QLCoffee
-select * from HOADON
->>>>>>> 56a44f26a75d4ec068e4d0c5026909eb9b8ffc47
+select TenNhanVien, NgaySinh, TenChucVu, Luong from NHANVIEN nv, CHUCVU cv where cv.id= nv.idChucVu

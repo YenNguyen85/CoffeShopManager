@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\AccountBUS.cs" />
+    <Compile Include="BUS\EmployeeBUS.cs" />
     <Compile Include="BUS\TableBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanAnDAO.cs" />
+    <Compile Include="DAO\EmployeeDAO.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KetNoiCSDL.cs" />
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Bill.cs" />
+    <Compile Include="DTO\Employee.cs" />
     <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\Table.cs" />
     <Compile Include="DTO\Menu.cs" />
