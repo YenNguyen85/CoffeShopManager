@@ -21,6 +21,22 @@ namespace QuanLyQuanCoffee.DAO
             return KetNoiCSDL.Query(sql);
         }
 
+        public static void InsertSanPham(DTO.Food food)
+        {
+            string sql = "Insert into MONAN(TenMon, idLoaiMon, GiaTien) Values (N'" + food.TenMon + "', " + food.IdLoaiMon + ", " + food.GiaTien + ")";
+            KetNoiCSDL.NonQuery(sql);
+        }
 
+        public static void UpdateSanPham(DTO.Food food)
+        {
+            string sql = "update MONAN set TenMon = N'"+food.TenMon+"', idLoaiMon = '"+food.IdLoaiMon+"', GiaTien = '"+food.GiaTien+"' where id = '"+food.Id+"'";
+            KetNoiCSDL.NonQuery(sql);
+        }
+
+        public static void DeleteSanPham(int id)
+        {
+            string sql = "delete from MONAN where id = '"+id+"'";
+            KetNoiCSDL.NonQuery(sql);
+        }
     }
 }

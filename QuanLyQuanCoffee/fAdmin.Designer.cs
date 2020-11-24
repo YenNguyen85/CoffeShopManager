@@ -30,19 +30,19 @@
         {
             this.tabProduct = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
+            this.numPrice = new System.Windows.Forms.NumericUpDown();
+            this.btDeleteFood = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.tbFood = new System.Windows.Forms.TextBox();
-            this.tbPrice = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btUpdateFood = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btSaveFood = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btDeleteCategory = new System.Windows.Forms.Button();
+            this.btUpdateCategory = new System.Windows.Forms.Button();
+            this.btSaveCategory = new System.Windows.Forms.Button();
             this.tbCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -121,6 +121,7 @@
             this.cbTenTK = new System.Windows.Forms.ComboBox();
             this.tabProduct.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabSalary.SuspendLayout();
@@ -156,15 +157,15 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button15);
+            this.groupBox3.Controls.Add(this.numPrice);
+            this.groupBox3.Controls.Add(this.btDeleteFood);
             this.groupBox3.Controls.Add(this.cbCategory);
             this.groupBox3.Controls.Add(this.tbFood);
-            this.groupBox3.Controls.Add(this.tbPrice);
-            this.groupBox3.Controls.Add(this.button12);
+            this.groupBox3.Controls.Add(this.btUpdateFood);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Controls.Add(this.btSaveFood);
             this.groupBox3.Location = new System.Drawing.Point(341, 169);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(476, 275);
@@ -172,14 +173,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin sản phẩm:";
             // 
-            // button15
+            // numPrice
             // 
-            this.button15.Location = new System.Drawing.Point(314, 223);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(98, 23);
-            this.button15.TabIndex = 25;
-            this.button15.Text = "Xóa";
-            this.button15.UseVisualStyleBackColor = true;
+            this.numPrice.Location = new System.Drawing.Point(194, 162);
+            this.numPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPrice.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.numPrice.Name = "numPrice";
+            this.numPrice.Size = new System.Drawing.Size(217, 22);
+            this.numPrice.TabIndex = 26;
+            // 
+            // btDeleteFood
+            // 
+            this.btDeleteFood.Location = new System.Drawing.Point(314, 223);
+            this.btDeleteFood.Name = "btDeleteFood";
+            this.btDeleteFood.Size = new System.Drawing.Size(98, 23);
+            this.btDeleteFood.TabIndex = 25;
+            this.btDeleteFood.Text = "Xóa";
+            this.btDeleteFood.UseVisualStyleBackColor = true;
+            this.btDeleteFood.Click += new System.EventHandler(this.btDeleteFood_Click);
             // 
             // cbCategory
             // 
@@ -196,21 +211,15 @@
             this.tbFood.Size = new System.Drawing.Size(218, 22);
             this.tbFood.TabIndex = 23;
             // 
-            // tbPrice
+            // btUpdateFood
             // 
-            this.tbPrice.Location = new System.Drawing.Point(194, 162);
-            this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(218, 22);
-            this.tbPrice.TabIndex = 21;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(194, 223);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(98, 23);
-            this.button12.TabIndex = 13;
-            this.button12.Text = "Cập nhật";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btUpdateFood.Location = new System.Drawing.Point(194, 223);
+            this.btUpdateFood.Name = "btUpdateFood";
+            this.btUpdateFood.Size = new System.Drawing.Size(98, 23);
+            this.btUpdateFood.TabIndex = 13;
+            this.btUpdateFood.Text = "Cập nhật";
+            this.btUpdateFood.UseVisualStyleBackColor = true;
+            this.btUpdateFood.Click += new System.EventHandler(this.btUpdateFood_Click);
             // 
             // label21
             // 
@@ -239,20 +248,21 @@
             this.label16.TabIndex = 18;
             this.label16.Text = "Tên sản phẩm:";
             // 
-            // button14
+            // btSaveFood
             // 
-            this.button14.Location = new System.Drawing.Point(76, 223);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(98, 23);
-            this.button14.TabIndex = 12;
-            this.button14.Text = "Lưu";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btSaveFood.Location = new System.Drawing.Point(76, 223);
+            this.btSaveFood.Name = "btSaveFood";
+            this.btSaveFood.Size = new System.Drawing.Size(98, 23);
+            this.btSaveFood.TabIndex = 12;
+            this.btSaveFood.Text = "Lưu";
+            this.btSaveFood.UseVisualStyleBackColor = true;
+            this.btSaveFood.Click += new System.EventHandler(this.btSaveFood_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button16);
+            this.groupBox2.Controls.Add(this.btDeleteCategory);
+            this.groupBox2.Controls.Add(this.btUpdateCategory);
+            this.groupBox2.Controls.Add(this.btSaveCategory);
             this.groupBox2.Controls.Add(this.tbCategory);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(341, 19);
@@ -262,32 +272,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin danh mục:";
             // 
-            // button11
+            // btDeleteCategory
             // 
-            this.button11.Location = new System.Drawing.Point(314, 84);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(98, 23);
-            this.button11.TabIndex = 28;
-            this.button11.Text = "Xóa";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btDeleteCategory.Location = new System.Drawing.Point(314, 84);
+            this.btDeleteCategory.Name = "btDeleteCategory";
+            this.btDeleteCategory.Size = new System.Drawing.Size(98, 23);
+            this.btDeleteCategory.TabIndex = 28;
+            this.btDeleteCategory.Text = "Xóa";
+            this.btDeleteCategory.UseVisualStyleBackColor = true;
+            this.btDeleteCategory.Click += new System.EventHandler(this.btDeleteCategory_Click);
             // 
-            // button13
+            // btUpdateCategory
             // 
-            this.button13.Location = new System.Drawing.Point(194, 84);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(98, 23);
-            this.button13.TabIndex = 27;
-            this.button13.Text = "Cập nhật";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btUpdateCategory.Location = new System.Drawing.Point(194, 84);
+            this.btUpdateCategory.Name = "btUpdateCategory";
+            this.btUpdateCategory.Size = new System.Drawing.Size(98, 23);
+            this.btUpdateCategory.TabIndex = 27;
+            this.btUpdateCategory.Text = "Cập nhật";
+            this.btUpdateCategory.UseVisualStyleBackColor = true;
+            this.btUpdateCategory.Click += new System.EventHandler(this.btUpdateCategory_Click);
             // 
-            // button16
+            // btSaveCategory
             // 
-            this.button16.Location = new System.Drawing.Point(76, 84);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(98, 23);
-            this.button16.TabIndex = 26;
-            this.button16.Text = "Lưu";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btSaveCategory.Location = new System.Drawing.Point(76, 84);
+            this.btSaveCategory.Name = "btSaveCategory";
+            this.btSaveCategory.Size = new System.Drawing.Size(98, 23);
+            this.btSaveCategory.TabIndex = 26;
+            this.btSaveCategory.Text = "Lưu";
+            this.btSaveCategory.UseVisualStyleBackColor = true;
+            this.btSaveCategory.Click += new System.EventHandler(this.btSaveCategory_Click);
             // 
             // tbCategory
             // 
@@ -1063,8 +1076,7 @@
             // cbTenTK
             // 
             this.cbTenTK.FormattingEnabled = true;
-            this.cbTenTK.Location = new System.Drawing.Point(171, 124);
-            this.cbTenTK.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTenTK.Location = new System.Drawing.Point(171, 129);
             this.cbTenTK.Name = "cbTenTK";
             this.cbTenTK.Size = new System.Drawing.Size(206, 24);
             this.cbTenTK.TabIndex = 51;
@@ -1083,6 +1095,7 @@
             this.tabProduct.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1139,22 +1152,21 @@
         private System.Windows.Forms.DateTimePicker dtpkToDate;
         private System.Windows.Forms.DateTimePicker dtpkFormDate;
         private System.Windows.Forms.TabControl tabAdmin;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btUpdateFood;
         private System.Windows.Forms.TabPage tabTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btDeleteFood;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.TextBox tbFood;
-        private System.Windows.Forms.TextBox tbPrice;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btSaveFood;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btDeleteCategory;
+        private System.Windows.Forms.Button btUpdateCategory;
+        private System.Windows.Forms.Button btSaveCategory;
         private System.Windows.Forms.TextBox tbCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel13;
@@ -1204,6 +1216,7 @@
         private System.Windows.Forms.TextBox tbTenNV;
         private System.Windows.Forms.TextBox tbDiachi;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.NumericUpDown numPrice;
         private System.Windows.Forms.ComboBox cbTenTK;
     }
 }

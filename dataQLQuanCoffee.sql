@@ -218,3 +218,11 @@ select * from NHANVIEN nv, TAIKHOAN tk, CHUCVU cv where nv.TenTaiKhoan = tk.TenN
 select top 1 id from BANAN order by id desc
 
 select TenNhanVien, NgaySinh, TenChucVu, Luong from NHANVIEN nv, CHUCVU cv where cv.id= nv.idChucVu
+
+use QLCoffee
+select * from MONAN
+delete from MONAN where id = '18'
+update MONAN set TenMon = N'Yến cute', idLoaiMon = '1', GiaTien = '40000' where id = '19'
+
+delete from LOAIMON where id = '7'
+update LOAIMON set TenLoai = 'Cà dề' where id = '7'
