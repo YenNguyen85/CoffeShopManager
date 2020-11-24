@@ -33,9 +33,9 @@ namespace QuanLyQuanCoffee.DAO
             KetNoiCSDL.NonQuery(sql);
         }
 
-        public static void DeleteSanPham(int id)
+        public static void DeleteSanPham(string id)
         {
-            string sql = "delete from MONAN where id = '"+id+"'";
+            string sql = "delete from MONAN where id = '" + id + "'";
             KetNoiCSDL.NonQuery(sql);
         }
     }

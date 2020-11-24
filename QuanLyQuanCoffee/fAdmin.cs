@@ -197,7 +197,7 @@ namespace QuanLyQuanCoffee
         {
             if (tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent != null)
             {
-                KetNoiCSDL.NonQuery(tvProduct.SelectedNode.Tag.ToString());
+                SanPhamDAO.DeleteSanPham(tvProduct.SelectedNode.Tag.ToString());
 
                 DisplayProductTreeView();
             }
