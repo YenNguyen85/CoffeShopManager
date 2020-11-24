@@ -34,25 +34,25 @@ namespace QuanLyQuanCoffee.BUS
                 {
                     EmployeeDAO.SuaNhanVien(emp);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
-                    MessageBox.Show("Cập nhật nhân viên không thành công!");
+                    MessageBox.Show("Cập nhật nhân viên không thành công!, " + e);
                 }
             }
         }
-        public static void XoaNhanVien(Employee emp)
+        public static void XoaNhanVien(int id)
         {
             if (MessageBox.Show("Bạn muốn xóa nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    EmployeeDAO.XoaNhanVien(emp);
+                    EmployeeDAO.XoaNhanVien(id);
                 }
-                catch (Exception)
+                catch (Exception e )
                 {
 
-                    MessageBox.Show("Xóa nhân viên không thành công!");
+                    MessageBox.Show("Xóa nhân viên không thành công!, " + e);
                 }
             }
         }

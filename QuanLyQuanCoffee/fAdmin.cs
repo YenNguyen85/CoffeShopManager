@@ -30,7 +30,8 @@ namespace QuanLyQuanCoffee
             DisplayLoaiTK();
 
             DisplayTTNhanVien();
-            DisplayCBChucVu();         
+            DisplayCBChucVu();
+            DisplayCBTenTK();
         }
 
         // Gọi hàm khi thay đổi selected tab
@@ -211,42 +212,70 @@ namespace QuanLyQuanCoffee
         {
             cbChucVu.DataSource = EmployeeDAO.GetChucVU();
             cbChucVu.DisplayMember = "TenChucVu";
-            cbChucVu.ValueMember = "TenChucVu";
+            cbChucVu.ValueMember = "id";
         }
-       
-        
+
+        void DisplayCBTenTK()
+        {
+            cbTenTK.DataSource = AccountDAO.GetTTAccount();
+            cbTenTK.DisplayMember = "TenNguoiDung";
+            cbTenTK.ValueMember = "TenNguoiDung";
+        }
+
+        private int employeeID = -1;
+
         private void dtgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             Employee selectedEmployee = EmployeeDAO.GetEmployee(dtgvNhanVien.Rows[dtgvNhanVien.CurrentRow.Index].Cells[0].Value.ToString());
-
+            cbTenTK.Text = selectedEmployee.TenTaiKhoan;
             tbTenNV.Text = selectedEmployee.TenNhanVien;
             dtNgaySinh.Value = selectedEmployee.NgaySinh;
             tbDiachi.Text = selectedEmployee.DiaChi;
             tbSDT.Text = selectedEmployee.Sdt;
-
+            employeeID = selectedEmployee.Id;
            
         }
 
         private void btLuuNV_Click(object sender, EventArgs e)
         {
-            
+            Employee emp = new Employee();
+            emp.TenNhanVien = tbTenNV.Text;
+            emp.NgaySinh = dtNgaySinh.Value;
+            emp.DiaChi = tbDiachi.Text;
+            emp.TenTaiKhoan = cbTenTK.SelectedValue.ToString();
+            emp.Sdt = tbSDT.Text;
+            emp.IdChucVu = Convert.ToInt32(cbChucVu.SelectedValue.ToString());
+
+            EmployeeBUS.ThemNhanVien(emp);
+
+            // reload datagridview 
+            DisplayTTNhanVien();
         }
 
         private void btCapNhatNV_Click(object sender, EventArgs e)
         {
             Employee emp = new Employee();
+            emp.Id = employeeID;
             emp.TenNhanVien = tbTenNV.Text;
             emp.NgaySinh = dtNgaySinh.Value;
             emp.DiaChi = tbDiachi.Text;
+            emp.TenTaiKhoan = cbTenTK.SelectedValue.ToString();
             emp.Sdt = tbSDT.Text;
-            emp.IdChucVu = (int)cbChucVu.SelectedValue;
+            emp.IdChucVu = Convert.ToInt32(cbChucVu.SelectedValue.ToString());
 
             EmployeeBUS.SuaNhanVien(emp);
-            dtgvNhanVien.ClearSelection();
-           
+
+            // reload datagridview 
+            DisplayTTNhanVien();
         }
 
-       
+        private void btXoaNV_Click(object sender, EventArgs e)
+        {
+            EmployeeBUS.XoaNhanVien(employeeID);
+
+            // reload datagridview 
+            DisplayTTNhanVien();
+        }
     }
 }

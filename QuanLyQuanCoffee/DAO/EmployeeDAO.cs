@@ -36,19 +36,19 @@ namespace QuanLyQuanCoffee.DAO
         //Thêm-xóa-sửa
         public static void ThemNhanVien(Employee emp)
         {
-            string sql = "Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi, Sdt, TenTaiKhoan, idChucVu)values (N'"+emp.TenNhanVien+"', '"+emp.NgaySinh+"', N'"+emp.DiaChi+"', '"+emp.Sdt+"', N'"+emp.TenTaiKhoan+"', '"+emp.IdChucVu+"')  ";
+            string sql = "Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi, Sdt, TenTaiKhoan, idChucVu)values (N'"+emp.TenNhanVien+"', '"+String.Format("{0:MM/dd/yyyy}",emp.NgaySinh)+"', N'"+emp.DiaChi+"', '"+emp.Sdt+"', '"+emp.TenTaiKhoan+"', '"+emp.IdChucVu+"')  ";
             KetNoiCSDL.NonQuery(sql);
         }
 
         public static void SuaNhanVien(Employee emp)
         {
-            string sql = "Update NHANVIEN setTenNhanVien='" + emp.TenNhanVien + "' ,NgaySinh=N'" + emp.NgaySinh + "', DiaChi=N'" + emp.DiaChi + "', Sdt='" + emp.NgaySinh + "',  TenTaiKhoan=N'" + emp.TenTaiKhoan + "', idChucVu='" + emp.IdChucVu + "',  where id ='"+emp.Id+"'  ";
+            string sql = "Update NHANVIEN set TenNhanVien= N'"+emp.TenNhanVien+"' ,NgaySinh='"+String.Format("{0:MM/dd/yyyy}",emp.NgaySinh)+"', DiaChi=N'"+emp.DiaChi+"', Sdt='"+emp.Sdt+"',  TenTaiKhoan='"+emp.TenTaiKhoan+"', idChucVu='"+emp.IdChucVu+"' where id ='"+emp.Id+"'";
             KetNoiCSDL.NonQuery(sql);
         }
 
-        public static void XoaNhanVien(Employee emp)
+        public static void XoaNhanVien(int id)
         {
-            string sql = "Delete from TAIKHOAN where id='" + emp.Id + "' ";
+            string sql = "Delete from NHANVIEN where id='" + id + "' ";
             KetNoiCSDL.NonQuery(sql);
         }
 

@@ -17,6 +17,8 @@ namespace QuanLyQuanCoffee.DTO
         private string tenTaiKhoan;
         private int idChucVu;
 
+        public Employee() { }
+
         public Employee(DataRow row)
         {
             this.Id = Convert.ToInt32(row["id"].ToString());
