@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,8 @@ namespace QuanLyQuanCoffee
             DisplayLoaiTK();
 
             DisplayTTNhanVien();
-            DisplayCBChucVu();         
+            DisplayCBChucVu();
+            DisplayCategory();
         }
 
         // Gọi hàm khi thay đổi selected tab
@@ -46,6 +48,13 @@ namespace QuanLyQuanCoffee
         }
 
         // --------------------Các hàm xử lý tab sản phẩm----------------------
+        private void DisplayCategory()
+        {
+            cbCategory.DataSource = LoaiSanPhamDAO.GetLoaiSP();
+            cbCategory.DisplayMember = "TenLoai";
+            cbCategory.ValueMember = "id";
+        }
+
         // Hiển thị tree view loại sản phẩm
         private void DisplayProductTreeView()
         {
@@ -55,6 +64,7 @@ namespace QuanLyQuanCoffee
             foreach (DataRow row in data.Rows)
             {
                 parentNode = tvProduct.Nodes.Add(row["TenLoai"].ToString());
+                parentNode.Tag = row["id"].ToString();
                 PopulateTreeView(row["id"].ToString(), parentNode);
             }
         }
@@ -69,17 +79,131 @@ namespace QuanLyQuanCoffee
                 if (parentNode == null)
                 {
                     childNode = tvProduct.Nodes.Add(row["TenMon"].ToString() + "_" + row["GiaTien"].ToString());
+                    childNode.Tag = row["id"].ToString();
                 }
                 else
                 {
                     childNode = parentNode.Nodes.Add(row["TenMon"].ToString() + "_" + row["GiaTien"].ToString());
+                    childNode.Tag = row["id"].ToString();
                     //gọi lại hàm này nếu có thêm node con
                 }
             }
         }
         private void tvProduct_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+            if(tvProduct.SelectedNode.Parent == null)
+            {
+                tbCategory.Text = tvProduct.SelectedNode.Text;
+                cbCategory.Text = tvProduct.SelectedNode.Text;
+            }
+            else
+            {
+                DataTable data = new DataTable();
+                data = SanPhamDAO.GetTTSanPham(tvProduct.SelectedNode.Tag.ToString());
+
+                DataRow foodInfo = data.Rows[0];
+                tbFood.Text = foodInfo["TenMon"].ToString();
+                numPrice.Value = Decimal.Parse(foodInfo["GiaTien"].ToString(), NumberStyles.Currency, new CultureInfo("vi-VN"));
+            }
+        }
+
+        private void btSaveCategory_Click(object sender, EventArgs e)
+        {
+            if(tbCategory.Text != "")
+            {
+                try
+                {
+                    LoaiSanPhamDAO.InsertLoaiSP(tbCategory.Text);
+
+                    DisplayProductTreeView();
+                    DisplayCategory();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Insert error, " + ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("vui lòng nhập ít nhất 2 kí tự");
+            }
+        }
+
+        private void btUpdateCategory_Click(object sender, EventArgs e)
+        {
+            if(tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent == null)
+            {
+                DTO.Category loaisp = new DTO.Category();
+                loaisp.Id = Convert.ToInt32(tvProduct.SelectedNode.Tag.ToString());
+                loaisp.TenLoai = tbCategory.Text;
+                LoaiSanPhamDAO.UpdateLoaiSP(loaisp);
+
+                DisplayProductTreeView();
+                DisplayCategory();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn loại sản phẩm cần update");
+            }
+        }
+
+        private void btDeleteCategory_Click(object sender, EventArgs e)
+        {
+            if (tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent == null)
+            {
+                LoaiSanPhamDAO.DeleteLoaiSP(tvProduct.SelectedNode.Tag.ToString());
+
+                DisplayProductTreeView();
+                DisplayCategory();
+            }
+        }
+
+
+        private void btSaveFood_Click(object sender, EventArgs e)
+        {
+            if(tbFood.Text != "" && numPrice.Value > 0)
+            {
+                DTO.Food newFood = new DTO.Food(-1, tbFood.Text, Convert.ToInt32(cbCategory.SelectedValue.ToString()), (float)numPrice.Value);
+                SanPhamDAO.InsertSanPham(newFood);
+                DisplayProductTreeView();
+            }
+        }
+
+        private void btUpdateFood_Click(object sender, EventArgs e)
+        {
+            if (tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent != null)
+            {
+                if(tbFood.Text != "" && numPrice.Value > 0)
+                {
+                    DTO.Food newFood = new DTO.Food(Convert.ToInt32(tvProduct.SelectedNode.Tag.ToString()), tbFood.Text, Convert.ToInt32(cbCategory.SelectedValue.ToString()), (float)numPrice.Value);
+                    SanPhamDAO.InsertSanPham(newFood);
+                    DisplayProductTreeView();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin món ăn");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 1 sản phẩm cần sửa");
+            }
+
+        }
+
+        private void btDeleteFood_Click(object sender, EventArgs e)
+        {
+            if (tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent != null)
+            {
+                KetNoiCSDL.NonQuery(tvProduct.SelectedNode.Tag.ToString());
+
+                DisplayProductTreeView();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm cần xóa");
+            }
         }
 
         //--------------TAB BÀN ĂN--------------
@@ -235,18 +359,17 @@ namespace QuanLyQuanCoffee
 
         private void btCapNhatNV_Click(object sender, EventArgs e)
         {
-            Employee emp = new Employee();
-            emp.TenNhanVien = tbTenNV.Text;
-            emp.NgaySinh = dtNgaySinh.Value;
-            emp.DiaChi = tbDiachi.Text;
-            emp.Sdt = tbSDT.Text;
-            emp.IdChucVu = (int)cbChucVu.SelectedValue;
+            //Employee emp = new Employee();
+            //emp.TenNhanVien = tbTenNV.Text;
+            //emp.NgaySinh = dtNgaySinh.Value;
+            //emp.DiaChi = tbDiachi.Text;
+            //emp.Sdt = tbSDT.Text;
+            //emp.IdChucVu = (int)cbChucVu.SelectedValue;
 
-            EmployeeBUS.SuaNhanVien(emp);
-            dtgvNhanVien.ClearSelection();
+            //EmployeeBUS.SuaNhanVien(emp);
+            //dtgvNhanVien.ClearSelection();
            
         }
 
-       
     }
 }

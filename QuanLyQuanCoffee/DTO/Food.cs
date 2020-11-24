@@ -14,6 +14,13 @@ namespace QuanLyQuanCoffee.DTO
         private int idLoaiMon;
         private float giaTien;
 
+        public Food(int id, string tenMon, int idLoaiMon, float giaTien) {
+            this.Id = id;
+            this.TenMon = tenMon;
+            this.IdLoaiMon = idLoaiMon;
+            this.GiaTien = giaTien;
+        }
+
         public Food(DataRow row)
         {
             this.Id = (int)row["id"];
