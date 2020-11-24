@@ -11,8 +11,8 @@ namespace QuanLyQuanCoffee.DTO
     {
         private string tenMon;
         private int soLuong;
-        private float giaTien;
-        private float tongTien;
+        private double giaTien;
+        private double tongTien;
 
         public Menu(string foodName, int count, float price, float totalPrice)
         {
@@ -26,13 +26,13 @@ namespace QuanLyQuanCoffee.DTO
         {
             this.TenMon = row["TenMon"].ToString();
             this.SoLuong = (int)row["SoLuong"];
-            this.GiaTien = (float)row["GiaTien"];
-            this.TongTien = (float)row["TongTien"];
+            this.GiaTien = Convert.ToDouble(row["GiaTien"].ToString());
+            this.TongTien = Convert.ToDouble(row["TongTien"].ToString());
         }
 
         public string TenMon { get => tenMon; set => tenMon = value; }
         public int SoLuong { get => soLuong; set => soLuong = value; }
-        public float GiaTien { get => giaTien; set => giaTien = value; }
-        public float TongTien { get => tongTien; set => tongTien = value; }
+        public double GiaTien { get => giaTien; set => giaTien = value; }
+        public double TongTien { get => tongTien; set => tongTien = value; }
     }
 }

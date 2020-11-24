@@ -25,6 +25,13 @@ namespace QuanLyQuanCoffee.DAO
             return tableList;
         }
 
+        // Thay đổi trạng thái bàn
+        public static void ChangeTableStatus(string id, string bit)
+        {
+            string sql = "update BANAN set TrangThaiBan = '" + bit + "' where id = '" + id + "'";
+            KetNoiCSDL.NonQuery(sql);
+        }
+
 
         //Thêm-Luu-Xoa
 
@@ -39,9 +46,9 @@ namespace QuanLyQuanCoffee.DAO
             string sql = "insert into BANAN(TrangThaiBan) Values (0)";
             KetNoiCSDL.NonQuery(sql);
         }
-        public static void XoaBanAn(Table tb)
+        public static void XoaBanAn(string id)
         {
-            string sql = "Delete from BANAN where id='"+tb.Id+ "' ";
+            string sql = "Delete from BANAN where id='"+id+ "' ";
             KetNoiCSDL.NonQuery(sql);
         }
 

@@ -18,13 +18,13 @@ namespace QuanLyQuanCoffee.BUS
             data = BanAnDAO.GetMaxIDTable();
             return (int)data.Rows[0]["id"] + 1;
         }
-        public static void XoaBanAn(Table tb)
+        public static void XoaBanAn(string id)
         {
             if (MessageBox.Show("Bạn muốn xóa bàn ăn này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    BanAnDAO.XoaBanAn(tb);
+                    BanAnDAO.XoaBanAn(id);
                     
                 }
                 catch (Exception)

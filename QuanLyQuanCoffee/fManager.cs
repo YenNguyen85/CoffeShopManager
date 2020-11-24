@@ -88,7 +88,7 @@ namespace QuanLyQuanCoffee
             {
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
 
-                bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "true" ? "Có người" : "Trống");
+                bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "True" ? "Có người" : "Trống");
 
                 bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
 
@@ -104,6 +104,7 @@ namespace QuanLyQuanCoffee
             int idBanAn = Convert.ToInt32((sender as Button).Tag.ToString());
             lvBill.Tag = (sender as Button).Tag;
             
+
             ShowBill(idBanAn);
         }
 
@@ -111,21 +112,27 @@ namespace QuanLyQuanCoffee
         {
             int idTable = Convert.ToInt32(lvBill.Tag.ToString()); // 
             int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
-            int idBill = 0;
-            int idFood = 0;
-
-                idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idTable); // Lấy id bill của bàn ăn hiện tại, nếu bàn đang trống có thì trả về -1
-                idFood = (int)cbFood.SelectedValue;//(cbFood.SelectedItem as Food).Id;
-            
-            
-           
+            int idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idTable); // Lấy id bill của bàn ăn hiện tại, nếu bàn đang trống có thì trả về -1
+            int idFood = (int)cbFood.SelectedValue;//(cbFood.SelectedItem as Food).Id;
             int count = (int)numFoodCount.Value;
 
-
-            if(idBill == -1)
+            if(idBill == -1) // Bàn chưa có hóa đơn
             {
-                HoaDonDAO.InsertBill(idTable, idNhanVien);
+                HoaDonDAO.InsertBill(idTable, idNhanVien); // Thêm hóa đơn vô
+                BanAnDAO.ChangeTableStatus(idTable.ToString(), "1");
+
+                MessageBox.Show(HoaDonDAO.GetUnCheckBillIDByTableID(idTable).ToString());
+                
+                CTHDDAO.Insert(new DTO.CTHD(HoaDonDAO.GetUnCheckBillIDByTableID(idTable), Convert.ToInt32(cbFood.SelectedValue.ToString()), Convert.ToInt32(numFoodCount.Value)));// Thêm món vừa chọn vào chi tiết hóa đơn
+
+                DisplayTable();
             }
+            else
+            {
+                MessageBox.Show("Bàn ăn đã có người");
+            }
+            
+            ShowBill(Convert.ToInt32(lvBill.Tag.ToString()));
 
         }
 
@@ -136,7 +143,7 @@ namespace QuanLyQuanCoffee
             List<DTO.Menu> menus = MenuDAO.GetMenuListByTable(id);
 
             // Dùng hiển thị tổng tiền cả bill
-            float totalPrice = 0;
+            double totalPrice = 0;
 
             foreach (DTO.Menu item in menus) {
                 ListViewItem viewItem = new ListViewItem(item.TenMon.ToString());

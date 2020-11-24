@@ -17,18 +17,22 @@ namespace QuanLyQuanCoffee.DAO
         {
             DataTable data = KetNoiCSDL.Query("select * from HOADON where idTable="+idTable+" and TrangThaiHoaDon=0;");
 
+            int billID = 0;
+
             // nếu bàn đó đang có bill
             if (data.Rows.Count > 0)
             {
-                Bill bill = new Bill(data.Rows[0]); 
-                return bill.Id;
+                Bill bill = new Bill(data.Rows[0]);
+                billID = bill.Id;
             }
-            return -1;
+            billID = -1;
+            return billID;
         }
 
         public static void InsertBill(int idTable, int idNhanVien)
         {
             string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '', " + idTable + ", " + idNhanVien + ", 0)";
+   
             KetNoiCSDL.NonQuery(sql);
         }
     }

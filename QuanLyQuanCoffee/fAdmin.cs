@@ -215,6 +215,8 @@ namespace QuanLyQuanCoffee
 
             List<Table> tableList = BanAnDAO.GetBanAnList();
 
+            int soluong = 0;
+
             foreach (Table table in tableList)
             {
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
@@ -226,8 +228,10 @@ namespace QuanLyQuanCoffee
                 bt.Click += btBanAn_Click; // Thêm xử lý khi click vào nút 
 
                 flpTable.Controls.Add(bt); // thêm cái button tượng trưng cho bàn ăn vào flow layout panel
+                soluong++;
             }
 
+            label1.Text = "Số lượng bàn ăn: " + soluong;
         }
         void btBanAn_Click(object sender, EventArgs e)
         {
@@ -246,9 +250,14 @@ namespace QuanLyQuanCoffee
             DisplayTable();
             tbTableName.Text = "";
         }
+
         private void btXoaBan_Click(object sender, EventArgs e)
         {
-            //TableBUS.XoaBanAn();
+            if (tbTableName.Text != "")
+                TableBUS.XoaBanAn(tbTableName.Text);
+            else
+                MessageBox.Show("Vui lòng chọn một bàn cần xóa");
+            DisplayTable();
         }
 
 
@@ -402,15 +411,7 @@ namespace QuanLyQuanCoffee
             DisplayTTNhanVien();
         }
         
-        //Employee emp = new Employee();
-        //emp.TenNhanVien = tbTenNV.Text;
-        //emp.NgaySinh = dtNgaySinh.Value;
-        //emp.DiaChi = tbDiachi.Text;
-        //emp.Sdt = tbSDT.Text;
-        //emp.IdChucVu = (int)cbChucVu.SelectedValue;
-
-        //EmployeeBUS.SuaNhanVien(emp);
-        //dtgvNhanVien.ClearSelection();
+        
 
 
     }

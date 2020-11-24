@@ -199,14 +199,21 @@ Select TenNguoiDung from TAIKHOAN where TenNguoiDung= 'Admin' and MatKhau = '1'
 
 Select loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK and TenNguoiDung = 'Admin'
 
-insert into HOADON
+insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '',3, 1, 0) 
 
-select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
+select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 2
 
 select tk.TenNguoiDung, tk.TenHienThi, loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK
 
-use QLCoffee
-select * from HOADON where idTable=1 and TrangThaiHoaDon=0;
+
+select * from BANAN
+
+update BANAN set TrangThaiBan = '0' where id = '2'
+select * from HOADON where TrangThaiHoaDon=0;
+select * from HOADON where idTable=4 and TrangThaiHoaDon=0;
+select * from CHITIETHOADON
+select * from MONAN
+insert into CHITIETHOADON(idHoaDon, idMonAn, SoLuong) values ('3', '7', 3)
 
 Insert into CHUCVU(TenChucVu, Luong)values(N'Quản lý', 20000)
 Insert into NHANVIEN(TenNhanVien, NgaySinh, DiaChi,Sdt, TenTaiKhoan, idChucVu)values (N'Tao là Admin', '02/02/1956', N'Trên mặt đất dưới mặt trời', '0333333333', 'Admin', 1) 
@@ -221,7 +228,7 @@ select TenNhanVien, NgaySinh, TenChucVu, Luong from NHANVIEN nv, CHUCVU cv where
 
 use QLCoffee
 select * from MONAN
-delete from MONAN where id = '18'
+delete from MONAN where id = '2'
 update MONAN set TenMon = N'Yến cute', idLoaiMon = '1', GiaTien = '40000' where id = '19'
 
 delete from LOAIMON where id = '7'
