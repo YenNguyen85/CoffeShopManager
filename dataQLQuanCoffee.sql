@@ -233,3 +233,19 @@ update MONAN set TenMon = N'Yến cute', idLoaiMon = '1', GiaTien = '40000' wher
 
 delete from LOAIMON where id = '7'
 update LOAIMON set TenLoai = 'Cà dề' where id = '7'
+
+use QLCoffee
+select * from CHITIETHOADON
+
+
+
+-- Tăng số lượng của món ăn thuộc bill nếu món ăn đó đã xuất hiện trong bill
+update CHITIETHOADON set SoLuong = SoLuong + 1 where idHoaDon = '22' and idMonAn = '9'
+
+-- câu truy vấn tìm id hóa đơn của bàn ăn hiện tại
+select * from HOADON where idTable= 3 and TrangThaiHoaDon=0;
+
+-- reset các hóa đơn
+update HOADON set TrangThaiHoaDon = 1 where TrangThaiHoaDon = 0
+-- reset các bàn ăn
+update BANAN set TrangThaiBan = 0 where TrangThaiBan = 1

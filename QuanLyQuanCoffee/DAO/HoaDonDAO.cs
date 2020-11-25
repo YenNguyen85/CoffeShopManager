@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyQuanCoffee.DAO
 {
@@ -15,18 +16,16 @@ namespace QuanLyQuanCoffee.DAO
         // Thất bại : -1
         public static int GetUnCheckBillIDByTableID(int idTable)
         {
-            DataTable data = KetNoiCSDL.Query("select * from HOADON where idTable="+idTable+" and TrangThaiHoaDon=0;");
+            string sql = "select * from HOADON where idTable = "+idTable+" and TrangThaiHoaDon=0";
+            DataTable data = KetNoiCSDL.Query(sql);
 
-            int billID = 0;
-
-            // nếu bàn đó đang có bill
-            if (data.Rows.Count > 0)
+            if(data.Rows.Count > 0)
             {
-                Bill bill = new Bill(data.Rows[0]);
-                billID = bill.Id;
+                MessageBox.Show(data.Rows.Count.ToString());
+
+                return Convert.ToInt32(data.Rows[0]["id"].ToString());
             }
-            billID = -1;
-            return billID;
+            return -1;
         }
 
         public static void InsertBill(int idTable, int idNhanVien)

@@ -28,6 +28,10 @@ namespace QuanLyQuanCoffee
             DisplayCategory();
             tbDisplayName.Text = fLogin.TenNguoiDung;
             DisplayTable();
+
+            // ẩn các nút quan trọng
+            btAddFood.Enabled = false;
+            btDeleteFood.Enabled = false;
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,34 +110,66 @@ namespace QuanLyQuanCoffee
             
 
             ShowBill(idBanAn);
-        }
 
-        private void btAddFood_Click(object sender, EventArgs e)
-        {
-            int idTable = Convert.ToInt32(lvBill.Tag.ToString()); // 
-            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
-            int idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idTable); // Lấy id bill của bàn ăn hiện tại, nếu bàn đang trống có thì trả về -1
-            int idFood = (int)cbFood.SelectedValue;//(cbFood.SelectedItem as Food).Id;
-            int count = (int)numFoodCount.Value;
+            int idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // Lấy id hóa đơn của bàn ăn hiện tại 
+            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung); // Lấy id người đăng nhập
 
-            if(idBill == -1) // Bàn chưa có hóa đơn
+            if (idBill == -1) // nếu bàn đang trống
             {
-                HoaDonDAO.InsertBill(idTable, idNhanVien); // Thêm hóa đơn vô
-                BanAnDAO.ChangeTableStatus(idTable.ToString(), "1");
-
-                MessageBox.Show(HoaDonDAO.GetUnCheckBillIDByTableID(idTable).ToString());
-                
-                CTHDDAO.Insert(new DTO.CTHD(HoaDonDAO.GetUnCheckBillIDByTableID(idTable), Convert.ToInt32(cbFood.SelectedValue.ToString()), Convert.ToInt32(numFoodCount.Value)));// Thêm món vừa chọn vào chi tiết hóa đơn
-
-                DisplayTable();
+                DialogResult dialog = MessageBox.Show("Bạn có muốn thêm bill cho bàn ăn này?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if(dialog == DialogResult.OK)
+                {
+                    HoaDonDAO.InsertBill(idBanAn, idNhanVien); // Thêm hóa đơn trống
+                    BanAnDAO.ChangeTableStatus(idBanAn.ToString(), "1"); // thay đổi status của bàn thành đang có khách
+                    btAddFood.Enabled = true; // enable nút thêm
+                    DisplayTable();
+                }
             }
             else
             {
-                MessageBox.Show("Bàn ăn đã có người");
+                btAddFood.Enabled = true; // enable nút thêm, 
+                // không để ở ngoài vì: loại trừ trường hợp click vào bàn đang trống mà không có bill => thêm bị lỗi
             }
-            
-            ShowBill(Convert.ToInt32(lvBill.Tag.ToString()));
 
+        }
+
+        // Nút Thêm món
+        private void btAddFood_Click(object sender, EventArgs e)
+        {
+            int idBanAn = -1;
+            int idMonAn = -1;
+            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
+            int idHoaDonHienTai = -1;
+
+            if (lvBill.Tag != null)
+            {
+                idBanAn = Convert.ToInt32(lvBill.Tag.ToString()); // Lấy id của bàn ăn vừa chọn
+                idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // Lấy id hóa đơn hiện tại của bàn ăn;
+                MessageBox.Show(idHoaDonHienTai.ToString());
+            }
+            else
+                MessageBox.Show("Vui lòng chọn bàn ăn cần thêm hóa đơn");
+
+            if (cbFood.SelectedValue != null)
+                idMonAn = (int)cbFood.SelectedValue;// lấy id món ăn
+
+            int soluong = (int)numFoodCount.Value > 0 ? (int)numFoodCount.Value : 1; // số lượng món chọn phải từ 1 trở lên
+
+            if(idBanAn > 0 && idMonAn > 0 && idNhanVien > 0 && idHoaDonHienTai > 0)
+            {
+                DataTable cthd = CTHDDAO.GetBillItem(new DTO.CTHD(idHoaDonHienTai, idMonAn, soluong)); 
+
+                if (cthd.Rows.Count > 0)
+                    CTHDDAO.Update(new CTHD(idHoaDonHienTai, idMonAn, soluong)); // update nếu đã có món ăn tồn tại trong Bill
+                else
+                    CTHDDAO.Insert(new CTHD(idHoaDonHienTai, idMonAn, soluong)); // Insert nếu chưa có món ăn tồn tại trong bill
+
+                ShowBill(Convert.ToInt32(lvBill.Tag.ToString())); // hiển thị thông tin bill đang trên bàn
+            }
+            else
+            {
+                MessageBox.Show("Thêm vào bill không thành công");
+            }
         }
 
         // Hiển thị bill hiện tại của bàn khi nhấp vào bàn đó
