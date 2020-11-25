@@ -155,6 +155,7 @@
             this.btDeleteFood.TabIndex = 8;
             this.btDeleteFood.Text = "Xóa món";
             this.btDeleteFood.UseVisualStyleBackColor = true;
+            this.btDeleteFood.Click += new System.EventHandler(this.btDeleteFood_Click);
             // 
             // cbCategory
             // 
@@ -211,6 +212,7 @@
             this.btCheckOut.TabIndex = 2;
             this.btCheckOut.Text = "Thanh toán";
             this.btCheckOut.UseVisualStyleBackColor = true;
+            this.btCheckOut.Click += new System.EventHandler(this.btCheckOut_Click);
             // 
             // panel3
             // 

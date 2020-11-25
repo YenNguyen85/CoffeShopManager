@@ -235,9 +235,15 @@ delete from LOAIMON where id = '7'
 update LOAIMON set TenLoai = 'Cà dề' where id = '7'
 
 use QLCoffee
-select * from CHITIETHOADON
+
+select sum(cthd.SoLuong*GiaTien) from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
+
+-- Lấy danh sách bill đang trong bàn
+select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
 
 
+-- Kiểm tra món ăn đó có trong bill hay chưa
+select * from CHITIETHOADON where idHoaDon = '22' and idMonAn = '9'
 
 -- Tăng số lượng của món ăn thuộc bill nếu món ăn đó đã xuất hiện trong bill
 update CHITIETHOADON set SoLuong = SoLuong + 1 where idHoaDon = '22' and idMonAn = '9'

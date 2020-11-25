@@ -22,5 +22,11 @@ namespace QuanLyQuanCoffee.DAO
             }
             return menus;
         }
+
+        public static DataTable GetDataReport(string id)
+        {
+            string sql = "select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= " + id;
+            return KetNoiCSDL.Query(sql);
+        }
     }
 }

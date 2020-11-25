@@ -21,8 +21,6 @@ namespace QuanLyQuanCoffee.DAO
 
             if(data.Rows.Count > 0)
             {
-                MessageBox.Show(data.Rows.Count.ToString());
-
                 return Convert.ToInt32(data.Rows[0]["id"].ToString());
             }
             return -1;
@@ -31,7 +29,12 @@ namespace QuanLyQuanCoffee.DAO
         public static void InsertBill(int idTable, int idNhanVien)
         {
             string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '', " + idTable + ", " + idNhanVien + ", 0)";
-   
+            KetNoiCSDL.NonQuery(sql);
+        }
+
+        public static void UpdateStatusHoaDon(string idTable, string bit)
+        {
+            string sql = "update HOADON set TrangThaiHoaDon = " + bit + " where id = " + idTable;
             KetNoiCSDL.NonQuery(sql);
         }
     }

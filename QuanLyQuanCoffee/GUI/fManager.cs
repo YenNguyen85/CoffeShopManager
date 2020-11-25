@@ -32,6 +32,7 @@ namespace QuanLyQuanCoffee
             // ẩn các nút quan trọng
             btAddFood.Enabled = false;
             btDeleteFood.Enabled = false;
+            btCheckOut.Enabled = false;
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,6 +130,8 @@ namespace QuanLyQuanCoffee
             {
                 btAddFood.Enabled = true; // enable nút thêm, 
                 // không để ở ngoài vì: loại trừ trường hợp click vào bàn đang trống mà không có bill => thêm bị lỗi
+
+                btCheckOut.Enabled = true;
             }
 
         }
@@ -141,17 +144,19 @@ namespace QuanLyQuanCoffee
             int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
             int idHoaDonHienTai = -1;
 
-            if (lvBill.Tag != null)
+            if (lvBill.Tag != null) // nếu đã chọn bàn
             {
                 idBanAn = Convert.ToInt32(lvBill.Tag.ToString()); // Lấy id của bàn ăn vừa chọn
                 idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // Lấy id hóa đơn hiện tại của bàn ăn;
-                MessageBox.Show(idHoaDonHienTai.ToString());
             }
             else
                 MessageBox.Show("Vui lòng chọn bàn ăn cần thêm hóa đơn");
 
+
             if (cbFood.SelectedValue != null)
                 idMonAn = (int)cbFood.SelectedValue;// lấy id món ăn
+            else
+                MessageBox.Show("Vui lòng chọn món ăn cần thêm");
 
             int soluong = (int)numFoodCount.Value > 0 ? (int)numFoodCount.Value : 1; // số lượng món chọn phải từ 1 trở lên
 
@@ -170,13 +175,14 @@ namespace QuanLyQuanCoffee
             {
                 MessageBox.Show("Thêm vào bill không thành công");
             }
+            
         }
 
         // Hiển thị bill hiện tại của bàn khi nhấp vào bàn đó
-        private void ShowBill(int id)
+        private void ShowBill(int idTable)
         {
             lvBill.Items.Clear();
-            List<DTO.Menu> menus = MenuDAO.GetMenuListByTable(id);
+            List<DTO.Menu> menus = MenuDAO.GetMenuListByTable(idTable);
 
             // Dùng hiển thị tổng tiền cả bill
             double totalPrice = 0;
@@ -192,6 +198,60 @@ namespace QuanLyQuanCoffee
 
             //Format tiền thành VND
             tbTotalPrice.Text = totalPrice.ToString("c", new CultureInfo("vi-VN"));
+        }
+
+        private void btCheckOut_Click(object sender, EventArgs e)
+        {
+            btCheckOut.Enabled = false;
+            DataTable reportInfo = new DataTable();
+
+            if (lvBill.Tag != null)
+            {
+                string idBanAn = lvBill.Tag.ToString();
+                reportInfo = MenuDAO.GetDataReport(idBanAn);
+
+                int idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(Convert.ToInt32(idBanAn)); // Lấy id hóa đơn hiện tại của bàn ăn;
+                HoaDonDAO.UpdateStatusHoaDon(idHoaDonHienTai.ToString(), "1"); // Cập nhật status hóa đơn thành 1 (Đã thanh toán)
+                // Lưu ý cập nhật hóa đơn trước vì nếu cập nhật bàn ăn trước sẽ không lấy được bill id của bàn ăn hiện tại
+                BanAnDAO.ChangeTableStatus(idBanAn, "0"); // thay đổi status bàn ăn: trống
+
+                DisplayTable();
+                ShowBill(Convert.ToInt32(idBanAn));
+            }
+            else
+                MessageBox.Show("Vui lòng chọn 1 bàn để thanh toán");
+
+            // tạo report
+            GUI.Report.MenuBill report = new GUI.Report.MenuBill();
+            report.SetDataSource(reportInfo);
+            // Tiêm phụ thuộc data report
+            GUI.Report.ReportViewer reportViewer = new GUI.Report.ReportViewer(report);
+
+            this.Hide();
+            reportViewer.Show();
+        }
+
+        private void btDeleteFood_Click(object sender, EventArgs e)
+        {
+            // chọn tên món cần xóa 
+            // nếu có tồn tại trong bill thì mới xóa nếu không thì nói món không tồn tại
+            // nhớ hỏi xóa hay không
+            // so sánh số lượng món với số lượng nhập vào
+            // nếu số lượng món > nhập vô thì xóa bt || < xóa khỏi bill luôn 
+
+            //int soluong = lvBill.SelectedItems.Count;
+
+            //if (lvBill.Tag != null)
+            //{
+            //    if (soluong > 0)
+            //    {
+
+            //    }
+            //}
+            //else
+            //    MessageBox.Show("Vui lòng chọn món cần xóa");
+               
+
         }
     }
 }
