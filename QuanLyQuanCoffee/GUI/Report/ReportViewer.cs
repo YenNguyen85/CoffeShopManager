@@ -23,7 +23,7 @@ namespace QuanLyQuanCoffee.GUI.Report
         {
             InitializeComponent();
             this.menuBill = menuBill;
-            MessageBox.Show(this.menuBill.Rows[0].ToString());
+            MessageBox.Show("Đang xuất bill");
         }
 
         private void ReportViewer_Load(object sender, EventArgs e)
@@ -32,9 +32,9 @@ namespace QuanLyQuanCoffee.GUI.Report
 
             //DataTable dt = new DataTable();
             //dt = DAO.MenuDAO.GetDataReport("1");
-            //MenuBill cry = new MenuBill();
-            //cry.SetDataSource(dt);
-            //crystalReportViewer1.ReportSource = cry;
+            //MenuBill reportData = new MenuBill();
+            //reportData.SetDataSource(dt);
+            //crystalReportViewer1.ReportSource = reportData;
 
         }
     }

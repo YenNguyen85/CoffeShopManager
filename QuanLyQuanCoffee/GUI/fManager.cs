@@ -92,22 +92,54 @@ namespace QuanLyQuanCoffee
             foreach(Table table in tableList)
             {
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
+                bt.BackColor = SystemColors.Control;
+                //string status = "";
 
+                //if(table.Trangthaiban == "True")
+                //{
+                //    bt.BackColor = Color.Orange;
+                //    bt.ForeColor = Color.White;
+                //    status = "Có người";
+                //}
+
+                //if(table.Trangthaiban == "False")
+                //{
+                //    bt.BackColor = Color.White;
+                //    bt.ForeColor = Color.Black;
+                //    status = "Trống";
+                //}
+
+                //bt.Text = "Bàn " + table.Id + "\n" + status;
                 bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "True" ? "Có người" : "Trống");
-
                 bt.Tag = table.Id.ToString(); // lưu lại thông tin id bàn ăn vào tag của button
 
                 bt.Click += btBanAn_Click; // Thêm xử lý khi click vào nút 
+                bt.Enter += btBanAn_Enter; // thêm xử lý sự kiện khi chọn nút bt
+                bt.Leave += btBanAn_Leave; // thêm xử lý sự kiện khi ra khỏi nút bt
                 
                 flpTable.Controls.Add(bt); // thêm cái button tượng trưng cho bàn ăn vào flow layout panel
             }
 
         }
+        
+        void btBanAn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).BackColor = ColorTranslator.FromHtml("#2f54eb");
+            (sender as Button).ForeColor = Color.White;
+        }
+
+        void btBanAn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).BackColor = SystemColors.Control;
+            (sender as Button).ForeColor = Color.Black;
+        }
+
 
         void btBanAn_Click(object sender, EventArgs e)
         {
             int idBanAn = Convert.ToInt32((sender as Button).Tag.ToString());
             lvBill.Tag = (sender as Button).Tag;
+            
             
 
             ShowBill(idBanAn);
@@ -123,12 +155,19 @@ namespace QuanLyQuanCoffee
                     HoaDonDAO.InsertBill(idBanAn, idNhanVien); // Thêm hóa đơn trống
                     BanAnDAO.ChangeTableStatus(idBanAn.ToString(), "1"); // thay đổi status của bàn thành đang có khách
                     btAddFood.Enabled = true; // enable nút thêm
+                    btDeleteFood.Enabled = true; // enable nút delete
                     DisplayTable();
+                }
+                else
+                {
+                    btAddFood.Enabled = false;
+                    btDeleteFood.Enabled = false;
                 }
             }
             else
             {
-                btAddFood.Enabled = true; // enable nút thêm, 
+                btAddFood.Enabled = true;
+                btDeleteFood.Enabled = true;
                 // không để ở ngoài vì: loại trừ trường hợp click vào bàn đang trống mà không có bill => thêm bị lỗi
 
                 btCheckOut.Enabled = true;
@@ -203,32 +242,35 @@ namespace QuanLyQuanCoffee
         private void btCheckOut_Click(object sender, EventArgs e)
         {
             btCheckOut.Enabled = false;
+
             DataTable reportInfo = new DataTable();
 
             if (lvBill.Tag != null)
             {
                 string idBanAn = lvBill.Tag.ToString();
-                reportInfo = MenuDAO.GetDataReport(idBanAn);
-
                 int idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(Convert.ToInt32(idBanAn)); // Lấy id hóa đơn hiện tại của bàn ăn;
+                reportInfo = MenuDAO.GetDataReport(idHoaDonHienTai.ToString()); // lấy dữ liệu report từ id hóa đơn
                 HoaDonDAO.UpdateStatusHoaDon(idHoaDonHienTai.ToString(), "1"); // Cập nhật status hóa đơn thành 1 (Đã thanh toán)
                 // Lưu ý cập nhật hóa đơn trước vì nếu cập nhật bàn ăn trước sẽ không lấy được bill id của bàn ăn hiện tại
                 BanAnDAO.ChangeTableStatus(idBanAn, "0"); // thay đổi status bàn ăn: trống
 
                 DisplayTable();
                 ShowBill(Convert.ToInt32(idBanAn));
+
+                // tạo report
+                GUI.Report.MenuBill report = new GUI.Report.MenuBill();
+                report.SetDataSource(reportInfo);
+                // Tiêm phụ thuộc data report
+                GUI.Report.ReportViewer reportViewer = new GUI.Report.ReportViewer(report);
+                this.Hide();
+                reportViewer.Show();
             }
             else
                 MessageBox.Show("Vui lòng chọn 1 bàn để thanh toán");
 
-            // tạo report
-            GUI.Report.MenuBill report = new GUI.Report.MenuBill();
-            report.SetDataSource(reportInfo);
-            // Tiêm phụ thuộc data report
-            GUI.Report.ReportViewer reportViewer = new GUI.Report.ReportViewer(report);
+            
 
-            this.Hide();
-            reportViewer.Show();
+            
         }
 
         private void btDeleteFood_Click(object sender, EventArgs e)
@@ -253,5 +295,7 @@ namespace QuanLyQuanCoffee
                
 
         }
+
+        
     }
 }

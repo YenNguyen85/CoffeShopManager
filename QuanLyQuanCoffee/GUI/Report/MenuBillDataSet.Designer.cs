@@ -20,17 +20,17 @@ namespace QuanLyQuanCoffee.GUI.Report {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("BillDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("MenuBillDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class BillDataSet : global::System.Data.DataSet {
+    public partial class MenuBillDataSet : global::System.Data.DataSet {
         
-        private MenuDataTable tableMenu;
+        private BillTableDataTable tableBillTable;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public BillDataSet() {
+        public MenuBillDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected BillDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected MenuBillDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace QuanLyQuanCoffee.GUI.Report {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Menu"] != null)) {
-                    base.Tables.Add(new MenuDataTable(ds.Tables["Menu"]));
+                if ((ds.Tables["BillTable"] != null)) {
+                    base.Tables.Add(new BillTableDataTable(ds.Tables["BillTable"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace QuanLyQuanCoffee.GUI.Report {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public MenuDataTable Menu {
+        public BillTableDataTable BillTable {
             get {
-                return this.tableMenu;
+                return this.tableBillTable;
             }
         }
         
@@ -127,7 +127,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            BillDataSet cln = ((BillDataSet)(base.Clone()));
+            MenuBillDataSet cln = ((MenuBillDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace QuanLyQuanCoffee.GUI.Report {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Menu"] != null)) {
-                    base.Tables.Add(new MenuDataTable(ds.Tables["Menu"]));
+                if ((ds.Tables["BillTable"] != null)) {
+                    base.Tables.Add(new BillTableDataTable(ds.Tables["BillTable"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace QuanLyQuanCoffee.GUI.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableMenu = ((MenuDataTable)(base.Tables["Menu"]));
+            this.tableBillTable = ((BillTableDataTable)(base.Tables["BillTable"]));
             if ((initTable == true)) {
-                if ((this.tableMenu != null)) {
-                    this.tableMenu.InitVars();
+                if ((this.tableBillTable != null)) {
+                    this.tableBillTable.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace QuanLyQuanCoffee.GUI.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "BillDataSet";
+            this.DataSetName = "MenuBillDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/BillDataSet.xsd";
+            this.Namespace = "http://tempuri.org/MenuBillDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableMenu = new MenuDataTable();
-            base.Tables.Add(this.tableMenu);
+            this.tableBillTable = new BillTableDataTable();
+            base.Tables.Add(this.tableBillTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeMenu() {
+        private bool ShouldSerializeBillTable() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            BillDataSet ds = new BillDataSet();
+            MenuBillDataSet ds = new MenuBillDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,27 +270,33 @@ namespace QuanLyQuanCoffee.GUI.Report {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void MenuRowChangeEventHandler(object sender, MenuRowChangeEvent e);
+        public delegate void BillTableRowChangeEventHandler(object sender, BillTableRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class MenuDataTable : global::System.Data.TypedTableBase<MenuRow> {
+        public partial class BillTableDataTable : global::System.Data.TypedTableBase<BillTableRow> {
             
             private global::System.Data.DataColumn columnTenMon;
             
-            private global::System.Data.DataColumn columnSoluong;
+            private global::System.Data.DataColumn columnSoLuong;
             
             private global::System.Data.DataColumn columnGiaTien;
             
             private global::System.Data.DataColumn columnTongTien;
             
+            private global::System.Data.DataColumn columnTenBan;
+            
+            private global::System.Data.DataColumn columnThoiGianVao;
+            
+            private global::System.Data.DataColumn columnThoiGianRa;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuDataTable() {
-                this.TableName = "Menu";
+            public BillTableDataTable() {
+                this.TableName = "BillTable";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +304,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal MenuDataTable(global::System.Data.DataTable table) {
+            internal BillTableDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,7 +321,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected MenuDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected BillTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -330,9 +336,9 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SoluongColumn {
+            public global::System.Data.DataColumn SoLuongColumn {
                 get {
-                    return this.columnSoluong;
+                    return this.columnSoLuong;
                 }
             }
             
@@ -354,6 +360,30 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TenBanColumn {
+                get {
+                    return this.columnTenBan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ThoiGianVaoColumn {
+                get {
+                    return this.columnThoiGianVao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ThoiGianRaColumn {
+                get {
+                    return this.columnThoiGianRa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -363,48 +393,51 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuRow this[int index] {
+            public BillTableRow this[int index] {
                 get {
-                    return ((MenuRow)(this.Rows[index]));
+                    return ((BillTableRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event MenuRowChangeEventHandler MenuRowChanging;
+            public event BillTableRowChangeEventHandler BillTableRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event MenuRowChangeEventHandler MenuRowChanged;
+            public event BillTableRowChangeEventHandler BillTableRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event MenuRowChangeEventHandler MenuRowDeleting;
+            public event BillTableRowChangeEventHandler BillTableRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event MenuRowChangeEventHandler MenuRowDeleted;
+            public event BillTableRowChangeEventHandler BillTableRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddMenuRow(MenuRow row) {
+            public void AddBillTableRow(BillTableRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuRow AddMenuRow(string TenMon, string Soluong, string GiaTien, string TongTien) {
-                MenuRow rowMenuRow = ((MenuRow)(this.NewRow()));
+            public BillTableRow AddBillTableRow(string TenMon, string SoLuong, string GiaTien, string TongTien, string TenBan, string ThoiGianVao, string ThoiGianRa) {
+                BillTableRow rowBillTableRow = ((BillTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TenMon,
-                        Soluong,
+                        SoLuong,
                         GiaTien,
-                        TongTien};
-                rowMenuRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowMenuRow);
-                return rowMenuRow;
+                        TongTien,
+                        TenBan,
+                        ThoiGianVao,
+                        ThoiGianRa};
+                rowBillTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBillTableRow);
+                return rowBillTableRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                MenuDataTable cln = ((MenuDataTable)(base.Clone()));
+                BillTableDataTable cln = ((BillTableDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -412,16 +445,19 @@ namespace QuanLyQuanCoffee.GUI.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new MenuDataTable();
+                return new BillTableDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnTenMon = base.Columns["TenMon"];
-                this.columnSoluong = base.Columns["Soluong"];
+                this.columnSoLuong = base.Columns["SoLuong"];
                 this.columnGiaTien = base.Columns["GiaTien"];
                 this.columnTongTien = base.Columns["TongTien"];
+                this.columnTenBan = base.Columns["TenBan"];
+                this.columnThoiGianVao = base.Columns["ThoiGianVao"];
+                this.columnThoiGianRa = base.Columns["ThoiGianRa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -429,38 +465,44 @@ namespace QuanLyQuanCoffee.GUI.Report {
             private void InitClass() {
                 this.columnTenMon = new global::System.Data.DataColumn("TenMon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTenMon);
-                this.columnSoluong = new global::System.Data.DataColumn("Soluong", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSoluong);
+                this.columnSoLuong = new global::System.Data.DataColumn("SoLuong", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSoLuong);
                 this.columnGiaTien = new global::System.Data.DataColumn("GiaTien", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGiaTien);
                 this.columnTongTien = new global::System.Data.DataColumn("TongTien", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongTien);
+                this.columnTenBan = new global::System.Data.DataColumn("TenBan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTenBan);
+                this.columnThoiGianVao = new global::System.Data.DataColumn("ThoiGianVao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnThoiGianVao);
+                this.columnThoiGianRa = new global::System.Data.DataColumn("ThoiGianRa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnThoiGianRa);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuRow NewMenuRow() {
-                return ((MenuRow)(this.NewRow()));
+            public BillTableRow NewBillTableRow() {
+                return ((BillTableRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new MenuRow(builder);
+                return new BillTableRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(MenuRow);
+                return typeof(BillTableRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.MenuRowChanged != null)) {
-                    this.MenuRowChanged(this, new MenuRowChangeEvent(((MenuRow)(e.Row)), e.Action));
+                if ((this.BillTableRowChanged != null)) {
+                    this.BillTableRowChanged(this, new BillTableRowChangeEvent(((BillTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -468,8 +510,8 @@ namespace QuanLyQuanCoffee.GUI.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.MenuRowChanging != null)) {
-                    this.MenuRowChanging(this, new MenuRowChangeEvent(((MenuRow)(e.Row)), e.Action));
+                if ((this.BillTableRowChanging != null)) {
+                    this.BillTableRowChanging(this, new BillTableRowChangeEvent(((BillTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -477,8 +519,8 @@ namespace QuanLyQuanCoffee.GUI.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.MenuRowDeleted != null)) {
-                    this.MenuRowDeleted(this, new MenuRowChangeEvent(((MenuRow)(e.Row)), e.Action));
+                if ((this.BillTableRowDeleted != null)) {
+                    this.BillTableRowDeleted(this, new BillTableRowChangeEvent(((BillTableRow)(e.Row)), e.Action));
                 }
             }
             
@@ -486,14 +528,14 @@ namespace QuanLyQuanCoffee.GUI.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.MenuRowDeleting != null)) {
-                    this.MenuRowDeleting(this, new MenuRowChangeEvent(((MenuRow)(e.Row)), e.Action));
+                if ((this.BillTableRowDeleting != null)) {
+                    this.BillTableRowDeleting(this, new BillTableRowChangeEvent(((BillTableRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveMenuRow(MenuRow row) {
+            public void RemoveBillTableRow(BillTableRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -502,7 +544,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                BillDataSet ds = new BillDataSet();
+                MenuBillDataSet ds = new MenuBillDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -520,7 +562,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "MenuDataTable";
+                attribute2.FixedValue = "BillTableDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -564,15 +606,15 @@ namespace QuanLyQuanCoffee.GUI.Report {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class MenuRow : global::System.Data.DataRow {
+        public partial class BillTableRow : global::System.Data.DataRow {
             
-            private MenuDataTable tableMenu;
+            private BillTableDataTable tableBillTable;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal MenuRow(global::System.Data.DataRowBuilder rb) : 
+            internal BillTableRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableMenu = ((MenuDataTable)(this.Table));
+                this.tableBillTable = ((BillTableDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -580,30 +622,30 @@ namespace QuanLyQuanCoffee.GUI.Report {
             public string TenMon {
                 get {
                     try {
-                        return ((string)(this[this.tableMenu.TenMonColumn]));
+                        return ((string)(this[this.tableBillTable.TenMonColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TenMon\' in table \'Menu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TenMon\' in table \'BillTable\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMenu.TenMonColumn] = value;
+                    this[this.tableBillTable.TenMonColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Soluong {
+            public string SoLuong {
                 get {
                     try {
-                        return ((string)(this[this.tableMenu.SoluongColumn]));
+                        return ((string)(this[this.tableBillTable.SoLuongColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Soluong\' in table \'Menu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong\' in table \'BillTable\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMenu.SoluongColumn] = value;
+                    this[this.tableBillTable.SoLuongColumn] = value;
                 }
             }
             
@@ -612,14 +654,14 @@ namespace QuanLyQuanCoffee.GUI.Report {
             public string GiaTien {
                 get {
                     try {
-                        return ((string)(this[this.tableMenu.GiaTienColumn]));
+                        return ((string)(this[this.tableBillTable.GiaTienColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GiaTien\' in table \'Menu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GiaTien\' in table \'BillTable\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMenu.GiaTienColumn] = value;
+                    this[this.tableBillTable.GiaTienColumn] = value;
                 }
             }
             
@@ -628,63 +670,147 @@ namespace QuanLyQuanCoffee.GUI.Report {
             public string TongTien {
                 get {
                     try {
-                        return ((string)(this[this.tableMenu.TongTienColumn]));
+                        return ((string)(this[this.tableBillTable.TongTienColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TongTien\' in table \'Menu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TongTien\' in table \'BillTable\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMenu.TongTienColumn] = value;
+                    this[this.tableBillTable.TongTienColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TenBan {
+                get {
+                    try {
+                        return ((string)(this[this.tableBillTable.TenBanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TenBan\' in table \'BillTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBillTable.TenBanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ThoiGianVao {
+                get {
+                    try {
+                        return ((string)(this[this.tableBillTable.ThoiGianVaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ThoiGianVao\' in table \'BillTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBillTable.ThoiGianVaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ThoiGianRa {
+                get {
+                    try {
+                        return ((string)(this[this.tableBillTable.ThoiGianRaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ThoiGianRa\' in table \'BillTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBillTable.ThoiGianRaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTenMonNull() {
-                return this.IsNull(this.tableMenu.TenMonColumn);
+                return this.IsNull(this.tableBillTable.TenMonColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTenMonNull() {
-                this[this.tableMenu.TenMonColumn] = global::System.Convert.DBNull;
+                this[this.tableBillTable.TenMonColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSoluongNull() {
-                return this.IsNull(this.tableMenu.SoluongColumn);
+            public bool IsSoLuongNull() {
+                return this.IsNull(this.tableBillTable.SoLuongColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSoluongNull() {
-                this[this.tableMenu.SoluongColumn] = global::System.Convert.DBNull;
+            public void SetSoLuongNull() {
+                this[this.tableBillTable.SoLuongColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsGiaTienNull() {
-                return this.IsNull(this.tableMenu.GiaTienColumn);
+                return this.IsNull(this.tableBillTable.GiaTienColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetGiaTienNull() {
-                this[this.tableMenu.GiaTienColumn] = global::System.Convert.DBNull;
+                this[this.tableBillTable.GiaTienColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTongTienNull() {
-                return this.IsNull(this.tableMenu.TongTienColumn);
+                return this.IsNull(this.tableBillTable.TongTienColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTongTienNull() {
-                this[this.tableMenu.TongTienColumn] = global::System.Convert.DBNull;
+                this[this.tableBillTable.TongTienColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTenBanNull() {
+                return this.IsNull(this.tableBillTable.TenBanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTenBanNull() {
+                this[this.tableBillTable.TenBanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsThoiGianVaoNull() {
+                return this.IsNull(this.tableBillTable.ThoiGianVaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetThoiGianVaoNull() {
+                this[this.tableBillTable.ThoiGianVaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsThoiGianRaNull() {
+                return this.IsNull(this.tableBillTable.ThoiGianRaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetThoiGianRaNull() {
+                this[this.tableBillTable.ThoiGianRaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -692,22 +818,22 @@ namespace QuanLyQuanCoffee.GUI.Report {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class MenuRowChangeEvent : global::System.EventArgs {
+        public class BillTableRowChangeEvent : global::System.EventArgs {
             
-            private MenuRow eventRow;
+            private BillTableRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuRowChangeEvent(MenuRow row, global::System.Data.DataRowAction action) {
+            public BillTableRowChangeEvent(BillTableRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MenuRow Row {
+            public BillTableRow Row {
                 get {
                     return this.eventRow;
                 }

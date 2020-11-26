@@ -236,19 +236,24 @@ update LOAIMON set TenLoai = 'Cà dề' where id = '7'
 
 use QLCoffee
 
-select sum(cthd.SoLuong*GiaTien) from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
+-- Truy vấn lấy dữ liệu bill hiển thị report (@param HoaDonID)
+select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien, ban.id as TenBan, hd.ThoiGianVao, hd.ThoiGianRa from CHITIETHOADON cthd, HOADON hd, MONAN mon, BANAN ban where hd.idTable = ban.id and cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.id = 25
 
--- Lấy danh sách bill đang trong bàn
+-- sửa status hóa đơn (@param HoaDonStatus, HoaDonID)
+update HOADON set TrangThaiHoaDon = 1 where id = 1
+--
+
+-- Lấy danh sách bill đang trong bàn (@param HoaDonStatus, BanID)
 select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=0 and hd.idTable= 1
 
 
--- Kiểm tra món ăn đó có trong bill hay chưa
+-- Kiểm tra món ăn đó có trong bill hay chưa (@param HoaDonID, MonID)
 select * from CHITIETHOADON where idHoaDon = '22' and idMonAn = '9'
 
--- Tăng số lượng của món ăn thuộc bill nếu món ăn đó đã xuất hiện trong bill
+-- Tăng số lượng của món ăn thuộc bill nếu món ăn đó đã xuất hiện trong bill (@param HoaDonID, MonID)
 update CHITIETHOADON set SoLuong = SoLuong + 1 where idHoaDon = '22' and idMonAn = '9'
 
--- câu truy vấn tìm id hóa đơn của bàn ăn hiện tại
+-- câu truy vấn tìm id hóa đơn của bàn ăn hiện tại (@param BanID, HoaDonStatus)
 select * from HOADON where idTable= 3 and TrangThaiHoaDon=0;
 
 -- reset các hóa đơn

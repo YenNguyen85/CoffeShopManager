@@ -110,16 +110,19 @@
     <Compile Include="GUI\fUpdateEvent.Designer.cs">
       <DependentUpon>fUpdateEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Report\BillDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BillDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Report\MenuBill.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MenuBill.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Report\MenuBillDataSet.cs">
+      <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\MenuBillDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="GUI\Report\ReportViewer.cs">
       <SubType>Form</SubType>
@@ -163,16 +166,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="GUI\Report\BillDataSet.xsc">
-      <DependentUpon>BillDataSet.xsd</DependentUpon>
+    <None Include="GUI\Report\MenuBillDataSet.xsc">
+      <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
     </None>
-    <None Include="GUI\Report\BillDataSet.xsd">
+    <None Include="GUI\Report\MenuBillDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BillDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MenuBillDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="GUI\Report\BillDataSet.xss">
-      <DependentUpon>BillDataSet.xsd</DependentUpon>
+    <None Include="GUI\Report\MenuBillDataSet.xss">
+      <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
