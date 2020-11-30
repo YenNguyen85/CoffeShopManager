@@ -57,6 +57,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.timeKeepingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbDisplayName = new System.Windows.Forms.Label();
+            this.tbSelectedTable = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numFoodCount)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDeleteFood)).BeginInit();
@@ -138,6 +140,11 @@
             // numDeleteFood
             // 
             this.numDeleteFood.Location = new System.Drawing.Point(579, 20);
+            this.numDeleteFood.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numDeleteFood.Name = "numDeleteFood";
             this.numDeleteFood.Size = new System.Drawing.Size(48, 19);
             this.numDeleteFood.TabIndex = 9;
@@ -281,6 +288,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.lvBill.Enabled = false;
             this.lvBill.FullRowSelect = true;
             this.lvBill.GridLines = true;
             this.lvBill.HideSelection = false;
@@ -338,11 +346,30 @@
             this.tbDisplayName.TabIndex = 8;
             this.tbDisplayName.Text = "Tên hiển thị";
             // 
+            // tbSelectedTable
+            // 
+            this.tbSelectedTable.Enabled = false;
+            this.tbSelectedTable.Location = new System.Drawing.Point(726, 477);
+            this.tbSelectedTable.Name = "tbSelectedTable";
+            this.tbSelectedTable.Size = new System.Drawing.Size(100, 19);
+            this.tbSelectedTable.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(607, 479);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Bàn ăn đang chọn:";
+            // 
             // fManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 524);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbSelectedTable);
             this.Controls.Add(this.lvBill);
             this.Controls.Add(this.tbDisplayName);
             this.Controls.Add(this.flpTable);
@@ -397,5 +424,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox tbSelectedTable;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -138,22 +138,22 @@ namespace QuanLyQuanCoffee
         void btBanAn_Click(object sender, EventArgs e)
         {
             int idBanAn = Convert.ToInt32((sender as Button).Tag.ToString());
-            lvBill.Tag = (sender as Button).Tag;
-            
-            
+            tbSelectedTable.Text = idBanAn.ToString(); //  lưu lại id của bàn ăn vào text box
 
             ShowBill(idBanAn);
 
-            int idBill = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // Lấy id hóa đơn của bàn ăn hiện tại 
+            lvBill.Tag = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // lưu id hóa đơn của bàn ăn hiện tại vào lvbill tag
+
             int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung); // Lấy id người đăng nhập
 
-            if (idBill == -1) // nếu bàn đang trống
+            if (lvBill.Tag.ToString() == "-1") // nếu bàn đang trống
             {
                 DialogResult dialog = MessageBox.Show("Bạn có muốn thêm bill cho bàn ăn này?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if(dialog == DialogResult.OK)
                 {
                     HoaDonDAO.InsertBill(idBanAn, idNhanVien); // Thêm hóa đơn trống
                     BanAnDAO.ChangeTableStatus(idBanAn.ToString(), "1"); // thay đổi status của bàn thành đang có khách
+                    lvBill.Tag = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // lưu id của bill vào lvBill tag
                     btAddFood.Enabled = true; // enable nút thêm
                     btDeleteFood.Enabled = true; // enable nút delete
                     DisplayTable();
@@ -183,10 +183,10 @@ namespace QuanLyQuanCoffee
             int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
             int idHoaDonHienTai = -1;
 
-            if (lvBill.Tag != null) // nếu đã chọn bàn
+            if (tbSelectedTable.Text != "") // nếu đã chọn bàn
             {
-                idBanAn = Convert.ToInt32(lvBill.Tag.ToString()); // Lấy id của bàn ăn vừa chọn
-                idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // Lấy id hóa đơn hiện tại của bàn ăn;
+                idBanAn = Convert.ToInt32(tbSelectedTable.Text); // Lấy id của bàn ăn vừa chọn
+                idHoaDonHienTai = Convert.ToInt32(lvBill.Tag); // Lấy id hóa đơn hiện tại của bàn ăn;
             }
             else
                 MessageBox.Show("Vui lòng chọn bàn ăn cần thêm hóa đơn");
@@ -201,18 +201,18 @@ namespace QuanLyQuanCoffee
 
             if(idBanAn > 0 && idMonAn > 0 && idNhanVien > 0 && idHoaDonHienTai > 0)
             {
-                DataTable cthd = CTHDDAO.GetBillItem(new DTO.CTHD(idHoaDonHienTai, idMonAn, soluong)); 
+                DataTable cthd = CTHDDAO.GetBillItem(new DTO.CTHD(idHoaDonHienTai, idMonAn, soluong)); // xuất ra bill item nếu nó có tồn tại trong bill
 
                 if (cthd.Rows.Count > 0)
                     CTHDDAO.Update(new CTHD(idHoaDonHienTai, idMonAn, soluong)); // update nếu đã có món ăn tồn tại trong Bill
                 else
                     CTHDDAO.Insert(new CTHD(idHoaDonHienTai, idMonAn, soluong)); // Insert nếu chưa có món ăn tồn tại trong bill
 
-                ShowBill(Convert.ToInt32(lvBill.Tag.ToString())); // hiển thị thông tin bill đang trên bàn
+                ShowBill(Convert.ToInt32(tbSelectedTable.Text)); // hiển thị thông tin bill đang trên bàn
             }
             else
             {
-                MessageBox.Show("Thêm vào bill không thành công");
+                MessageBox.Show("Thêm vào bill không thành công: ");
             }
             
         }
@@ -245,12 +245,12 @@ namespace QuanLyQuanCoffee
 
             DataTable reportInfo = new DataTable();
 
-            if (lvBill.Tag != null)
+            if (tbSelectedTable.Text != "")
             {
-                string idBanAn = lvBill.Tag.ToString();
-                int idHoaDonHienTai = HoaDonDAO.GetUnCheckBillIDByTableID(Convert.ToInt32(idBanAn)); // Lấy id hóa đơn hiện tại của bàn ăn;
-                reportInfo = MenuDAO.GetDataReport(idHoaDonHienTai.ToString()); // lấy dữ liệu report từ id hóa đơn
-                HoaDonDAO.UpdateStatusHoaDon(idHoaDonHienTai.ToString(), "1"); // Cập nhật status hóa đơn thành 1 (Đã thanh toán)
+                string idBanAn = tbSelectedTable.Text;
+                string idHoaDonHienTai = lvBill.Tag.ToString(); // Lấy id hóa đơn hiện tại của bàn ăn;
+                reportInfo = MenuDAO.GetDataReport(idHoaDonHienTai); // lấy dữ liệu report từ id hóa đơn
+                HoaDonDAO.UpdateStatusHoaDon(idHoaDonHienTai, "1"); // Cập nhật status hóa đơn thành 1 (Đã thanh toán)
                 // Lưu ý cập nhật hóa đơn trước vì nếu cập nhật bàn ăn trước sẽ không lấy được bill id của bàn ăn hiện tại
                 BanAnDAO.ChangeTableStatus(idBanAn, "0"); // thay đổi status bàn ăn: trống
 
@@ -283,19 +283,44 @@ namespace QuanLyQuanCoffee
 
             //int soluong = lvBill.SelectedItems.Count;
 
-            //if (lvBill.Tag != null)
-            //{
-            //    if (soluong > 0)
-            //    {
+            if(tbSelectedTable.Text != "")
+            {
+                string idMonAn = cbFood.SelectedValue.ToString();
+                
+                DataTable cthd = CTHDDAO.GetBillItem(new DTO.CTHD(Convert.ToInt32(lvBill.Tag.ToString()), Convert.ToInt32(idMonAn.ToString()), (int)numDeleteFood.Value)); // xuất ra bill item nếu nó có tồn tại trong bill
 
-            //    }
-            //}
-            //else
-            //    MessageBox.Show("Vui lòng chọn món cần xóa");
-               
+                // Kiểm tra món ăn đó có xuất hiện trong bill chưa
+                if (cthd.Rows.Count > 0)
+                {
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa "+numDeleteFood.Value+" món " + idMonAn + " khỏi bill " + lvBill.Tag.ToString(), "Cảnh báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                    if(dialog == DialogResult.Yes)
+                    {
+                        // So sánh số lượng xóa và số lượng món ăn đang có trong bill
+                        int sl_HienTai = Convert.ToInt32(cthd.Rows[0]["SoLuong"].ToString());
+
+                        if (sl_HienTai - (int)numDeleteFood.Value > 0)
+                            CTHDDAO.Update(new CTHD(Convert.ToInt32(lvBill.Tag.ToString()), Convert.ToInt32(idMonAn.ToString()), -(int)numDeleteFood.Value)); // update nếu đã có món ăn tồn tại trong Bill, Lưu ý số lượng có dấu trừ
+                        else
+                            CTHDDAO.Delete(lvBill.Tag.ToString(), idMonAn); // xóa nếu số lượng xóa lớn hơn số lượng hiện tại
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Món ăn chưa tồn tại trong Bill nên không xóa");
+
+                }
+
+                ShowBill(Convert.ToInt32(tbSelectedTable.Text)); // hiển thị thông tin bill đang trên bàn
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 1 bàn ăn cần xóa món");
+            }
+
 
         }
 
-        
+
     }
 }

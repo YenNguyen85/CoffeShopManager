@@ -21,6 +21,12 @@ namespace QuanLyQuanCoffee.DAO
             KetNoiCSDL.NonQuery(sql);
         }
 
+        public static void Delete(string idHoaDon, string idMonAn)
+        {
+            string sql = "delete from CHITIETHOADON where idHoaDon = '"+idHoaDon+"' and idMonAn = '"+idMonAn+"'";
+            KetNoiCSDL.NonQuery(sql);
+        }
+
         public static DataTable GetBillItem(DTO.CTHD item)
         {
             string sql = "select * from CHITIETHOADON where idHoaDon = '"+item.IdHoaDon+"' and idMonAn = '"+item.IdMonAn+"'";
