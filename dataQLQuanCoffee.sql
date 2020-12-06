@@ -272,9 +272,9 @@ select nv.TenNhanVien, ccnv.GioBatDau, ccnv.GioKetThuc from CHAMCONG cc, CHAMCON
 insert into CHAMCONGNHANVIEN (idChamCong, idNhanVien, GioBatDau, GioKetThuc) values ('3', '1', '8:48:00', '8:48:00')
 
 -- Update chấm công 
-update CHAMCONGNHANVIEN set GioKetThuc='10:00:00' where idChamCong = '3' and idNhanVien= '1'
+update CHAMCONGNHANVIEN set GioKetThuc='00:00:00' where idChamCong = '6' and idNhanVien= '1'
 
 -- Tính lương nhân viên
 select nv.id, nv.TenNhanVien, cv.TenChucVu, ccnv.GioBatDau, ccnv.GioKetThuc, cv.Luong, cc.Ngay, (DATEDIFF(HOUR, ccnv.GioBatDau , ccnv.GioKetThuc) * cv.Luong) as TongLuongTrongNgay from NHANVIEN nv, CHAMCONG cc, CHAMCONGNHANVIEN ccnv, CHUCVU cv where nv.id = ccnv.idNhanVien and cc.id = ccnv.idChamCong and nv.idChucVu = cv.id and cc.Ngay >= '2020-12-06' and cc.Ngay <= '2020-12-07'
 
-select * from CHUCVU
+select * from CHAMCONG
