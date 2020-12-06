@@ -28,7 +28,7 @@ namespace QuanLyQuanCoffee.DAO
 
         public static void InsertBill(int idTable, int idNhanVien)
         {
-            string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('', '', " + idTable + ", " + idNhanVien + ", 0)";
+            string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('"+DateTime.Now.ToString("MM/dd/yyyy")+ "', '" + DateTime.Now.ToString("MM/dd/yyyy") + "', " + idTable + ", " + idNhanVien + ", 0)";
             KetNoiCSDL.NonQuery(sql);
         }
 
@@ -36,6 +36,13 @@ namespace QuanLyQuanCoffee.DAO
         {
             string sql = "update HOADON set TrangThaiHoaDon = " + bit + " where id = " + idTable;
             KetNoiCSDL.NonQuery(sql);
+        }
+
+
+        public static DataTable GetAllHoaDon(string tgbatdau, string tgketthuc)
+        {
+            string sql = "select hd.id as HoaDon, sum(cthd.SoLuong* mon.GiaTien) as TongTien, hd.ThoiGianVao, hd.ThoiGianRa from CHITIETHOADON cthd, HOADON hd, MONAN mon where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon = 1 and hd.ThoiGianRa >= '"+tgbatdau+"' and hd.ThoiGianRa <= '"+tgketthuc+"' Group by hd.id, hd.ThoiGianVao, hd.ThoiGianRa";
+            return KetNoiCSDL.Query(sql);
         }
     }
 }

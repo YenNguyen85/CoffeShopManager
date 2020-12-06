@@ -410,9 +410,22 @@ namespace QuanLyQuanCoffee
             // reload datagridview 
             DisplayTTNhanVien();
         }
-        
-        
 
+        private void btViewBill_Click(object sender, EventArgs e)
+        {
+            DataTable dt = HoaDonDAO.GetAllHoaDon(String.Format("{0:MM/dd/yyyy}", dtpkNgayBatDau.Value), String.Format("{0:MM/dd/yyyy}", dtpkNgayKetThuc.Value));
+            dtgvDoanhThu.DataSource = dt;
+        }
 
+        private void btInDoanhThu_Click(object sender, EventArgs e)
+        {
+            DataTable dt = HoaDonDAO.GetAllHoaDon(String.Format("{0:MM/dd/yyyy}", dtpkNgayBatDau.Value), String.Format("{0:MM/dd/yyyy}", dtpkNgayKetThuc.Value));
+           
+            GUI.Report.DoanhThuReport report = new GUI.Report.DoanhThuReport();
+            report.SetDataSource(dt);
+            GUI.Report.ReportViewer reportViewer = new GUI.Report.ReportViewer(report, 2);
+            this.Hide();
+            reportViewer.Show();
+        }
     }
 }

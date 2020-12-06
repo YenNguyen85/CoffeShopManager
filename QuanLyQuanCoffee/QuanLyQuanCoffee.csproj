@@ -110,6 +110,17 @@
     <Compile Include="GUI\fUpdateEvent.Designer.cs">
       <DependentUpon>fUpdateEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Report\DataDoanhThu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataDoanhThu.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\DoanhThuReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoanhThuReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GUI\Report\MenuBill.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +161,10 @@
     <EmbeddedResource Include="GUI\fUpdateEvent.resx">
       <DependentUpon>fUpdateEvent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Report\DoanhThuReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoanhThuReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Report\MenuBill.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MenuBill.cs</LastGenOutput>
@@ -166,6 +181,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="GUI\Report\DataDoanhThu.xsc">
+      <DependentUpon>DataDoanhThu.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Report\DataDoanhThu.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataDoanhThu.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GUI\Report\DataDoanhThu.xss">
+      <DependentUpon>DataDoanhThu.xsd</DependentUpon>
+    </None>
     <None Include="GUI\Report\MenuBillDataSet.xsc">
       <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
     </None>

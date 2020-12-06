@@ -257,6 +257,15 @@ update CHITIETHOADON set SoLuong = SoLuong + 1 where idHoaDon = '22' and idMonAn
 select * from HOADON where idTable= 3 and TrangThaiHoaDon=0;
 
 -- reset các hóa đơn
+
 update HOADON set TrangThaiHoaDon = 1 where TrangThaiHoaDon = 0
 -- reset các bàn ăn
 update BANAN set TrangThaiBan = 0 where TrangThaiBan = 1
+
+use QLCoffee
+select hd.id, sum(cthd.SoLuong* mon.GiaTien) as TongTien, hd.ThoiGianVao, hd.ThoiGianRa 
+from CHITIETHOADON cthd, HOADON hd, MONAN mon
+where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=1 and hd.ThoiGianRa >= '1900-01-01' and hd.ThoiGianRa <= '2020-12-03'
+Group by hd.id, hd.ThoiGianVao, hd.ThoiGianRa
+
+select * from HOADON hd, CHITIETHOADON ct where hd.id = ct.idHoaDon
