@@ -250,6 +250,8 @@ select mon.TenMon, cthd.SoLuong, mon.GiaTien, cthd.SoLuong*GiaTien as TongTien f
 -- Kiểm tra món ăn đó có trong bill hay chưa (@param HoaDonID, MonID)
 select * from CHITIETHOADON where idHoaDon = '22' and idMonAn = '9'
 
+-- Xóa một món ăn khỏi bill
+delete from CHITIETHOADON where idHoaDon = '22' and idMonAn = '9'
 -- Tăng số lượng của món ăn thuộc bill nếu món ăn đó đã xuất hiện trong bill (@param HoaDonID, MonID)
 update CHITIETHOADON set SoLuong = SoLuong + 1 where idHoaDon = '22' and idMonAn = '9'
 
