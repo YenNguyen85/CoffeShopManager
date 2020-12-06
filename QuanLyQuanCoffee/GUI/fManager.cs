@@ -156,12 +156,14 @@ namespace QuanLyQuanCoffee
                     lvBill.Tag = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // lưu id của bill vào lvBill tag
                     btAddFood.Enabled = true; // enable nút thêm
                     btDeleteFood.Enabled = true; // enable nút delete
+                    btCheckOut.Enabled = true;
                     DisplayTable();
                 }
                 else
                 {
                     btAddFood.Enabled = false;
                     btDeleteFood.Enabled = false;
+                    btCheckOut.Enabled = false;
                 }
             }
             else

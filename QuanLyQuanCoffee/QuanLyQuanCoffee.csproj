@@ -56,6 +56,7 @@
     <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\EmployeeBUS.cs" />
     <Compile Include="BUS\TableBUS.cs" />
+    <Compile Include="BUS\TimeKeepingBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BanAnDAO.cs" />
     <Compile Include="DAO\CTHDDAO.cs" />
@@ -65,7 +66,9 @@
     <Compile Include="DAO\LoaiSanPhamDAO.cs" />
     <Compile Include="DAO\LoaiTKDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
+    <Compile Include="DAO\SalaryDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="DAO\TimeKeepingDAO.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Bill.cs" />
     <Compile Include="DTO\Category.cs" />
@@ -141,6 +144,17 @@
     <Compile Include="GUI\Report\ReportViewer.Designer.cs">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Report\Salary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Salary.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\SalaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\fAccountProfile.resx">
@@ -172,6 +186,10 @@
     <EmbeddedResource Include="GUI\Report\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Report\SalaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -202,6 +220,17 @@
     </None>
     <None Include="GUI\Report\MenuBillDataSet.xss">
       <DependentUpon>MenuBillDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Report\Salary.xsc">
+      <DependentUpon>Salary.xsd</DependentUpon>
+    </None>
+    <None Include="GUI\Report\Salary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Salary.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GUI\Report\Salary.xss">
+      <DependentUpon>Salary.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

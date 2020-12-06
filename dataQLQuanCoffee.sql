@@ -111,12 +111,7 @@ GO
 CREATE TABLE CHAMCONG
 (
 	id INT IDENTITY PRIMARY KEY,
-	NgaySinh DATE NOT NULL,
-	DiaChi NVARCHAR(100) NOT NULL,
-	Sdt NVARCHAR(1000) NOT NULL,
-	idChucVu INT NOT NULL
-
-	FOREIGN KEY(idChucVu) REFERENCES CHUCVU(id)	
+	Ngay DATE NOT NULL unique,  -- đảm bảo mỗi ngày chỉ có 1 bảng chấm công
 )
 GO
 
@@ -264,10 +259,22 @@ update HOADON set TrangThaiHoaDon = 1 where TrangThaiHoaDon = 0
 -- reset các bàn ăn
 update BANAN set TrangThaiBan = 0 where TrangThaiBan = 1
 
-use QLCoffee
+-- câu truy vấn danh sách các hóa đơn trong khoảng thời gian
 select hd.id, sum(cthd.SoLuong* mon.GiaTien) as TongTien, hd.ThoiGianVao, hd.ThoiGianRa 
 from CHITIETHOADON cthd, HOADON hd, MONAN mon
 where cthd.idHoaDon = hd.id and cthd.idMonAn = mon.id and hd.TrangThaiHoaDon=1 and hd.ThoiGianRa >= '1900-01-01' and hd.ThoiGianRa <= '2020-12-03'
 Group by hd.id, hd.ThoiGianVao, hd.ThoiGianRa
 
-select * from HOADON hd, CHITIETHOADON ct where hd.id = ct.idHoaDon
+-- Câu truy vấn lịch chấm công
+select nv.TenNhanVien, ccnv.GioBatDau, ccnv.GioKetThuc from CHAMCONG cc, CHAMCONGNHANVIEN ccnv, NHANVIEN nv where cc.id = ccnv.idChamCong and ccnv.idNhanVien = nv.id and cc.Ngay = '2020-12-06'
+
+-- Insert chấm công
+insert into CHAMCONGNHANVIEN (idChamCong, idNhanVien, GioBatDau, GioKetThuc) values ('3', '1', '8:48:00', '8:48:00')
+
+-- Update chấm công 
+update CHAMCONGNHANVIEN set GioKetThuc='10:00:00' where idChamCong = '3' and idNhanVien= '1'
+
+-- Tính lương nhân viên
+select nv.id, nv.TenNhanVien, cv.TenChucVu, ccnv.GioBatDau, ccnv.GioKetThuc, cv.Luong, cc.Ngay, (DATEDIFF(HOUR, ccnv.GioBatDau , ccnv.GioKetThuc) * cv.Luong) as TongLuongTrongNgay from NHANVIEN nv, CHAMCONG cc, CHAMCONGNHANVIEN ccnv, CHUCVU cv where nv.id = ccnv.idNhanVien and cc.id = ccnv.idChamCong and nv.idChucVu = cv.id and cc.Ngay >= '2020-12-06' and cc.Ngay <= '2020-12-07'
+
+select * from CHUCVU

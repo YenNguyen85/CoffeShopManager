@@ -28,7 +28,7 @@ namespace QuanLyQuanCoffee.DAO
 
         public static void InsertBill(int idTable, int idNhanVien)
         {
-            string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('"+DateTime.Now.ToString("MM/dd/yyyy")+ "', '" + DateTime.Now.ToString("MM/dd/yyyy") + "', " + idTable + ", " + idNhanVien + ", 0)";
+            string sql = "insert into HOADON(ThoiGianVao, ThoiGianRa, idTable, idNhanVien, TrangThaiHoaDon)values('"+String.Format("{0:MM/dd/yyyy}",DateTime.Now)+ "', '" + String.Format("{0:MM/dd/yyyy}", DateTime.Now) + "', " + idTable + ", " + idNhanVien + ", 0)";
             KetNoiCSDL.NonQuery(sql);
         }
 
