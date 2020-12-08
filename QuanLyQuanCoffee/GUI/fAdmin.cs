@@ -199,9 +199,22 @@ namespace QuanLyQuanCoffee
         {
             if (tvProduct.SelectedNode.Text != null && tvProduct.SelectedNode.Parent != null)
             {
-                SanPhamDAO.DeleteSanPham(tvProduct.SelectedNode.Tag.ToString());
+                if (MessageBox.Show("Bạn muốn xóa món  này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SanPhamDAO.DeleteSanPham(tvProduct.SelectedNode.Tag.ToString());
 
-                DisplayProductTreeView();
+                        DisplayProductTreeView();
+                        tbFood.Text = "";
+                        numPrice.Value = 0;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Xóa món không thành công!, " + ex);
+                    }
+                }
             }
             else
             {
@@ -260,6 +273,7 @@ namespace QuanLyQuanCoffee
             else
                 MessageBox.Show("Vui lòng chọn một bàn cần xóa");
             DisplayTable();
+            
         }
 
 
@@ -398,7 +412,7 @@ namespace QuanLyQuanCoffee
             emp.TenTaiKhoan = cbTenTK.SelectedValue.ToString();
             emp.Sdt = tbSDT.Text;
             emp.IdChucVu = Convert.ToInt32(cbChucVu.SelectedValue.ToString());
-
+            
             EmployeeBUS.SuaNhanVien(emp);
 
             // reload datagridview 
@@ -407,10 +421,19 @@ namespace QuanLyQuanCoffee
 
         private void btXoaNV_Click(object sender, EventArgs e)
         {
-            EmployeeBUS.XoaNhanVien(employeeID);
+            if (MessageBox.Show("Bạn muốn xóa nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    EmployeeBUS.XoaNhanVien(employeeID);
+                    DisplayTTNhanVien();
+                }
+                catch (Exception ex)
+                {
 
-            // reload datagridview 
-            DisplayTTNhanVien();
+                    MessageBox.Show("Xóa nhân viên không thành công!, " + ex);
+                }
+            }
         }
 
         private void btViewBill_Click(object sender, EventArgs e)
