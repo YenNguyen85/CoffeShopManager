@@ -52,7 +52,6 @@
             this.btPrevious.TabIndex = 1;
             this.btPrevious.Text = "Quay lại";
             this.btPrevious.UseVisualStyleBackColor = true;
-            this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
             // 
             // ReportViewer
             // 

@@ -1094,11 +1094,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 516);
+            this.ClientSize = new System.Drawing.Size(865, 515);
             this.Controls.Add(this.tabAdmin);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fAdmin";
             this.Text = "QUẢN LÝ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fAdmin_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fAdmin_FormClosed);
             this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tabProduct.ResumeLayout(false);
             this.tabProduct.PerformLayout();

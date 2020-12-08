@@ -379,6 +379,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "fManager";
             this.Text = "PHẦN MỀM QUẢN LÝ QUÁN COFFE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fManager_FormClosing);
             this.Load += new System.EventHandler(this.fManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numFoodCount)).EndInit();
             this.panel4.ResumeLayout(false);

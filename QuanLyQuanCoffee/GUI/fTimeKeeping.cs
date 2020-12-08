@@ -12,9 +12,14 @@ namespace QuanLyQuanCoffee
 {
     public partial class fTimeKeeping : Form
     {
-        public fTimeKeeping()
+        private Form fManager;
+        //private bool goPrevious;
+
+        public fTimeKeeping(Form fManager)
         {
             InitializeComponent();
+            this.fManager = fManager;
+            this.fManager.Hide();
         }
 
         private void fTimeKeeping_Load(object sender, EventArgs e)
@@ -90,6 +95,17 @@ namespace QuanLyQuanCoffee
                 DAO.TimeKeepingDAO.Update(dgvTimeKeepingList.Tag.ToString(), cbNhanVien.SelectedValue.ToString(), DateTime.Now.ToLocalTime().ToString());
             }
             DisplayTimeKeepingOfDate();
+        }
+
+        private void fTimeKeeping_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn quay lại trang quản lý", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) != DialogResult.OK)
+                e.Cancel = true;
+        }
+
+        private void fTimeKeeping_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fManager.Show();
         }
     }
 }

@@ -138,6 +138,8 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "fTimeKeeping";
             this.Text = "Chấm công";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fTimeKeeping_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fTimeKeeping_FormClosed);
             this.Load += new System.EventHandler(this.fTimeKeeping_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

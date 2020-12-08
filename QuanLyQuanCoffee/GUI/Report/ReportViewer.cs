@@ -47,12 +47,5 @@ namespace QuanLyQuanCoffee.GUI.Report
             //crystalReportViewer1.ReportSource = reportData;
 
         }
-
-        private void btPrevious_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            fManager manager = new fManager();
-            manager.Show();
-        }
     }
 }

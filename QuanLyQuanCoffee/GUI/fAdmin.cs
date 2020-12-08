@@ -16,11 +16,13 @@ namespace QuanLyQuanCoffee
 {
     public partial class fAdmin : Form
     {
-        public object BanAnBUS { get; private set; }
+        private Form fManager;
 
-        public fAdmin()
+        public fAdmin(Form fManager)
         {
             InitializeComponent();
+            this.fManager = fManager;
+            this.fManager.Hide();
         }
 
         private void fAdmin_Load(object sender, EventArgs e)
@@ -433,7 +435,17 @@ namespace QuanLyQuanCoffee
             {
                 MessageBox.Show("Vui lòng chọn ngày bắt đầu và ngày kết thúc tính lương lại");
             }
-            
+        }
+
+        private void fAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn quay lại trang quản lý", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) != DialogResult.OK)
+                e.Cancel = true;
+        }
+
+        private void fAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fManager.Show();
         }
     }
 }

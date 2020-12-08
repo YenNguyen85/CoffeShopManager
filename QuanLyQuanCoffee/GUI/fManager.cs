@@ -15,18 +15,26 @@ namespace QuanLyQuanCoffee
 {
     public partial class fManager : Form
     {
-        public fManager()
+        string TenNguoiDung = ""; // biến lưu lại tên người dùng đăng nhập
+        private Form fLogin; // Lưu form login dùng để hiển thị lại khi đăng xuất
+
+        private bool logout = false;
+
+        public fManager(string TenNguoiDung, Form fLogin)
         {
             InitializeComponent();
+            this.TenNguoiDung = TenNguoiDung;
+            this.fLogin = fLogin;
+            this.fLogin.Hide(); // ẩn form Login
         }
 
         private void fManager_Load(object sender, EventArgs e)
         {
             //MessageBox.Show("Xin chào " + fLogin.TenNguoiDung);
-            adminToolStripMenuItem.Visible = AccountDAO.GetAuthority(fLogin.TenNguoiDung);
+            adminToolStripMenuItem.Visible = AccountDAO.GetAuthority(TenNguoiDung);
 
             DisplayCategory();
-            tbDisplayName.Text = fLogin.TenNguoiDung;
+            tbDisplayName.Text = TenNguoiDung;
             DisplayTable();
 
             // ẩn các nút quan trọng
@@ -37,25 +45,24 @@ namespace QuanLyQuanCoffee
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (AccountDAO.GetAuthority(fLogin.TenNguoiDung))
+            if (AccountDAO.GetAuthority(TenNguoiDung))
             {
-                fAdmin admin = new fAdmin();
-                this.Hide();
+                fAdmin admin = new fAdmin(this);
                 admin.Show();
             }
         }
 
         private void thongTinTaiKhoanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fLogin login = new fLogin();
-            this.Hide();
-            login.Show();
+            this.TenNguoiDung = "";
+            logout = true;
+            this.Close();
+            this.fLogin.Show();
         }
 
         private void timeKeepingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            fTimeKeeping fTime = new fTimeKeeping();
+            fTimeKeeping fTime = new fTimeKeeping(this);
             fTime.Show();
         }
 
@@ -144,7 +151,7 @@ namespace QuanLyQuanCoffee
 
             lvBill.Tag = HoaDonDAO.GetUnCheckBillIDByTableID(idBanAn); // lưu id hóa đơn của bàn ăn hiện tại vào lvbill tag
 
-            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung); // Lấy id người đăng nhập
+            int idNhanVien = AccountDAO.GetIdNhanVien(TenNguoiDung); // Lấy id người đăng nhập
 
             if (lvBill.Tag.ToString() == "-1") // nếu bàn đang trống
             {
@@ -182,7 +189,7 @@ namespace QuanLyQuanCoffee
         {
             int idBanAn = -1;
             int idMonAn = -1;
-            int idNhanVien = AccountDAO.GetIdNhanVien(fLogin.TenNguoiDung);
+            int idNhanVien = AccountDAO.GetIdNhanVien(TenNguoiDung);
             int idHoaDonHienTai = -1;
 
             if (tbSelectedTable.Text != "") // nếu đã chọn bàn
@@ -264,15 +271,10 @@ namespace QuanLyQuanCoffee
                 report.SetDataSource(reportInfo);
                 // Tiêm phụ thuộc data report
                 GUI.Report.ReportViewer reportViewer = new GUI.Report.ReportViewer(report);
-                this.Hide();
                 reportViewer.Show();
             }
             else
                 MessageBox.Show("Vui lòng chọn 1 bàn để thanh toán");
-
-            
-
-            
         }
 
         private void btDeleteFood_Click(object sender, EventArgs e)
@@ -319,10 +321,13 @@ namespace QuanLyQuanCoffee
             {
                 MessageBox.Show("Vui lòng chọn 1 bàn ăn cần xóa món");
             }
-
-
         }
 
-
+        private void fManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(!logout)
+                MessageBox.Show("Vui lòng Đăng xuất trước khi tắt phần mềm");
+            e.Cancel = !logout;
+        }
     }
 }
