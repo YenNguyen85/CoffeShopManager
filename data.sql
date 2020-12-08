@@ -1,0 +1,500 @@
+﻿USE [master]
+GO
+/****** Object:  Database [QLCoffee]    Script Date: 12/8/2020 11:16:16 PM ******/
+CREATE DATABASE [QLCoffee]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'QLCoffee', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\QLCoffee.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'QLCoffee_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\QLCoffee_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [QLCoffee] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [QLCoffee].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [QLCoffee] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [QLCoffee] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [QLCoffee] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [QLCoffee] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [QLCoffee] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [QLCoffee] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [QLCoffee] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [QLCoffee] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [QLCoffee] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [QLCoffee] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [QLCoffee] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [QLCoffee] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [QLCoffee] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [QLCoffee] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [QLCoffee] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [QLCoffee] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [QLCoffee] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [QLCoffee] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [QLCoffee] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [QLCoffee] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [QLCoffee] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [QLCoffee] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [QLCoffee] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [QLCoffee] SET  MULTI_USER 
+GO
+ALTER DATABASE [QLCoffee] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [QLCoffee] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [QLCoffee] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [QLCoffee] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [QLCoffee] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [QLCoffee] SET QUERY_STORE = OFF
+GO
+USE [QLCoffee]
+GO
+/****** Object:  Table [dbo].[BANAN]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BANAN](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TrangThaiBan] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CHAMCONG]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CHAMCONG](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Ngay] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CHAMCONGNHANVIEN]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CHAMCONGNHANVIEN](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idChamCong] [int] NOT NULL,
+	[idNhanVien] [int] NOT NULL,
+	[GioBatDau] [time](7) NOT NULL,
+	[GioKetThuc] [time](7) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CHITIETHOADON]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CHITIETHOADON](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idHoaDon] [int] NOT NULL,
+	[idMonAn] [int] NOT NULL,
+	[SoLuong] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CHUCVU]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CHUCVU](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TenChucVu] [nvarchar](100) NULL,
+	[Luong] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[HOADON]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HOADON](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ThoiGianVao] [date] NOT NULL,
+	[ThoiGianRa] [date] NOT NULL,
+	[idTable] [int] NOT NULL,
+	[idKhuyenMai] [int] NULL,
+	[idNhanVien] [int] NOT NULL,
+	[TrangThaiHoaDon] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[KHUYENMAI]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[KHUYENMAI](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TenKhuyenMai] [nvarchar](255) NOT NULL,
+	[NgayBatDau] [date] NOT NULL,
+	[NgayKetThuc] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LOAIMON]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LOAIMON](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TenLoai] [nvarchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LOAITK]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LOAITK](
+	[idLoaiTK] [int] IDENTITY(1,1) NOT NULL,
+	[TenLoaiTK] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idLoaiTK] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MONAN]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MONAN](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TenMon] [nvarchar](100) NOT NULL,
+	[idLoaiMon] [int] NOT NULL,
+	[GiaTien] [float] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MONKHUYENMAI]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MONKHUYENMAI](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idMonAn] [int] NOT NULL,
+	[idKhuyenMai] [int] NOT NULL,
+	[HeSo] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[NHANVIEN]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NHANVIEN](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TenNhanVien] [nvarchar](100) NULL,
+	[NgaySinh] [date] NOT NULL,
+	[DiaChi] [nvarchar](100) NOT NULL,
+	[Sdt] [varchar](10) NOT NULL,
+	[TenTaiKhoan] [nvarchar](100) NULL,
+	[idChucVu] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TAIKHOAN]    Script Date: 12/8/2020 11:16:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TAIKHOAN](
+	[TenNguoiDung] [nvarchar](100) NOT NULL,
+	[TenHienThi] [nvarchar](100) NOT NULL,
+	[MatKhau] [nvarchar](1000) NOT NULL,
+	[LoaiTK] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TenNguoiDung] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[BANAN] ON 
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (1, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (2, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (3, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (4, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (5, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (6, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (7, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (8, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (9, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (10, 0)
+GO
+INSERT [dbo].[BANAN] ([id], [TrangThaiBan]) VALUES (11, 0)
+GO
+SET IDENTITY_INSERT [dbo].[BANAN] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CHAMCONG] ON 
+GO
+INSERT [dbo].[CHAMCONG] ([id], [Ngay]) VALUES (1, CAST(N'2020-12-08' AS Date))
+GO
+SET IDENTITY_INSERT [dbo].[CHAMCONG] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CHAMCONGNHANVIEN] ON 
+GO
+INSERT [dbo].[CHAMCONGNHANVIEN] ([id], [idChamCong], [idNhanVien], [GioBatDau], [GioKetThuc]) VALUES (1, 1, 1, CAST(N'20:24:11' AS Time), CAST(N'22:16:47' AS Time))
+GO
+INSERT [dbo].[CHAMCONGNHANVIEN] ([id], [idChamCong], [idNhanVien], [GioBatDau], [GioKetThuc]) VALUES (2, 1, 2, CAST(N'20:24:15' AS Time), CAST(N'22:16:50' AS Time))
+GO
+SET IDENTITY_INSERT [dbo].[CHAMCONGNHANVIEN] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CHITIETHOADON] ON 
+GO
+INSERT [dbo].[CHITIETHOADON] ([id], [idHoaDon], [idMonAn], [SoLuong]) VALUES (1, 1, 5, 3)
+GO
+INSERT [dbo].[CHITIETHOADON] ([id], [idHoaDon], [idMonAn], [SoLuong]) VALUES (2, 1, 6, 1)
+GO
+INSERT [dbo].[CHITIETHOADON] ([id], [idHoaDon], [idMonAn], [SoLuong]) VALUES (3, 2, 11, 2)
+GO
+INSERT [dbo].[CHITIETHOADON] ([id], [idHoaDon], [idMonAn], [SoLuong]) VALUES (4, 3, 10, 3)
+GO
+INSERT [dbo].[CHITIETHOADON] ([id], [idHoaDon], [idMonAn], [SoLuong]) VALUES (5, 4, 6, 5)
+GO
+SET IDENTITY_INSERT [dbo].[CHITIETHOADON] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CHUCVU] ON 
+GO
+INSERT [dbo].[CHUCVU] ([id], [TenChucVu], [Luong]) VALUES (1, N'Phục vụ', 15000)
+GO
+INSERT [dbo].[CHUCVU] ([id], [TenChucVu], [Luong]) VALUES (2, N'Pha chế', 20000)
+GO
+INSERT [dbo].[CHUCVU] ([id], [TenChucVu], [Luong]) VALUES (3, N'Quản lý', 30000)
+GO
+SET IDENTITY_INSERT [dbo].[CHUCVU] OFF
+GO
+SET IDENTITY_INSERT [dbo].[HOADON] ON 
+GO
+INSERT [dbo].[HOADON] ([id], [ThoiGianVao], [ThoiGianRa], [idTable], [idKhuyenMai], [idNhanVien], [TrangThaiHoaDon]) VALUES (1, CAST(N'2020-12-08' AS Date), CAST(N'2020-12-08' AS Date), 1, NULL, 1, 1)
+GO
+INSERT [dbo].[HOADON] ([id], [ThoiGianVao], [ThoiGianRa], [idTable], [idKhuyenMai], [idNhanVien], [TrangThaiHoaDon]) VALUES (2, CAST(N'2020-12-08' AS Date), CAST(N'2020-12-08' AS Date), 2, NULL, 1, 1)
+GO
+INSERT [dbo].[HOADON] ([id], [ThoiGianVao], [ThoiGianRa], [idTable], [idKhuyenMai], [idNhanVien], [TrangThaiHoaDon]) VALUES (3, CAST(N'2020-12-08' AS Date), CAST(N'2020-12-08' AS Date), 2, NULL, 1, 1)
+GO
+INSERT [dbo].[HOADON] ([id], [ThoiGianVao], [ThoiGianRa], [idTable], [idKhuyenMai], [idNhanVien], [TrangThaiHoaDon]) VALUES (4, CAST(N'2020-12-08' AS Date), CAST(N'2020-12-08' AS Date), 2, NULL, 1, 1)
+GO
+SET IDENTITY_INSERT [dbo].[HOADON] OFF
+GO
+SET IDENTITY_INSERT [dbo].[LOAIMON] ON 
+GO
+INSERT [dbo].[LOAIMON] ([id], [TenLoai]) VALUES (1, N'Coffee')
+GO
+INSERT [dbo].[LOAIMON] ([id], [TenLoai]) VALUES (2, N'Macchiato')
+GO
+INSERT [dbo].[LOAIMON] ([id], [TenLoai]) VALUES (3, N'Ice blended')
+GO
+INSERT [dbo].[LOAIMON] ([id], [TenLoai]) VALUES (4, N'Milktea')
+GO
+INSERT [dbo].[LOAIMON] ([id], [TenLoai]) VALUES (5, N'Cake')
+GO
+SET IDENTITY_INSERT [dbo].[LOAIMON] OFF
+GO
+SET IDENTITY_INSERT [dbo].[LOAITK] ON 
+GO
+INSERT [dbo].[LOAITK] ([idLoaiTK], [TenLoaiTK]) VALUES (1, N'Admin')
+GO
+INSERT [dbo].[LOAITK] ([idLoaiTK], [TenLoaiTK]) VALUES (2, N'User')
+GO
+SET IDENTITY_INSERT [dbo].[LOAITK] OFF
+GO
+SET IDENTITY_INSERT [dbo].[MONAN] ON 
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (1, N'Espresso', 1, 18000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (2, N'Cà phê sữa', 1, 20000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (3, N'Latte', 1, 27000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (4, N'Cappuccino', 1, 30000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (5, N'Chocolate Macchiato', 2, 32000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (6, N'Matcha Macchiato', 2, 34000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (7, N'Caramel Macchiato', 2, 30000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (8, N'Trà xanh Macchiato', 2, 28000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (9, N'Frappu', 3, 38000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (10, N'Frappu Caramel', 3, 36000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (11, N'Frappu Oreo', 3, 40000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (12, N'Trà sữa truyền thống', 4, 22000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (13, N'Hồng trà sữa', 4, 27000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (14, N'Lục trà sữa', 4, 24000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (15, N'Chesse Crepe', 5, 38000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (16, N'Panna Cotta', 5, 50000)
+GO
+INSERT [dbo].[MONAN] ([id], [TenMon], [idLoaiMon], [GiaTien]) VALUES (17, N'Chocolate Tiramisu', 5, 40000)
+GO
+SET IDENTITY_INSERT [dbo].[MONAN] OFF
+GO
+SET IDENTITY_INSERT [dbo].[NHANVIEN] ON 
+GO
+INSERT [dbo].[NHANVIEN] ([id], [TenNhanVien], [NgaySinh], [DiaChi], [Sdt], [TenTaiKhoan], [idChucVu]) VALUES (1, N'Yến', CAST(N'2000-08-05' AS Date), N'Nhà Lộc', N'033333333', N'Admin', 1)
+GO
+INSERT [dbo].[NHANVIEN] ([id], [TenNhanVien], [NgaySinh], [DiaChi], [Sdt], [TenTaiKhoan], [idChucVu]) VALUES (2, N'Lộc', CAST(N'2000-08-05' AS Date), N'Nhà Lộc', N'033333333', N'Staff', 1)
+GO
+SET IDENTITY_INSERT [dbo].[NHANVIEN] OFF
+GO
+INSERT [dbo].[TAIKHOAN] ([TenNguoiDung], [TenHienThi], [MatKhau], [LoaiTK]) VALUES (N'Admin', N'Quản lý', N'1', 1)
+GO
+INSERT [dbo].[TAIKHOAN] ([TenNguoiDung], [TenHienThi], [MatKhau], [LoaiTK]) VALUES (N'Staff', N'Nhân viên', N'0', 2)
+GO
+/****** Object:  Index [UQ__CHAMCONG__6BCCE7B3DEDE44FB]    Script Date: 12/8/2020 11:16:16 PM ******/
+ALTER TABLE [dbo].[CHAMCONG] ADD UNIQUE NONCLUSTERED 
+(
+	[Ngay] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[BANAN] ADD  DEFAULT ((0)) FOR [TrangThaiBan]
+GO
+ALTER TABLE [dbo].[CHITIETHOADON] ADD  DEFAULT ((0)) FOR [SoLuong]
+GO
+ALTER TABLE [dbo].[HOADON] ADD  DEFAULT ((0)) FOR [TrangThaiHoaDon]
+GO
+ALTER TABLE [dbo].[KHUYENMAI] ADD  DEFAULT (N'Chưa đặt tên') FOR [TenKhuyenMai]
+GO
+ALTER TABLE [dbo].[LOAIMON] ADD  DEFAULT (N'Chưa đặt tên') FOR [TenLoai]
+GO
+ALTER TABLE [dbo].[MONAN] ADD  DEFAULT (N'Chưa đặt tên') FOR [TenMon]
+GO
+ALTER TABLE [dbo].[MONKHUYENMAI] ADD  DEFAULT ((0)) FOR [HeSo]
+GO
+ALTER TABLE [dbo].[TAIKHOAN] ADD  DEFAULT ((0)) FOR [MatKhau]
+GO
+ALTER TABLE [dbo].[TAIKHOAN] ADD  DEFAULT ((0)) FOR [LoaiTK]
+GO
+ALTER TABLE [dbo].[CHAMCONGNHANVIEN]  WITH CHECK ADD FOREIGN KEY([idChamCong])
+REFERENCES [dbo].[CHAMCONG] ([id])
+GO
+ALTER TABLE [dbo].[CHAMCONGNHANVIEN]  WITH CHECK ADD FOREIGN KEY([idNhanVien])
+REFERENCES [dbo].[NHANVIEN] ([id])
+GO
+ALTER TABLE [dbo].[CHITIETHOADON]  WITH CHECK ADD FOREIGN KEY([idMonAn])
+REFERENCES [dbo].[MONAN] ([id])
+GO
+ALTER TABLE [dbo].[CHITIETHOADON]  WITH CHECK ADD FOREIGN KEY([idHoaDon])
+REFERENCES [dbo].[HOADON] ([id])
+GO
+ALTER TABLE [dbo].[HOADON]  WITH CHECK ADD FOREIGN KEY([idKhuyenMai])
+REFERENCES [dbo].[KHUYENMAI] ([id])
+GO
+ALTER TABLE [dbo].[HOADON]  WITH CHECK ADD FOREIGN KEY([idNhanVien])
+REFERENCES [dbo].[NHANVIEN] ([id])
+GO
+ALTER TABLE [dbo].[HOADON]  WITH CHECK ADD FOREIGN KEY([idTable])
+REFERENCES [dbo].[BANAN] ([id])
+GO
+ALTER TABLE [dbo].[MONAN]  WITH CHECK ADD FOREIGN KEY([idLoaiMon])
+REFERENCES [dbo].[LOAIMON] ([id])
+GO
+ALTER TABLE [dbo].[MONKHUYENMAI]  WITH CHECK ADD FOREIGN KEY([idKhuyenMai])
+REFERENCES [dbo].[KHUYENMAI] ([id])
+GO
+ALTER TABLE [dbo].[MONKHUYENMAI]  WITH CHECK ADD FOREIGN KEY([idMonAn])
+REFERENCES [dbo].[MONAN] ([id])
+GO
+ALTER TABLE [dbo].[NHANVIEN]  WITH CHECK ADD FOREIGN KEY([idChucVu])
+REFERENCES [dbo].[CHUCVU] ([id])
+GO
+ALTER TABLE [dbo].[NHANVIEN]  WITH CHECK ADD FOREIGN KEY([TenTaiKhoan])
+REFERENCES [dbo].[TAIKHOAN] ([TenNguoiDung])
+GO
+ALTER TABLE [dbo].[TAIKHOAN]  WITH CHECK ADD FOREIGN KEY([LoaiTK])
+REFERENCES [dbo].[LOAITK] ([idLoaiTK])
+GO
+USE [master]
+GO
+ALTER DATABASE [QLCoffee] SET  READ_WRITE 
+GO
