@@ -479,5 +479,10 @@ namespace QuanLyQuanCoffee
         {
 
         }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            DisplayCBTenTK();
+        }
     }
 }
