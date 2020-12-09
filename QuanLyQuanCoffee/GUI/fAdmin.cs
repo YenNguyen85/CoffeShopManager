@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -314,6 +315,7 @@ namespace QuanLyQuanCoffee
             acc.TenNguoiDung = tbUserName.Text;
             acc.TenHienThi = tbDisplayName.Text;
             acc.LoaiTK = (int)cbLoaiTK.SelectedValue;
+            acc.MatKhau = tbPassword.Text;
 
             // Kiểm tra tên đăng nhập có tồn tại chưa
             if (AccountDAO.CheckExistsTenNguoiDung(acc.TenNguoiDung))
@@ -335,6 +337,8 @@ namespace QuanLyQuanCoffee
             acc.TenNguoiDung = tbUserName.Text;
             acc.TenHienThi = tbDisplayName.Text;
             acc.LoaiTK = (int)cbLoaiTK.SelectedValue;
+            acc.MatKhau = tbPassword.Text; 
+
             AccountBUS.SuaTK(acc);
             listAccounts.Items.Clear();
             DisplayListViewAccount();
@@ -469,6 +473,11 @@ namespace QuanLyQuanCoffee
         private void fAdmin_FormClosed(object sender, FormClosedEventArgs e)
         {
             fManager.Show();
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

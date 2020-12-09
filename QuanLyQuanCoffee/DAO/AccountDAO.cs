@@ -27,7 +27,7 @@ namespace QuanLyQuanCoffee.DAO
 
         public static bool CheckExistsTenNguoiDung(string username)
         {
-            string sql = "select * from TAIKHOAN where TenNguoiDung = '" + username + "'";
+            string sql = "select * from TAIKHOAN where TenNguoiDung = N'" + username + "'";
             DataTable data = KetNoiCSDL.Query(sql);
             if (data.Rows.Count < 1)
             {
@@ -39,7 +39,7 @@ namespace QuanLyQuanCoffee.DAO
         public static string GetTenNguoiDung(string username, string password)
         {
             string id = "";
-            string sql = "Select * from TAIKHOAN where TenNguoiDung= '" + username + "' and MatKhau = '" + password + "'";
+            string sql = "Select * from TAIKHOAN where TenNguoiDung= N'" + username + "' and MatKhau = HASHBYTES('SHA2_256', N'"+password+"')";
             try
             {
                 DataTable data = KetNoiCSDL.Query(sql);
@@ -62,7 +62,7 @@ namespace QuanLyQuanCoffee.DAO
         public static bool GetAuthority(string username)
         {
             bool result = false;
-            string sql = "Select loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK and TenNguoiDung = '"+username+"'";
+            string sql = "Select loai.TenLoaiTK from TAIKHOAN tk, LOAITK loai where tk.LoaiTK=loai.idLoaiTK and TenNguoiDung = N'"+username+"'";
             try
             {
                 DataTable data = KetNoiCSDL.Query(sql);
@@ -82,26 +82,26 @@ namespace QuanLyQuanCoffee.DAO
         //Thêm-xóa-sửa
         public static void ThemTK(Account acc)
         {
-            string sql = "INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, LoaiTK) VALUES ('"+acc.TenNguoiDung+"', N'"+acc.TenHienThi+"', N'"+acc.LoaiTK+"' ) ";
+            string sql = "INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES (N'"+acc.TenNguoiDung+"', N'"+acc.TenHienThi+ "', HASHBYTES('SHA2_256', N'" + acc.MatKhau + "'), N'" + acc.LoaiTK+"' ) ";
             KetNoiCSDL.NonQuery(sql);
         }
 
         public static void SuaTK(Account acc)
         {
-            string sql = "Update TAIKHOAN set TenHienThi=N'" + acc.TenHienThi + "', LoaiTK= N'" + acc.LoaiTK + "' where TenNguoiDung='" + acc.TenNguoiDung + "' ";
+            string sql = "Update TAIKHOAN set TenHienThi=N'" + acc.TenHienThi + "', LoaiTK= N'" + acc.LoaiTK + "' where TenNguoiDung=N'" + acc.TenNguoiDung + "' ";
             KetNoiCSDL.NonQuery(sql);
         }
 
         public static void XoaTK(Account acc)
         {
-            string sql = "Delete from TAIKHOAN where TenNguoiDung='" + acc.TenNguoiDung + "' ";
+            string sql = "Delete from TAIKHOAN where TenNguoiDung=N'" + acc.TenNguoiDung + "' ";
             KetNoiCSDL.NonQuery(sql);
         }
 
         //Lấy thông tin nhân viên
         public static int GetIdNhanVien(string username)
         {
-            string sql = "select id from NHANVIEN nv, TAIKHOAN tk where nv.TenTaiKhoan = tk.TenNguoiDung and tk.TenNguoiDung = '"+username+"'";
+            string sql = "select id from NHANVIEN nv, TAIKHOAN tk where nv.TenTaiKhoan = tk.TenNguoiDung and tk.TenNguoiDung = N'"+username+"'";
             DataTable data = KetNoiCSDL.Query(sql);
             return (int)data.Rows[0]["id"];
         }

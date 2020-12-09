@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\EmployeeBUS.cs" />
+    <Compile Include="BUS\HashPassword.cs" />
     <Compile Include="BUS\TableBUS.cs" />
     <Compile Include="BUS\TimeKeepingBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />

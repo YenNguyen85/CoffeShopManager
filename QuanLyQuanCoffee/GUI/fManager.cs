@@ -311,28 +311,31 @@ namespace QuanLyQuanCoffee
         // Chuyển bàn
         private void btChangeTable_Click(object sender, EventArgs e)
         {
-            if(cbChangeTable.SelectedValue != null && MessageBox.Show("Bạn có muốn chuyển bàn", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if(cbChangeTable.SelectedValue != null)
             {
                 string idSelectedTable = cbChangeTable.SelectedValue.ToString();
                 string idCurrentTable = tbSelectedTable.Text;
-                if (cbChangeTable.SelectedValue.ToString() != "System.Data.DataRowView")
+                if (MessageBox.Show("Bạn có muốn chuyển bàn "+idCurrentTable+" sang bàn " + idSelectedTable, "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    // Kiểm tra xem bàn có người chưa
-                    bool isEmpty = BUS.TableBUS.IsEmpty(idSelectedTable);
-                    if (isEmpty)
+                    if (cbChangeTable.SelectedValue.ToString() != "System.Data.DataRowView")
                     {
-                        // update HoaDon sang bàn mới
-                        HoaDonDAO.UpdateTableOfHoaDon(idSelectedTable, lvBill.Tag.ToString());
-                        // Thay đổi trạng thái bàn
-                        BanAnDAO.ChangeTableStatus(idCurrentTable, "0");
-                        BanAnDAO.ChangeTableStatus(idSelectedTable, "1");
+                        // Kiểm tra xem bàn có người chưa
+                        bool isEmpty = BUS.TableBUS.IsEmpty(idSelectedTable);
+                        if (isEmpty)
+                        {
+                            // update HoaDon sang bàn mới
+                            HoaDonDAO.UpdateTableOfHoaDon(idSelectedTable, lvBill.Tag.ToString());
+                            // Thay đổi trạng thái bàn
+                            BanAnDAO.ChangeTableStatus(idCurrentTable, "0");
+                            BanAnDAO.ChangeTableStatus(idSelectedTable, "1");
 
-                        DisplayTable();
+                            DisplayTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bàn này đã có người");
+                        }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Bàn này đã có người");
                 }
             }
             else

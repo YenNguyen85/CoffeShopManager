@@ -22,7 +22,7 @@ CREATE TABLE TAIKHOAN
 (
 	TenNguoiDung NVARCHAR(100) PRIMARY KEY,
 	TenHienThi NVARCHAR(100) NOT NULL,
-	MatKhau NVARCHAR(1000) NOT NULL DEFAULT 0,
+	MatKhau NVARCHAR(255) NOT NULL DEFAULT 0,
 	LoaiTK INT NOT NULL DEFAULT 0	--1: adim && 2: staff
 
 	foreign key (LoaiTK) References LOAITK(idLoaiTK)
@@ -147,8 +147,8 @@ Insert into CHUCVU(TenChucVu, Luong) Values (N'Quản lý', 30000)
 INSERT INTO LOAITK(TenLoaiTK) VALUES ('Admin')
 INSERT INTO LOAITK(TenLoaiTK) VALUES ('User')
 
-INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Admin', N'Quản lý', N'1', 1 )
-INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Staff', N'Nhân viên', N'0', 2 )
+INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Admin', N'Quản lý', HASHBYTES('SHA2_256', N'1') , 1 )
+INSERT INTO TAIKHOAN (TenNguoiDung, TenHienThi, MatKhau, LoaiTK) VALUES ('Staff', N'Nhân viên', HASHBYTES('SHA2_256', N'0'), 2 )
 
 INSERT INTO NHANVIEN (TenNhanVien, NgaySinh, DiaChi, Sdt, TenTaiKhoan, idChucVu) values (N'Yến', '2000-08-05', N'Nhà Lộc', '033333333', 'Admin', 3)
 INSERT INTO NHANVIEN (TenNhanVien, NgaySinh, DiaChi, Sdt, TenTaiKhoan, idChucVu) values (N'Lộc', '2000-08-05', N'Nhà Lộc', '033333333', 'Staff', 3)
@@ -258,3 +258,6 @@ insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) valu
 insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) values (10, 1, '15:00:00', '17:30:00')
 insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) values (10, 1, '6:30:00', '11:30:00')
 insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) values (10, 2, '6:30:00', '11:30:00')
+
+select * from TAIKHOAN where MatKhau = HASHBYTES('SHA2_256', N'1')
+
