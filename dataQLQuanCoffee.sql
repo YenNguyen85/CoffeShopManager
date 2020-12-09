@@ -278,4 +278,7 @@ update CHAMCONGNHANVIEN set GioKetThuc='00:00:00' where idChamCong = '6' and idN
 -- Tính lương nhân viên
 select nv.id, nv.TenNhanVien, cv.TenChucVu, ccnv.GioBatDau, ccnv.GioKetThuc, cv.Luong, cc.Ngay, (DATEDIFF(HOUR, ccnv.GioBatDau , ccnv.GioKetThuc) * cv.Luong) as TongLuongTrongNgay from NHANVIEN nv, CHAMCONG cc, CHAMCONGNHANVIEN ccnv, CHUCVU cv where nv.id = ccnv.idNhanVien and cc.id = ccnv.idChamCong and nv.idChucVu = cv.id and cc.Ngay >= '2020-12-06' and cc.Ngay <= '2020-12-07'
 
-select * from CHAMCONG
+use QLCoffee
+select * from HOADON
+
+update HOADON set idTable = 3 where id = 3

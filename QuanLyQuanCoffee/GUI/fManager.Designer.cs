@@ -41,12 +41,8 @@
             this.tbTotalPrice = new System.Windows.Forms.TextBox();
             this.cbChangeTable = new System.Windows.Forms.ComboBox();
             this.btChangeTable = new System.Windows.Forms.Button();
-            this.btDiscount = new System.Windows.Forms.Button();
             this.btCheckOut = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -204,16 +200,6 @@
             this.btChangeTable.UseVisualStyleBackColor = true;
             this.btChangeTable.Click += new System.EventHandler(this.btChangeTable_Click);
             // 
-            // btDiscount
-            // 
-            this.btDiscount.Location = new System.Drawing.Point(144, 4);
-            this.btDiscount.Name = "btDiscount";
-            this.btDiscount.Size = new System.Drawing.Size(118, 25);
-            this.btDiscount.TabIndex = 3;
-            this.btDiscount.Text = "Gộp bàn";
-            this.btDiscount.UseVisualStyleBackColor = true;
-            this.btDiscount.Click += new System.EventHandler(this.btDiscount_Click);
-            // 
             // btCheckOut
             // 
             this.btCheckOut.Location = new System.Drawing.Point(486, 4);
@@ -226,10 +212,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.btDiscount);
             this.panel3.Controls.Add(this.tbTotalPrice);
             this.panel3.Controls.Add(this.cbChangeTable);
             this.panel3.Controls.Add(this.btCheckOut);
@@ -238,31 +220,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(641, 58);
             this.panel3.TabIndex = 3;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(284, 31);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(141, 21);
-            this.comboBox2.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(281, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Giảm giá (%)";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(144, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(118, 21);
-            this.comboBox1.TabIndex = 7;
             // 
             // columnHeader4
             // 
@@ -410,7 +367,6 @@
         private System.Windows.Forms.TextBox tbTotalPrice;
         private System.Windows.Forms.ComboBox cbChangeTable;
         private System.Windows.Forms.Button btChangeTable;
-        private System.Windows.Forms.Button btDiscount;
         private System.Windows.Forms.Button btCheckOut;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -421,13 +377,10 @@
         private System.Windows.Forms.ToolStripMenuItem thongTinTaiKhoanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label tbDisplayName;
         private System.Windows.Forms.ToolStripMenuItem timeKeepingToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox tbSelectedTable;
         private System.Windows.Forms.Label label2;
     }

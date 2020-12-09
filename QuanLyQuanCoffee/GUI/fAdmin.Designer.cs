@@ -968,6 +968,7 @@
             this.dtpkNgayBatDau.Name = "dtpkNgayBatDau";
             this.dtpkNgayBatDau.Size = new System.Drawing.Size(188, 22);
             this.dtpkNgayBatDau.TabIndex = 1;
+            this.dtpkNgayBatDau.Value = new System.DateTime(2020, 1, 9, 19, 36, 0, 0);
             // 
             // tabAdmin
             // 
