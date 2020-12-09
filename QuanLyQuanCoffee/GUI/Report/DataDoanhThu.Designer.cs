@@ -389,7 +389,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DoanhThuTableRow AddDoanhThuTableRow(string HoaDon, string TongTien, string ThoiGianVao, string ThoiGianRa) {
+            public DoanhThuTableRow AddDoanhThuTableRow(string HoaDon, decimal TongTien, string ThoiGianVao, string ThoiGianRa) {
                 DoanhThuTableRow rowDoanhThuTableRow = ((DoanhThuTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HoaDon,
@@ -429,7 +429,7 @@ namespace QuanLyQuanCoffee.GUI.Report {
             private void InitClass() {
                 this.columnHoaDon = new global::System.Data.DataColumn("HoaDon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoaDon);
-                this.columnTongTien = new global::System.Data.DataColumn("TongTien", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTongTien = new global::System.Data.DataColumn("TongTien", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongTien);
                 this.columnThoiGianVao = new global::System.Data.DataColumn("ThoiGianVao", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThoiGianVao);
@@ -593,10 +593,10 @@ namespace QuanLyQuanCoffee.GUI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string TongTien {
+            public decimal TongTien {
                 get {
                     try {
-                        return ((string)(this[this.tableDoanhThuTable.TongTienColumn]));
+                        return ((decimal)(this[this.tableDoanhThuTable.TongTienColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TongTien\' in table \'DoanhThuTable\' is DBNull.", e);

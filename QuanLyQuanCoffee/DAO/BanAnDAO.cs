@@ -10,19 +10,16 @@ namespace QuanLyQuanCoffee.DAO
 {
     class BanAnDAO
     {
-        public static List<DTO.Table> GetBanAnList()
+        public static DataTable GetDataTable()
         {
-            List<DTO.Table> tableList = new List<DTO.Table>();
             string sql = "select * from BANAN";
+            return KetNoiCSDL.Query(sql);
+        }
 
-            DataTable data = KetNoiCSDL.Query(sql);
-            
-            foreach(DataRow row in data.Rows)
-            {
-                DTO.Table table = new DTO.Table(row);
-                tableList.Add(table);
-            }
-            return tableList;
+        public static DataTable CheckTableStatus(string id)
+        {
+            string sql = "select * from BANAN where id = '" + id + "'";
+            return KetNoiCSDL.Query(sql);
         }
 
         // Thay đổi trạng thái bàn

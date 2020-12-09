@@ -228,7 +228,7 @@ namespace QuanLyQuanCoffee
         {
             flpTable.Controls.Clear();
 
-            List<Table> tableList = BanAnDAO.GetBanAnList();
+            List<Table> tableList = BUS.TableBUS.GetBanAnList(DAO.BanAnDAO.GetDataTable());
 
             int soluong = 0;
 

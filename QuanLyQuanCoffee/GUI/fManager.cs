@@ -36,6 +36,7 @@ namespace QuanLyQuanCoffee
             DisplayCategory();
             tbDisplayName.Text = TenNguoiDung;
             DisplayTable();
+            DisplayCbChangeTable();
 
             // ẩn các nút quan trọng
             btAddFood.Enabled = false;
@@ -94,27 +95,12 @@ namespace QuanLyQuanCoffee
         {
             flpTable.Controls.Clear();
 
-            List<Table> tableList = BanAnDAO.GetBanAnList();
+            List<Table> tableList = BUS.TableBUS.GetBanAnList(BanAnDAO.GetDataTable());
 
             foreach(Table table in tableList)
             {
                 Button bt = new Button() { Width = 100, Height = 60 }; // Tạo mới 1 button có dài rộng
                 bt.BackColor = SystemColors.Control;
-                //string status = "";
-
-                //if(table.Trangthaiban == "True")
-                //{
-                //    bt.BackColor = Color.Orange;
-                //    bt.ForeColor = Color.White;
-                //    status = "Có người";
-                //}
-
-                //if(table.Trangthaiban == "False")
-                //{
-                //    bt.BackColor = Color.White;
-                //    bt.ForeColor = Color.Black;
-                //    status = "Trống";
-                //}
 
                 //bt.Text = "Bàn " + table.Id + "\n" + status;
                 bt.Text = "Bàn " + table.Id + "\n" + (table.Trangthaiban == "True" ? "Có người" : "Trống");
@@ -279,13 +265,6 @@ namespace QuanLyQuanCoffee
 
         private void btDeleteFood_Click(object sender, EventArgs e)
         {
-            // chọn tên món cần xóa 
-            // nếu có tồn tại trong bill thì mới xóa nếu không thì nói món không tồn tại
-            // nhớ hỏi xóa hay không
-            // so sánh số lượng món với số lượng nhập vào
-            // nếu số lượng món > nhập vô thì xóa bt || < xóa khỏi bill luôn 
-
-            //int soluong = lvBill.SelectedItems.Count;
 
             if(tbSelectedTable.Text != "")
             {
@@ -323,11 +302,63 @@ namespace QuanLyQuanCoffee
             }
         }
 
+        private void DisplayCbChangeTable()
+        {
+            cbChangeTable.DataSource = BanAnDAO.GetDataTable();
+            cbChangeTable.ValueMember = "id";
+        }
+
+        // Chuyển bàn
+        private void btChangeTable_Click(object sender, EventArgs e)
+        {
+            if(cbChangeTable.SelectedValue != null && MessageBox.Show("Bạn có muốn chuyển bàn", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                string idSelectedTable = cbChangeTable.SelectedValue.ToString();
+                string idCurrentTable = tbSelectedTable.Text;
+                if (cbChangeTable.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    // Kiểm tra xem bàn có người chưa
+                    bool isEmpty = BUS.TableBUS.IsEmpty(idSelectedTable);
+                    if (isEmpty)
+                    {
+                        // update HoaDon sang bàn mới
+                        HoaDonDAO.UpdateTableOfHoaDon(idSelectedTable, lvBill.Tag.ToString());
+                        // Thay đổi trạng thái bàn
+                        BanAnDAO.ChangeTableStatus(idCurrentTable, "0");
+                        BanAnDAO.ChangeTableStatus(idSelectedTable, "1");
+
+                        DisplayTable();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bàn này đã có người");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 1 bàn để đổi");
+            }
+        }
+
         private void fManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(!logout)
                 MessageBox.Show("Vui lòng Đăng xuất trước khi tắt phần mềm");
             e.Cancel = !logout;
+        }
+
+        private void cbChangeTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbChangeTable.SelectedValue.ToString() != "System.Data.DataRowView")
+            {
+                // MessageBox.Show(BUS.TableBUS.IsEmpty(cbChangeTable.SelectedValue.ToString())? "Trống": "Đang có người");
+            }
+        }
+
+        private void btDiscount_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thiết kế database chưa phù hợp với tính năng gộp bàn");
         }
     }
 }

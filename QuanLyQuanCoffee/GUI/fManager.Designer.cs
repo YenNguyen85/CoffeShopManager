@@ -192,6 +192,7 @@
             this.cbChangeTable.Name = "cbChangeTable";
             this.cbChangeTable.Size = new System.Drawing.Size(118, 21);
             this.cbChangeTable.TabIndex = 6;
+            this.cbChangeTable.SelectedIndexChanged += new System.EventHandler(this.cbChangeTable_SelectedIndexChanged);
             // 
             // btChangeTable
             // 
@@ -201,6 +202,7 @@
             this.btChangeTable.TabIndex = 5;
             this.btChangeTable.Text = "Chuyển bàn";
             this.btChangeTable.UseVisualStyleBackColor = true;
+            this.btChangeTable.Click += new System.EventHandler(this.btChangeTable_Click);
             // 
             // btDiscount
             // 
@@ -210,6 +212,7 @@
             this.btDiscount.TabIndex = 3;
             this.btDiscount.Text = "Gộp bàn";
             this.btDiscount.UseVisualStyleBackColor = true;
+            this.btDiscount.Click += new System.EventHandler(this.btDiscount_Click);
             // 
             // btCheckOut
             // 

@@ -1,5 +1,6 @@
 ﻿CREATE Database QLCoffee
 go
+
 use QLCoffee
 go
 

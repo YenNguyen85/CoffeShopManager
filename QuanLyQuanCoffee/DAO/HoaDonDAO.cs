@@ -32,12 +32,17 @@ namespace QuanLyQuanCoffee.DAO
             KetNoiCSDL.NonQuery(sql);
         }
 
-        public static void UpdateStatusHoaDon(string idTable, string bit)
+        public static void UpdateStatusHoaDon(string idHoaDon, string bit)
         {
-            string sql = "update HOADON set TrangThaiHoaDon = " + bit + " where id = " + idTable;
+            string sql = "update HOADON set TrangThaiHoaDon = " + bit + " where id = " + idHoaDon;
             KetNoiCSDL.NonQuery(sql);
         }
 
+        public static void UpdateTableOfHoaDon(string idTable, string idHoaDon)
+        {
+            string sql = "update HOADON set idTable = " + idTable + " where id = " + idHoaDon;
+            KetNoiCSDL.NonQuery(sql);
+        }
 
         public static DataTable GetAllHoaDon(string tgbatdau, string tgketthuc)
         {
