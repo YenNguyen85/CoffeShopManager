@@ -259,5 +259,3 @@ insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) valu
 insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) values (10, 1, '6:30:00', '11:30:00')
 insert into CHAMCONGNHANVIEN(idChamCong, idNhanVien, GioBatDau, GioKetThuc) values (10, 2, '6:30:00', '11:30:00')
 
-select * from TAIKHOAN where MatKhau = HASHBYTES('SHA2_256', N'1')
-
